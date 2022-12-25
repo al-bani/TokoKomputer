@@ -4,10 +4,12 @@
  */
 package Interface;
 
+import Pojo.Produk;
+import Repository.CRUDRepo;
 /**
  *
  * @author alzildan
  */
-public interface ProdukInterface {
+public interface ProdukInterface extends CRUDRepo<Produk, Integer> {
     
 }
