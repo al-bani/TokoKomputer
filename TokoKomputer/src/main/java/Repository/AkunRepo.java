@@ -8,6 +8,6 @@ package Repository;
  *
  * @author alzildan
  */
-public interface AkunRepo {
-    
+public interface AkunRepo<T, ID> {
+    T login(String username, String password);
 }

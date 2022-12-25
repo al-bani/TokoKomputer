@@ -9,6 +9,7 @@ package Pojo;
  * @author User
  */
 public class Produk {
+    private String kode;
     private String nama;
     private String deskripsi;
     private int stok;
@@ -19,6 +20,14 @@ public class Produk {
 
     public Produk() {
         
+    }
+
+    public String getKode() {
+        return kode;
+    }
+
+    public void setKode(String kode) {
+        this.kode = kode;
     }
 
     public String getPembayaran() {

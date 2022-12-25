@@ -4,10 +4,16 @@
  */
 package Repository;
 
+import java.util.List;
+
 /**
  *
  * @author alzildan
  */
-public interface CRUDRepo {
-    
+public interface CRUDRepo<T, ID> {
+    List<T> findAll();
+    ID create(T object);
+    ID update(T object);
+    T findById(int id);
+    ID delete(int id);
 }
