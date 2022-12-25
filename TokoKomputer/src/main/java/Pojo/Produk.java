@@ -8,15 +8,25 @@ package Pojo;
  *
  * @author User
  */
-public class Barang {
+public class Produk {
     private String nama;
     private String deskripsi;
     private int stok;
     private double harga;
     private String pengiriman;
     private double berat;
+    private String pembayaran;
 
-    public Barang() {
+    public Produk() {
+        
+    }
+
+    public String getPembayaran() {
+        return pembayaran;
+    }
+
+    public void setPembayaran(String pembayaran) {
+        this.pembayaran = pembayaran;
     }
 
     public void setNama(String nama) {
@@ -66,6 +76,4 @@ public class Barang {
     public double getBerat() {
         return berat;
     }
-    
-    
 }
