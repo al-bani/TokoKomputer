@@ -4,10 +4,13 @@
  */
 package Interface;
 
+import Pojo.Penjual;
+import Repository.PenjualRepo;
+
 /**
  *
  * @author alzildan
  */
-public interface PenjualInterface {
+public interface PenjualInterface extends PenjualRepo<Penjual, Integer> {
     
 }

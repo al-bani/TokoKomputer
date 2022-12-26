@@ -8,6 +8,8 @@ package Repository;
  *
  * @author alzildan
  */
-public interface AkunRepo<T, ID> {
-    T login(String username, String password);
+public interface PenjualRepo<T, ID> {
+    T Login(String username, String password);
+    T Register(String username, String password,String namaDepan, String namaBelakang,String alamat,String email);
+    T LupaPassword(String email, String Password);
 }

@@ -9,44 +9,59 @@ package Pojo;
  * @author alzildan
  */
 public class Penjual {
-    private Integer id;
-    private String nama;
-    private boolean Status;
-    private Akun akun;
+    private String username, password, email, namaDepan, namaBelakang, alamat;
     
     public Penjual() {
     }
 
-    public String getNama() {
-        return nama;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public boolean isStatus() {
-        return Status;
+    public String getPassword() {
+        return password;
     }
 
-    public void setStatus(boolean Status) {
-        this.Status = Status;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-
-    public Integer getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
+
+    public String getNamaDepan() {
+        return namaDepan;
     }
 
-    public Akun getAkun() {
-        return akun;
+    public void setNamaDepan(String namaDepan) {
+        this.namaDepan = namaDepan;
     }
 
-    public void setAkun(Akun akun) {
-        this.akun = akun;
+    public String getNamaBelakang() {
+        return namaBelakang;
     }
+
+    public void setNamaBelakang(String namaBelakang) {
+        this.namaBelakang = namaBelakang;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+    
 }
