@@ -1,13 +1,49 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Pojo;
 
 /**
  *
- * @author alzildan
+ * @author Ramzi
  */
 public class Promo {
     
+     private String namaPromo;
+    private String kodePromo;
+    private int potonganPromo;
+    private String lamaPromo;
+
+    public Promo() {
+    }
+
+    public String getNamaPromo() {
+        return namaPromo;
+    }
+
+    public void setNamaPromo(String namaPromo) {
+        this.namaPromo = namaPromo;
+    }
+
+    public String getKodePromo() {
+        return kodePromo;
+    }
+
+    public void setKodePromo(String kodePromo) {
+        this.kodePromo = kodePromo;
+    }
+
+    public int getPotonganPromo() {
+        return potonganPromo;
+    }
+
+    public void setPotonganPromo(int potonganPromo) {
+        this.potonganPromo = potonganPromo;
+    }
+
+    public String getLamaPromo() {
+        return lamaPromo;
+    }
+
+    public void setLamaPromo(String lamaPromo) {
+        this.lamaPromo = lamaPromo;
+    }
 }
