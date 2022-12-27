@@ -28,7 +28,7 @@ public class PromoController implements PromoInterface{
     @Override
     public List<Promo> findAll() {
        List<Promo> listPromo = new ArrayList<>();
-        String sql = "SELECT * FROM promo";
+        String sql = "SELECT * FROM tb_promo";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -59,7 +59,7 @@ public class PromoController implements PromoInterface{
     @Override
     public Object create(Promo object) {
     int result = 0;
-        String sql = "INSERT INTO barang(kodePromo, namaPromo, potonganPromo, lamaPromo"
+        String sql = "INSERT INTO tb_promo(kodePromo, namaPromo, potonganPromo, lamaPromo"
                 + "VALUES('"+object.getKodePromo()+"', "
                 + ""+object.getNamaPromo()+", "
                 + ""+object.getPotonganPromo()+", "
@@ -84,7 +84,7 @@ public class PromoController implements PromoInterface{
     int result = 0;
         String sql = "UPDATE promo SET namaPromo='"+object.getNamaPromo()+"', "
                 + "potonganPromo="+object.getPotonganPromo()+", "
-                + "lamaPromo="+object.getLamaPromo()+", "
+                + "lamaPromo="+object.getLamaPromo()+" from tb_promo "
                 + "WHERE kodePromo="+object.getKodePromo()+"";
         
         conMan = new ConnectionManager();
@@ -104,7 +104,7 @@ public class PromoController implements PromoInterface{
     @Override
     public Promo findById(int id) {
         Promo promo = null;
-        String sql = "SELECT * FROM promo WHERE kodePromo="+id+"";
+        String sql = "SELECT * FROM tb_promo WHERE kodePromo="+id+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -131,7 +131,7 @@ public class PromoController implements PromoInterface{
     @Override
     public Object delete(int id) {
         int result = 0;
-        String sql = "DELETE FROM promo WHERE kodePromo="+id+"";
+        String sql = "DELETE FROM tb_promo WHERE kodePromo="+id+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
