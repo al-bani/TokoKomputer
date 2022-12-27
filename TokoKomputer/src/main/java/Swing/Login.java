@@ -4,17 +4,35 @@
  */
 package Swing;
 
+import Controller.PenjualController;
+import Interface.PenjualInterface;
+import Pojo.Penjual;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alzildan
  */
 public class Login extends javax.swing.JFrame {
+    PenjualInterface penjualServ = new PenjualController();
+    Penjual penjual;
+    String username, password;
+    boolean login = false;
 
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public void close(){
+         WindowEvent we = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(we);
     }
 
     /**
@@ -37,7 +55,7 @@ public class Login extends javax.swing.JFrame {
         btn_login = new javax.swing.JButton();
         lbl_register = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("LOGIN");
@@ -55,6 +73,12 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Belum buat akun?");
 
         lbl_lupa_password.setText("Lupa Password?");
+        lbl_lupa_password.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_lupa_password.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_lupa_passwordMouseClicked(evt);
+            }
+        });
 
         btn_login.setText("Login");
         btn_login.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +88,12 @@ public class Login extends javax.swing.JFrame {
         });
 
         lbl_register.setText("Daftar Disini");
+        lbl_register.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_register.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_registerMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,8 +163,31 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usernameActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        // TODO add your handling code here:
+        username = txt_username.getText();
+        password = txt_password.getText();
+        
+        try {
+            int status = penjualServ.Login(username, password);
+           
+            if (status == 1) {
+                JOptionPane.showMessageDialog(null, "Login berhasil...!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Username/Password salah...!");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Server Error");
+        }
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void lbl_lupa_passwordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_lupa_passwordMouseClicked
+        new LupaPassword().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lbl_lupa_passwordMouseClicked
+
+    private void lbl_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_registerMouseClicked
+        new Register().setVisible(true);
+        dispose(); 
+    }//GEN-LAST:event_lbl_registerMouseClicked
 
     /**
      * @param args the command line arguments

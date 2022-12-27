@@ -4,17 +4,27 @@
  */
 package Swing;
 
+import Controller.PenjualController;
+import Interface.PenjualInterface;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alzildan
  */
 public class LupaPassword extends javax.swing.JFrame {
-
+    PenjualInterface penjualServ = new PenjualController();
+    String email, password;
     /**
      * Creates new form LupaPassword
      */
     public LupaPassword() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        txt_password.setEditable(false);
+        txt_confirm_password.setEditable(false);
+        
+        lbl_indikasi.setVisible(false);
     }
 
     /**
@@ -28,7 +38,7 @@ public class LupaPassword extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_email = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btn_cari = new javax.swing.JButton();
@@ -36,8 +46,14 @@ public class LupaPassword extends javax.swing.JFrame {
         txt_password = new javax.swing.JPasswordField();
         txt_confirm_password = new javax.swing.JPasswordField();
         btn_save = new javax.swing.JButton();
+        lbl_indikasi = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("Email");
 
@@ -46,14 +62,22 @@ public class LupaPassword extends javax.swing.JFrame {
         jLabel3.setText("Password Baru");
 
         btn_cari.setText("cari");
+        btn_cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cariActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Konfirmasi Password");
 
-        txt_password.setText("jPasswordField1");
-
-        txt_confirm_password.setText("jPasswordField2");
-
         btn_save.setText("Simpan");
+        btn_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_saveActionPerformed(evt);
+            }
+        });
+
+        lbl_indikasi.setText("Akun ditemukan");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -63,16 +87,18 @@ public class LupaPassword extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_save)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel3)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_cari))
-                        .addComponent(jLabel4)
-                        .addComponent(txt_password)
-                        .addComponent(txt_confirm_password)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_indikasi)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_cari))
+                            .addComponent(jLabel4)
+                            .addComponent(txt_password)
+                            .addComponent(txt_confirm_password))))
                 .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -88,9 +114,11 @@ public class LupaPassword extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cari))
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_indikasi)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,6 +147,33 @@ public class LupaPassword extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        new Login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_formWindowClosed
+
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_saveActionPerformed
+
+    private void btn_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariActionPerformed
+        email = txt_email.getText();
+        
+        try {
+            int status = penjualServ.cekEmail(email);
+           
+            if (status == 1) {
+                lbl_indikasi.setVisible(true);
+                txt_password.setEditable(true);
+                txt_confirm_password.setEditable(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Email tidak ditemukan");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Server Error");
+        }
+    }//GEN-LAST:event_btn_cariActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,8 +218,9 @@ public class LupaPassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbl_indikasi;
     private javax.swing.JPasswordField txt_confirm_password;
+    private javax.swing.JTextField txt_email;
     private javax.swing.JPasswordField txt_password;
     // End of variables declaration//GEN-END:variables
 }

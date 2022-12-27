@@ -9,9 +9,26 @@ package Pojo;
  * @author alzildan
  */
 public class Penjual {
-    private String username, password, email, namaDepan, namaBelakang, alamat;
+    private String username, password, email, namaDepan, namaBelakang, alamat, id;
+    private boolean loginStatus;
     
     public Penjual() {
+    }
+
+    public boolean isLoginStatus() {
+        return loginStatus;
+    }
+
+    public void setLoginStatus(boolean loginStatus) {
+        this.loginStatus = loginStatus;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {

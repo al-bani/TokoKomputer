@@ -11,6 +11,6 @@ import Repository.PenjualRepo;
  *
  * @author alzildan
  */
-public interface PenjualInterface extends PenjualRepo<Penjual, Integer> {
+public interface PenjualInterface extends PenjualRepo<Integer> {
     
 }
