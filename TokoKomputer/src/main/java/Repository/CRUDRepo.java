@@ -8,12 +8,12 @@ import java.util.List;
 
 /**
  *
- * @author alzildan
+ * @author User
  */
-public interface CRUDRepo<T, ID> {
+public interface  CRUDRepo<T, UsernamePembeli> {
     List<T> findAll();
-    ID create(T object);
-    ID update(T object);
-    T findById(int id);
-    ID delete(int id);
+    UsernamePembeli create(T object);
+    UsernamePembeli update(T object);
+    T findByUsername(String usernamePembeli);
+    UsernamePembeli delete(String usernamePembeli);
 }
