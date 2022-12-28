@@ -4,9 +4,9 @@
  */
 package Controller;
 
-import Interface.PembeliInterface;
-import Pojo.Pembeli;
 import Utilities.ConnectionManager;
+import Interface.CetakInterface;
+import Pojo.Cetak;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,16 +20,16 @@ import java.util.logging.Logger;
  *
  * @author User
  */
-public class PembeliController implements PembeliInterface {
+public class CetakController implements CetakInterface {
     private ConnectionManager conMan;
     private Connection conn;
     Statement stmt;
     ResultSet rs;
     
     @Override
-    public List<Pembeli> findAll() {
-        List<Pembeli> listPembeli = new ArrayList<>();
-        String sql = "SELECT * FROM pembeli";
+    public List<Cetak> findAll() {
+        List<Cetak> listCetak = new ArrayList<>();
+        String sql = "SELECT * FROM cetak";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -39,31 +39,32 @@ public class PembeliController implements PembeliInterface {
             rs = stmt.executeQuery(sql);
             
             while (rs.next()) {                
-                Pembeli pembeli = new Pembeli();
-                pembeli.setUsernamePembeli(rs.getString("username_pembeli"));
-                pembeli.setNamaPembeli(rs.getString("nama_pembeli"));
-                pembeli.setAlamatPembeli(rs.getString("alamat_pembeli"));
-                pembeli.setPasswordPembeli(rs.getString("password_pembeli"));
+                Cetak cetak = new Cetak();
                 
-                listPembeli.add(pembeli);
+                cetak.setId(rs.getInt("ID"));
+                cetak.setJumlahProduk(rs.getInt("jumlah_produk"));
+                cetak.setTotalPembelian(rs.getFloat("total_pembelian"));
+                cetak.setJumlahPembeli(rs.getInt("jumlah_pembeli"));
+                
+                listCetak.add(cetak);
             }
             conMan.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(PembeliController.class.getName())
+            Logger.getLogger(CetakController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
         
-        return listPembeli;
+        return listCetak;
     }
 
     @Override
-    public Integer create(Pembeli object) {
+    public Integer create(Cetak object) {
         int result = 0;
-        String sql = "INSERT INTO pembeli(username_pembeli, nama_pembeli, Alamat_pembeli, password_pembeli) "
-                + "VALUES('"+object.getUsernamePembeli()+"', "
-                + "'"+object.getNamaPembeli()+"', "
-                + ""+object.getAlamatPembeli()+", "
-                + "'"+object.getPasswordPembeli()+"')";
+        String sql = "INSERT INTO cetak(ID,jumlah_produk, total_pembelian, jumlah_pembeli) "
+                + "VALUES('"+object.getId()+"', "
+                + "'"+object.getJumlahProduk()+"', "
+                + "'"+object.getTotalPembelian()+"', "
+                + ""+object.getJumlahPembeli()+"') ";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -73,19 +74,19 @@ public class PembeliController implements PembeliInterface {
             stmt.executeUpdate(sql);
             conMan.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(PembeliController.class.getName())
+            Logger.getLogger(CetakController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
         return result;
     }
 
     @Override
-    public Integer update(Pembeli object) {
+    public Integer update(Cetak object) {
         int result = 0;
-        String sql = "UPDATE pembeli SET nama_pembeli='"+object.getNamaPembeli()+"',"
-                + " alamat_pembeli='"+object.getAlamatPembeli()+"',"
-                + " Password="+object.getPasswordPembeli()+"'"
-                + " WHERE username_pembeli="+object.getUsernamePembeli()+"";
+        String sql = "UPDATE cetak SET Jumlah_produk='"+object.getJumlahProduk()+"',"
+                + " total_pembelian='"+object.getTotalPembelian()+"',"
+                + " jumlah_pembelian="+object.getJumlahPembeli()+"'"
+                + " WHERE ID="+object.getId()+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -95,16 +96,16 @@ public class PembeliController implements PembeliInterface {
             result = stmt.executeUpdate(sql);
             conMan.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(PembeliController.class.getName()).
+            Logger.getLogger(CetakController.class.getName()).
                     log(Level.SEVERE, null, ex);
         }
         return result;
     }
 
-    
-    public Pembeli findByUsername(String usernamePembeli) {
-        Pembeli pembeli = null;
-        String sql = "SELECT * FROM pembeli WHERE username_pembeli="+usernamePembeli+"";
+    @Override
+    public Cetak findById(int id) {
+        Cetak cetak = null;
+        String sql = "SELECT * FROM cetak WHERE ID="+id+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -114,24 +115,24 @@ public class PembeliController implements PembeliInterface {
             rs = stmt.executeQuery(sql);
             
             while (rs.next()) {
-                pembeli = new Pembeli();
-                pembeli.setUsernamePembeli(rs.getString("username_pembeli"));
-                pembeli.setNamaPembeli(rs.getString("nama_pembeli"));
-                pembeli.setAlamatPembeli(rs.getString("alamat_pembeli"));
-                pembeli.setPasswordPembeli(rs.getString("password_pembeli"));
+                cetak = new Cetak();
+                cetak.setId(rs.getInt("ID"));
+                cetak.setJumlahProduk(rs.getInt("jumlah_produk"));
+                cetak.setTotalPembelian(rs.getFloat("total_pembelian"));
+                cetak.setJumlahPembeli(rs.getInt("jumlah_pembeli"));
             }
             conMan.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(PembeliController.class.getName())
+            Logger.getLogger(CetakController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
-        return pembeli;
+        return cetak;
     }
 
     @Override
-    public Integer delete(String usernamePembeli) {
+    public Integer delete(int id) {
         int result = 0;
-        String sql = "DELETE FROM pembeli WHERE id_pembeli="+usernamePembeli+"";
+        String sql = "DELETE FROM cetak WHERE id="+id+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -141,10 +142,12 @@ public class PembeliController implements PembeliInterface {
             result = stmt.executeUpdate(sql);
             conMan.disconnect();
         } catch (SQLException ex) {
-            Logger.getLogger(PembeliController.class.getName())
+            Logger.getLogger(CetakController.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
         return result;
     }
+
+   
     
 }

@@ -10,10 +10,10 @@ import java.util.List;
  *
  * @author User
  */
-public interface  CRUDRepo<T, UsernamePembeli> {
+public interface CRUDRepo<T, ID> {
     List<T> findAll();
-    UsernamePembeli create(T object);
-    UsernamePembeli update(T object);
-    T findByUsername(String usernamePembeli);
-    UsernamePembeli delete(String usernamePembeli);
+    ID create(T object);
+    ID update(T object);
+    T findById(int id);
+    ID delete(int id);
 }
