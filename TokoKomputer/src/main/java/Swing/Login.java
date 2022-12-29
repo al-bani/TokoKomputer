@@ -8,6 +8,7 @@ import Controller.PenjualController;
 import Interface.PenjualInterface;
 import Pojo.Penjual;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -20,6 +21,7 @@ public class Login extends javax.swing.JFrame {
     PenjualInterface penjualServ = new PenjualController();
     Penjual penjual;
     String username, password;
+    Dashboard dashboard;
     boolean login = false;
 
     /**
@@ -28,6 +30,17 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+    }
+    
+    public void showPassword(){
+        if (cb_show_password.isSelected()) {
+            txt_password.setEchoChar((char)0);
+            cb_show_password.setText("Hide Password");
+        } else {
+            txt_password.setEchoChar('*');
+            cb_show_password.setText("Show Password");
+        }
     }
     
     public void close(){
@@ -54,6 +67,7 @@ public class Login extends javax.swing.JFrame {
         lbl_lupa_password = new javax.swing.JLabel();
         btn_login = new javax.swing.JButton();
         lbl_register = new javax.swing.JLabel();
+        cb_show_password = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,6 +84,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        txt_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_passwordKeyPressed(evt);
+            }
+        });
+
         jLabel4.setText("Belum buat akun?");
 
         lbl_lupa_password.setText("Lupa Password?");
@@ -81,6 +101,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         btn_login.setText("Login");
+        btn_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
@@ -95,6 +116,15 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        cb_show_password.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        cb_show_password.setText("Show Password");
+        cb_show_password.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cb_show_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_show_passwordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,23 +132,26 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(lbl_lupa_password)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btn_login)
-                                .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbl_register))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jLabel1)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                            .addComponent(cb_show_password)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_username)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(lbl_lupa_password)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(157, 157, 157)
+                                    .addComponent(btn_login))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lbl_register))
+                                .addComponent(txt_password)))))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,14 +167,16 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_lupa_password)
-                .addGap(5, 5, 5)
+                .addComponent(cb_show_password)
+                .addGap(1, 1, 1)
                 .addComponent(btn_login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(lbl_register))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_lupa_password)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,28 +201,69 @@ public class Login extends javax.swing.JFrame {
         username = txt_username.getText();
         password = txt_password.getText();
         
-        try {
-            int status = penjualServ.Login(username, password);
-           
-            if (status == 1) {
-                JOptionPane.showMessageDialog(null, "Login berhasil...!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Username/Password salah...!");
+        if ("".equals(password) || "".equals(username)) {
+            JOptionPane.showMessageDialog(null, "Harap Masukan username/password");
+        } else {
+            try {
+                int status = penjualServ.Login(username, password);
+
+                if (status == 1) {
+                    JOptionPane.showMessageDialog(null, "Login berhasil...!");
+                    dashboard = new Dashboard(username);
+                    dashboard.setVisible(true);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Username/Password salah...!");
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Server Error");
             }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Server Error");
         }
+        
+        
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void lbl_lupa_passwordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_lupa_passwordMouseClicked
         new LupaPassword().setVisible(true);
-        dispose();
+        close();
     }//GEN-LAST:event_lbl_lupa_passwordMouseClicked
 
     private void lbl_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_registerMouseClicked
         new Register().setVisible(true);
-        dispose(); 
+        close();
     }//GEN-LAST:event_lbl_registerMouseClicked
+
+    private void txt_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyPressed
+       if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            username = txt_username.getText();
+            password = txt_password.getText();
+        
+            if ("".equals(password) || "".equals(username)) {
+                JOptionPane.showMessageDialog(null, "Harap Masukan username/password");
+            } else {
+                try {
+                    int status = penjualServ.Login(username, password);
+
+                    if (status == 1) {
+                        JOptionPane.showMessageDialog(null, "Login berhasil...!");
+                        dashboard = new Dashboard();
+                        dashboard.getInfoName(username);
+                        dashboard.setVisible(true);
+                        dispose();
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Username/Password salah...!");
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Server Error");
+                }
+            }
+       }
+    }//GEN-LAST:event_txt_passwordKeyPressed
+
+    private void cb_show_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_show_passwordActionPerformed
+       showPassword();
+    }//GEN-LAST:event_cb_show_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,6 +302,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
+    private javax.swing.JCheckBox cb_show_password;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
