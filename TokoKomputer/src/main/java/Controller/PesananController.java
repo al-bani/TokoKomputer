@@ -39,10 +39,10 @@ public class PesananController implements PesananInterface{
             
             while (rs.next()) {                
                 Pesanan pesanan = new Pesanan();
-                pesanan.setId_pesanan(rs.getString("idPesanan"));
-                pesanan.setUsername_pembeli(rs.getString("usernamePembeli"));
-                pesanan.setKode_Produk(rs.getString("kodeProduk"));
-                pesanan.setJumlah_pesanan(rs.getInt("jumlahPesanan"));
+                pesanan.setId_pesanan(rs.getInt("id_Pesanan"));
+                pesanan.setUsername_pembeli(rs.getString("username_Pembeli"));
+                pesanan.setKode_Produk(rs.getString("kode_Produk"));
+                pesanan.setJumlah_pesanan(rs.getInt("jumlah_Pesanan"));
                 
                 
                 listPesanan.add(pesanan);
@@ -59,11 +59,11 @@ public class PesananController implements PesananInterface{
     @Override
     public Object create(Pesanan object) {
         int result = 0;
-        String sql = "INSERT INTO tb_produk(id_pesanan, username_pembeli, kode_produk, jumlah_pesanan"
-                + "VALUES('"+object.getId_pesanan()+"', "
-                + ""+object.getUsername_pembeli()+", "
-                + ""+object.getKode_Produk()+", "
-                + "'"+object.getJumlah_pesanan()+"')";
+        String sql = "INSERT INTO tb_pesanan(id_pesanan, username_pembeli, kode_produk, jumlah_pesanan) "
+                + "VALUES("+object.getId_pesanan()+", "
+                + "'"+object.getUsername_pembeli()+"', "
+                + "'"+object.getKode_Produk()+"', "
+                + ""+object.getJumlah_pesanan()+" )";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -82,10 +82,10 @@ public class PesananController implements PesananInterface{
     @Override
     public Object update(Pesanan object) {
         int result = 0;
-        String sql = "UPDATE promo SET username_pembeli='"+object.getUsername_pembeli()+"', "
-                + "kode_produk="+object.getKode_Produk()+", "
-                + "jumlah_pesanan="+object.getJumlah_pesanan()+" from tb_pesanan "
-                + "WHERE id_pesanan="+object.getId_pesanan()+"";
+        String sql = "UPDATE tb_pesanan SET username_pembeli = '"+object.getUsername_pembeli()+"', "
+                + "kode_produk = '"+object.getKode_Produk()+"', "
+                + "jumlah_pesanan = "+object.getJumlah_pesanan()+" "
+                + "WHERE id_pesanan =  "+object.getId_pesanan()+" ";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -115,10 +115,10 @@ public class PesananController implements PesananInterface{
             
             while (rs.next()) {
                 pesanan = new Pesanan();
-                pesanan.setId_pesanan(rs.getString("idPesanan"));
-                pesanan.setUsername_pembeli(rs.getString("usernamePembeli"));
+                pesanan.setId_pesanan(rs.getInt("id_Pesanan"));
+                pesanan.setUsername_pembeli(rs.getString("username_Pembeli"));
                 pesanan.setKode_Produk(rs.getString("kode_produk"));
-                pesanan.setJumlah_pesanan(rs.getInt("jumlahPesanan"));
+                pesanan.setJumlah_pesanan(rs.getInt("jumlah_Pesanan"));
             }
             conMan.disconnect();
         } catch (SQLException ex) {
@@ -128,9 +128,9 @@ public class PesananController implements PesananInterface{
     }
 
     @Override
-    public Object delete(int id) {
+    public Object delete(int id_pesanan) {
         int result = 0;
-        String query = "DELETE FROM tb_pesanan WHERE id_pesanan"+id+"";
+        String query = "DELETE FROM tb_pesanan WHERE id_pesanan = "+id_pesanan+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();

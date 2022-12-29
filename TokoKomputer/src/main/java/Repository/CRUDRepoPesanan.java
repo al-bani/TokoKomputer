@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  *
- * @author alzildan
+ * @author Ramzi
  */
-public interface CRUDRepo<T, ID> {
+public interface CRUDRepoPesanan<T, ID> {
     List<T> findAll();
     ID create(T object);
     ID update(T object);

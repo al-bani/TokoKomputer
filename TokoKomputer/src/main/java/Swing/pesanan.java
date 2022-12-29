@@ -1,8 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Swing;
+
+import Pojo.Pesanan;
+import Interface.PesananInterface;
+import Controller.PesananController;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -13,10 +24,78 @@ public class pesanan extends javax.swing.JFrame {
     /**
      * Creates new form pesanan
      */
+    
+    PesananInterface pesananInterface;
+    
     public pesanan() {
-        initComponents();
+       initComponents();
+       this.setLocationRelativeTo(null);
+        loadData();
     }
 
+    public void close() {
+        WindowEvent we = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(we);
+    }
+    
+     private void loadData() {
+        pesananInterface = new PesananController();
+        List<Pesanan> listPesanan = new ArrayList<>();
+        listPesanan = pesananInterface.findAll();
+        Object[][] objectPesanan = new Object[listPesanan.size()][4];
+        
+        int counter = 0;
+        for (Pesanan pesanan : listPesanan) {
+            objectPesanan[counter][0] = pesanan.getId_pesanan();
+            objectPesanan[counter][1] = pesanan.getUsername_pembeli();
+            objectPesanan[counter][2] = pesanan.getKode_Produk();
+            objectPesanan[counter][3] = pesanan.getJumlah_pesanan();
+            
+            counter++;
+        }
+        tabel_pesanan.setModel(new javax.swing.table.DefaultTableModel(
+            objectPesanan,
+            new String [] {
+                "ID Pesanan", "Username Pembeli", "Kode Produk", "Jumlah Pesanan"
+            }
+        ));
+    }
+   
+    private void loadData(Pesanan pesanan) {
+        Object[][] objectPesanan= new Object[1][8];
+        
+            objectPesanan[0][0] = pesanan.getId_pesanan();
+            objectPesanan[0][1] = pesanan.getUsername_pembeli();
+            objectPesanan[0][2] = pesanan.getKode_Produk();
+            objectPesanan[0][3] = pesanan.getJumlah_pesanan();
+            
+         tabel_pesanan.setModel(new javax.swing.table.DefaultTableModel(
+            objectPesanan,
+            new String [] {
+                "ID Pesanan", "Username Pembeli", "Kode Produk", "Jumlah Pesanan"
+            }
+        ));
+    }
+    
+    private Pesanan findPesanan(Integer id) {
+
+        Pesanan pesanan = new Pesanan();
+        pesananInterface = new PesananController();
+        pesanan =  pesananInterface.findById(id);
+    
+        return pesanan;
+    }
+    
+    
+    private void emptyField() {
+        txt_id_pesanan.setText("");
+        txt_jumlah_pesanan.setText("");
+        txt_kode_produk.setText("");
+        txt_search_id.setText("");
+        txt_username_pembeli.setText("");
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +105,285 @@ public class pesanan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabel_pesanan = new javax.swing.JTable();
+        txt_search_id = new javax.swing.JTextField();
+        btn_create = new javax.swing.JButton();
+        btn_update = new javax.swing.JButton();
+        btn_Delete = new javax.swing.JButton();
+        btn_clear = new javax.swing.JButton();
+        txt_id_pesanan = new javax.swing.JTextField();
+        txt_username_pembeli = new javax.swing.JTextField();
+        txt_kode_produk = new javax.swing.JTextField();
+        txt_jumlah_pesanan = new javax.swing.JTextField();
+        btn_search_id = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tabel_pesanan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID Pesanan", "Username Pembeli", "Kode Product", "Jumlah Pesanan"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tabel_pesanan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabel_pesananMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabel_pesanan);
+
+        txt_search_id.setText("Search");
+        txt_search_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_search_idActionPerformed(evt);
+            }
+        });
+
+        btn_create.setText("Create");
+        btn_create.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_createActionPerformed(evt);
+            }
+        });
+
+        btn_update.setText("Update");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
+
+        btn_Delete.setText("Delete");
+        btn_Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_DeleteActionPerformed(evt);
+            }
+        });
+
+        btn_clear.setText("Clear");
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
+
+        txt_id_pesanan.setText("ID_Pesanan");
+
+        txt_username_pembeli.setText("Username_pembeli");
+        txt_username_pembeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_username_pembeliActionPerformed(evt);
+            }
+        });
+
+        txt_kode_produk.setText("kode_produk");
+
+        txt_jumlah_pesanan.setText("Jumlah Pesanan");
+
+        btn_search_id.setText("Serch");
+        btn_search_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_search_idActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_search_id, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_create)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_update)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_Delete)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_clear))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_id_pesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addComponent(txt_kode_produk, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(33, 33, 33)
+                                        .addComponent(txt_username_pembeli, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(51, 51, 51)
+                                        .addComponent(txt_jumlah_pesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 17, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_search_id)))
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txt_search_id, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_id_pesanan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_username_pembeli, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_kode_produk, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                            .addComponent(txt_jumlah_pesanan))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_create, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_search_id, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_search_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_search_idActionPerformed
+
+    }//GEN-LAST:event_txt_search_idActionPerformed
+
+    private void txt_username_pembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_username_pembeliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_username_pembeliActionPerformed
+
+    private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
+        int id_pesanan;
+        String username_pembeli, kode_produk;
+        int jumlah_pesanan;
+        
+        pesananInterface = new PesananController();
+        id_pesanan= Integer.parseInt(txt_id_pesanan.getText());
+        username_pembeli = txt_username_pembeli.getText();
+        kode_produk = txt_kode_produk.getText();
+        jumlah_pesanan = Integer.parseInt(txt_jumlah_pesanan.getText());
+       
+        
+        Pesanan pesanan = new Pesanan();
+        pesanan.setId_pesanan(id_pesanan);
+        pesanan.setUsername_pembeli(username_pembeli);
+        pesanan.setKode_Produk(kode_produk);
+        pesanan.setJumlah_pesanan(jumlah_pesanan);
+      
+        
+        pesananInterface.create(pesanan);
+        JOptionPane.showMessageDialog(null, "Data pesanan created successfully");
+        loadData();
+        emptyField();
+
+    }//GEN-LAST:event_btn_createActionPerformed
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        emptyField();
+    }//GEN-LAST:event_btn_clearActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        int id_pesanan;
+        String username_pembeli, kode_produk;
+        int jumlah_pesanan;
+        pesananInterface = new PesananController();
+        
+        id_pesanan = Integer.parseInt(txt_id_pesanan.getText());
+        username_pembeli = txt_username_pembeli.getText();
+        kode_produk = txt_kode_produk.getText();
+        jumlah_pesanan = Integer.parseInt(txt_jumlah_pesanan.getText());
+       
+        
+        Pesanan pesanan = new Pesanan();
+        pesanan.setId_pesanan(id_pesanan);
+        pesanan.setUsername_pembeli(username_pembeli);
+        pesanan.setKode_Produk(kode_produk);
+        pesanan.setJumlah_pesanan(jumlah_pesanan);
+      
+        
+        pesananInterface.update(pesanan);
+        JOptionPane.showMessageDialog(null, "Data pesanan Updated successfully");
+        loadData();
+        emptyField();
+    }//GEN-LAST:event_btn_updateActionPerformed
+
+    private void tabel_pesananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_pesananMouseClicked
+        String id_pesanan, username_pembeli, kode_produk;
+        int jumlah_pesanan;
+        
+        int row = tabel_pesanan.getSelectedRow();
+        id_pesanan = tabel_pesanan.getValueAt(row, 0).toString();
+        username_pembeli = tabel_pesanan.getValueAt(row, 1).toString();
+        kode_produk = tabel_pesanan.getValueAt(row, 2).toString();
+        jumlah_pesanan = Integer.parseInt(tabel_pesanan.getValueAt(row, 3).toString());
+        
+        txt_id_pesanan.setText(id_pesanan);
+        txt_username_pembeli.setText(username_pembeli);
+        txt_kode_produk.setText(kode_produk);
+        txt_jumlah_pesanan.setText(jumlah_pesanan+"");
+        
+    }//GEN-LAST:event_tabel_pesananMouseClicked
+
+    private void btn_search_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_search_idActionPerformed
+    int id;
+        Pesanan searchedPesanan = new Pesanan();
+        
+        id = Integer.parseInt(txt_search_id.getText());
+        searchedPesanan = findPesanan(id);
+        if (searchedPesanan != null) {
+            loadData(searchedPesanan);
+        } else {
+            JOptionPane.showMessageDialog(null, "Data tidak ditemukan!");
+        }
+
+
+    }//GEN-LAST:event_btn_search_idActionPerformed
+
+    private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
+        int id_pesanan;
+        pesananInterface = new PesananController();
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        
+        id_pesanan = Integer.parseInt(txt_id_pesanan.getText());
+        
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure to delete it?", "Warning", dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            pesananInterface.delete(id_pesanan);
+            loadData();
+            emptyField();
+        }
+    }//GEN-LAST:event_btn_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +421,17 @@ public class pesanan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Delete;
+    private javax.swing.JButton btn_clear;
+    private javax.swing.JButton btn_create;
+    private javax.swing.JButton btn_search_id;
+    private javax.swing.JButton btn_update;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabel_pesanan;
+    private javax.swing.JTextField txt_id_pesanan;
+    private javax.swing.JTextField txt_jumlah_pesanan;
+    private javax.swing.JTextField txt_kode_produk;
+    private javax.swing.JTextField txt_search_id;
+    private javax.swing.JTextField txt_username_pembeli;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,13 +1,14 @@
 
 package Interface;
 
-import Repository.CRUDRepo;
 import Pojo.Pesanan;
+import Repository.CRUDRepoPesanan;
 
 /**
  *
  * @author Ramzi
  */
-public interface PesananInterface extends CRUDRepo<Pesanan, Object>{
+public interface PesananInterface extends CRUDRepoPesanan<Pesanan, Object>{
+
     
 }

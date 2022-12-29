@@ -7,7 +7,7 @@ package Pojo;
  */
 
 public class Pesanan {
-    private String id_pesanan;
+    private int id_pesanan;
     private String username_pembeli;
     private String kode_Produk;
     private int jumlah_pesanan;
@@ -15,13 +15,11 @@ public class Pesanan {
     public Pesanan() {
     }
 
-    
-
-    public String getId_pesanan() {
+    public int getId_pesanan() {
         return id_pesanan;
     }
 
-    public void setId_pesanan(String id_pesanan) {
+    public void setId_pesanan(int id_pesanan) {
         this.id_pesanan = id_pesanan;
     }
 
