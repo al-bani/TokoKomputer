@@ -39,10 +39,10 @@ public class PromoController implements PromoInterface{
             
             while (rs.next()) {                
                 Promo promo = new Promo();
-                promo.setKodePromo(rs.getString("kodePromo"));
-                promo.setNamaPromo(rs.getString("namaPromo"));
-                promo.setPotonganPromo(rs.getInt("potonganPromo"));
-                promo.setLamaPromo(rs.getString("lamaPromo"));
+                promo.setKodePromo(rs.getInt("kode_Promo"));
+                promo.setNamaPromo(rs.getString("nama_Promo"));
+                promo.setPotonganPromo(rs.getInt("potongan_Promo"));
+                promo.setLamaPromo(rs.getString("periode_Promo"));
                 
                 
                 listPromo.add(promo);
@@ -59,11 +59,11 @@ public class PromoController implements PromoInterface{
     @Override
     public Object create(Promo object) {
     int result = 0;
-        String sql = "INSERT INTO tb_promo(kodePromo, namaPromo, potonganPromo, lamaPromo"
-                + "VALUES('"+object.getKodePromo()+"', "
-                + ""+object.getNamaPromo()+", "
-                + ""+object.getPotonganPromo()+", "
-                + "'"+object.getLamaPromo()+"')";
+        String sql = "INSERT INTO tb_promo(kode_promo, nama_promo, periode_Promo, potongan_promo)"
+                + "VALUES("+object.getKodePromo()+", "
+                + "'"+object.getNamaPromo()+"', "
+                + "'"+object.getLamaPromo()+"', "
+                + ""+object.getPotonganPromo()+")";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -82,10 +82,10 @@ public class PromoController implements PromoInterface{
     @Override
     public Object update(Promo object) {
     int result = 0;
-        String sql = "UPDATE promo SET namaPromo='"+object.getNamaPromo()+"', "
-                + "potonganPromo="+object.getPotonganPromo()+", "
-                + "lamaPromo="+object.getLamaPromo()+" from tb_promo "
-                + "WHERE kodePromo="+object.getKodePromo()+"";
+        String sql = "UPDATE tb_promo SET nama_promo='"+object.getNamaPromo()+"', "
+                + "potongan_promo = "+object.getPotonganPromo()+", "
+                + "periode_promo = '"+object.getLamaPromo()+" '"
+                + "WHERE kode_promo = "+object.getKodePromo()+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -104,7 +104,7 @@ public class PromoController implements PromoInterface{
     @Override
     public Promo findById(int id) {
         Promo promo = null;
-        String sql = "SELECT * FROM tb_promo WHERE kodePromo="+id+"";
+        String sql = "SELECT * FROM tb_promo WHERE kode_promo = "+id+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -115,10 +115,10 @@ public class PromoController implements PromoInterface{
             
             while (rs.next()) {
                 promo= new Promo();
-                 promo.setKodePromo(rs.getString("kodePromo"));
-                promo.setNamaPromo(rs.getString("namaPromo"));
-                promo.setPotonganPromo(rs.getInt("potonganPromo"));
-                promo.setLamaPromo(rs.getString("lamaPromo"));
+                 promo.setKodePromo(rs.getInt("kode_Promo"));
+                promo.setNamaPromo(rs.getString("nama_Promo"));
+                promo.setPotonganPromo(rs.getInt("potongan_Promo"));
+                promo.setLamaPromo(rs.getString("periode_Promo"));
             }
             conMan.disconnect();
         } catch (SQLException ex) {
@@ -131,7 +131,7 @@ public class PromoController implements PromoInterface{
     @Override
     public Object delete(int id) {
         int result = 0;
-        String sql = "DELETE FROM tb_promo WHERE kodePromo="+id+"";
+        String sql = "DELETE FROM tb_promo WHERE kode_promo="+id+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();

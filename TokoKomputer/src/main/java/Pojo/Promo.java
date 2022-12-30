@@ -8,7 +8,7 @@ package Pojo;
 public class Promo {
     
      private String namaPromo;
-    private String kodePromo;
+    private int kodePromo;
     private int potonganPromo;
     private String lamaPromo;
 
@@ -23,13 +23,15 @@ public class Promo {
         this.namaPromo = namaPromo;
     }
 
-    public String getKodePromo() {
+    public int getKodePromo() {
         return kodePromo;
     }
 
-    public void setKodePromo(String kodePromo) {
+    public void setKodePromo(int kodePromo) {
         this.kodePromo = kodePromo;
     }
+
+   
 
     public int getPotonganPromo() {
         return potonganPromo;

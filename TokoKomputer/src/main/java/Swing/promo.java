@@ -4,6 +4,21 @@
  */
 package Swing;
 
+
+import Pojo.Promo;
+import Interface.PromoInterface;
+import Controller.PromoController;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author ramzi
@@ -13,10 +28,79 @@ public class promo extends javax.swing.JFrame {
     /**
      * Creates new form promo
      */
+    PromoInterface promoInterface;
+    
     public promo() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        loadData();
     }
 
+    public void close() {
+        WindowEvent we = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(we);
+    }
+    
+    private void emptyField() {
+        txt_kode_promo.setText("");
+        txt_nama_promo.setText("");
+        txt_periode_promo.setText("");
+        txt_potongan_promo.setText("");
+    }
+    
+    private void loadData() {
+        promoInterface = new PromoController();
+        List<Promo> listPromo = new ArrayList<>();
+        listPromo = promoInterface.findAll();
+        Object[][] objectPromo = new Object[listPromo.size()][4];
+        
+        int counter = 0;
+        for (Promo promo : listPromo) {
+            objectPromo[counter][0] = promo.getKodePromo();
+            objectPromo[counter][1] = promo.getNamaPromo();
+            objectPromo[counter][2] = promo.getLamaPromo();
+            objectPromo[counter][3] = promo.getPotonganPromo();
+          
+            counter++;
+        }
+        tabel_promo.setModel(new javax.swing.table.DefaultTableModel(
+            objectPromo,
+            new String [] {
+                "Kode Promo ", "Nama Promo ", "Periode Promo", "Potongan Promo"
+            }
+        ));
+    }
+    
+    private void loadData (Promo promo){
+        Object[][] objectPromo = new Object[1][4];
+        
+            objectPromo[0][0] = promo.getKodePromo();
+            objectPromo[0][1] = promo.getNamaPromo();
+            objectPromo[0][2] = promo.getLamaPromo();
+            objectPromo[0][3] = promo.getPotonganPromo();
+    
+    tabel_promo.setModel(new javax.swing.table.DefaultTableModel(
+            objectPromo,
+            new String [] {
+                "Kode Promo ", "Nama Promo ", "Periode Promo", "Potongan Promo"
+            }
+        ));
+    
+    
+    
+    
+    }
+    
+    private Promo findPromo(int id) {
+        Promo promo = new Promo();
+        promoInterface = new PromoController();
+        promo = promoInterface.findById(id);
+    
+        return promo;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +110,275 @@ public class promo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabel_promo = new javax.swing.JTable();
+        txt_search = new javax.swing.JTextField();
+        btn_search = new javax.swing.JButton();
+        txt_kode_promo = new javax.swing.JTextField();
+        txt_nama_promo = new javax.swing.JTextField();
+        txt_periode_promo = new javax.swing.JTextField();
+        txt_potongan_promo = new javax.swing.JTextField();
+        btn_create = new javax.swing.JButton();
+        btn_Update = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
+        btn_clear = new javax.swing.JButton();
+        btn_refresh = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tabel_promo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Kode Promo", "Nama Promo", "Periode Promo", "Potongan Promo"
+            }
+        ));
+        tabel_promo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabel_promoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabel_promo);
+
+        txt_search.setText("Search");
+
+        btn_search.setText("Search");
+        btn_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_searchActionPerformed(evt);
+            }
+        });
+
+        txt_kode_promo.setText("Kode_Promo");
+
+        txt_nama_promo.setText("Nama_promo");
+
+        txt_periode_promo.setText("periode_promo");
+
+        txt_potongan_promo.setText("potongan_promo");
+
+        btn_create.setText("Create");
+        btn_create.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_createActionPerformed(evt);
+            }
+        });
+
+        btn_Update.setText("Update");
+        btn_Update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_UpdateActionPerformed(evt);
+            }
+        });
+
+        btn_delete.setText("Delete");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deleteActionPerformed(evt);
+            }
+        });
+
+        btn_clear.setText("Clear");
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
+
+        btn_refresh.setText("refresh");
+        btn_refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_refreshActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_search, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btn_create, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_Update, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt_periode_promo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_kode_promo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_nama_promo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_potongan_promo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(btn_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_search))
+                        .addGap(52, 52, 52)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_kode_promo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nama_promo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_periode_promo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_potongan_promo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_create)
+                            .addComponent(btn_Update)
+                            .addComponent(btn_delete)
+                            .addComponent(btn_clear)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_refresh)
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
+        String nama_promo, periode_promo;
+        int kode_promo,potongan_promo;
+        promoInterface= new PromoController();
+        
+        
+        kode_promo = Integer.parseInt(txt_kode_promo.getText());
+        nama_promo = txt_nama_promo.getText();
+        periode_promo = txt_periode_promo.getText();
+        potongan_promo = Integer.parseInt(txt_potongan_promo.getText());
+        
+        Promo promo = new Promo();
+        promo.setKodePromo(kode_promo);
+        promo.setNamaPromo(nama_promo);
+        promo.setLamaPromo(periode_promo);
+        promo.setPotonganPromo(potongan_promo);
+        
+        promoInterface.create(promo);
+        JOptionPane.showMessageDialog(null, "Data Promo created successfully");
+        loadData();
+        emptyField();
+    }//GEN-LAST:event_btn_createActionPerformed
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        emptyField();
+    }//GEN-LAST:event_btn_clearActionPerformed
+
+    private void btn_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UpdateActionPerformed
+    String nama_promo, periode_promo;
+        int kode_promo,potongan_promo;
+        promoInterface= new PromoController();
+        
+        
+        kode_promo = Integer.parseInt(txt_kode_promo.getText());
+        nama_promo = txt_nama_promo.getText();
+        periode_promo = txt_periode_promo.getText();
+        potongan_promo = Integer.parseInt(txt_potongan_promo.getText());
+        
+        Promo promo = new Promo();
+        promo.setKodePromo(kode_promo);
+        promo.setNamaPromo(nama_promo);
+        promo.setLamaPromo(periode_promo);
+        promo.setPotonganPromo(potongan_promo);
+        
+        promoInterface.update(promo);
+        JOptionPane.showMessageDialog(null, "Data Promo created successfully");
+        loadData();
+        emptyField();    }//GEN-LAST:event_btn_UpdateActionPerformed
+
+    private void tabel_promoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_promoMouseClicked
+        String nama_promo, periode_promo;
+        int kode_promo,potongan_promo;
+        
+        int row = tabel_promo.getSelectedRow();
+        
+        kode_promo = Integer.parseInt(tabel_promo.getValueAt(row, 0).toString());
+        nama_promo = tabel_promo.getValueAt(row, 1).toString();
+        periode_promo = tabel_promo.getValueAt(row, 2).toString();
+        potongan_promo = Integer.parseInt(tabel_promo.getValueAt(row, 3).toString());
+        
+        txt_kode_promo.setText(kode_promo+"");
+        txt_nama_promo.setText(nama_promo+"");
+        txt_periode_promo.setText(periode_promo+"");
+        txt_potongan_promo.setText(potongan_promo+"");
+                
+    }//GEN-LAST:event_tabel_promoMouseClicked
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        int id;
+        promoInterface = new PromoController();
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        
+        id = Integer.parseInt(txt_kode_promo.getText());
+        
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure to delete it?", "Warning", dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            promoInterface.delete(id);
+            loadData();
+            emptyField();
+        }
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
+        int id;
+        Promo searchedPromo = new Promo();
+        
+        id = Integer.parseInt(txt_search.getText());
+        searchedPromo = findPromo(id);
+        if (searchedPromo != null) {
+            loadData(searchedPromo);
+        } else {
+            JOptionPane.showMessageDialog(null, "Data tidak ditemukan!");
+        }
+
+    }//GEN-LAST:event_btn_searchActionPerformed
+
+    private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
+        loadData();
+    }//GEN-LAST:event_btn_refreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +416,19 @@ public class promo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Update;
+    private javax.swing.JButton btn_clear;
+    private javax.swing.JButton btn_create;
+    private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_refresh;
+    private javax.swing.JButton btn_search;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabel_promo;
+    private javax.swing.JTextField txt_kode_promo;
+    private javax.swing.JTextField txt_nama_promo;
+    private javax.swing.JTextField txt_periode_promo;
+    private javax.swing.JTextField txt_potongan_promo;
+    private javax.swing.JTextField txt_search;
     // End of variables declaration//GEN-END:variables
 }
