@@ -9,17 +9,30 @@ package Pojo;
  * @author User
  */
 public class Produk {
-    private String kode;
-    private String nama;
-    private String deskripsi;
+    private String kode, kategori, nama, deskripsi, pengiriman, pembayaran;
     private int stok;
     private double harga;
-    private String pengiriman;
     private double berat;
-    private String pembayaran;
+    private byte[] image;
 
     public Produk() {
         
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
     }
 
     public String getKode() {

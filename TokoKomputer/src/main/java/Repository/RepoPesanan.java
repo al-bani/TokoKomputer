@@ -9,11 +9,14 @@ import java.util.List;
 /**
  *
  * @author alzildan
+ * @param <T> Type
+ * @param <ID> Identifier
  */
-public interface CRUDRepo<T, ID> {
+public interface RepoPesanan<T, ID> {
+    List<T> findAll(String query);
     List<T> findAll();
     ID create(T object);
     ID update(T object);
-    T findById(int id);
-    ID delete(int id);
+    T findById(String id);
+    ID delete(String kodeProduk);
 }

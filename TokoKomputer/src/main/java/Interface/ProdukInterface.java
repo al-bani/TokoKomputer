@@ -5,11 +5,11 @@
 package Interface;
 
 import Pojo.Produk;
-import Repository.CRUDRepo;
+import Repository.RepoPesanan;
 /**
  *
  * @author alzildan
  */
-public interface ProdukInterface extends CRUDRepo<Produk, Integer> {
+public interface ProdukInterface extends RepoPesanan<Produk, Integer> {
     
 }
