@@ -11,6 +11,6 @@ import Repository.CRUDRepo;
  *
  * @author User
  */
-public interface PembeliInterface extends CRUDRepo<Pembeli, Integer> {
+public interface PembeliInterface extends CRUDRepo<Pembeli, Object> {
     
 }

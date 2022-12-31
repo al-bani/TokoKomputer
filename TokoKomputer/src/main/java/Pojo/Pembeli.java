@@ -9,7 +9,8 @@ package Pojo;
  * @author User
  */
 public class Pembeli {
-    private String userNamePembeli;
+    private int id;
+    private String usernamePembeli;
     private String namaPembeli;
     private String alamatPembeli;
     private String passwordPembeli;
@@ -17,12 +18,20 @@ public class Pembeli {
     public Pembeli() {
     }
 
-    public String getUserNamePembeli() {
-        return userNamePembeli;
+    public int getId() {
+        return id;
     }
 
-    public void setUserNamePembeli(String userNamePembeli) {
-        this.userNamePembeli = userNamePembeli;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsernamePembeli() {
+        return usernamePembeli;
+    }
+
+    public void setUsernamePembeli(String usernamePembeli) {
+        this.usernamePembeli = usernamePembeli;
     }
 
     public String getNamaPembeli() {

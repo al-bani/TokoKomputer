@@ -29,7 +29,7 @@ public class PembeliController implements PembeliInterface {
     @Override
     public List<Pembeli> findAll() {
         List<Pembeli> listPembeli = new ArrayList<>();
-        String sql = "SELECT * FROM pembeli";
+        String sql = "SELECT * FROM tb_pembeli";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -59,10 +59,10 @@ public class PembeliController implements PembeliInterface {
     @Override
     public Integer create(Pembeli object) {
         int result = 0;
-        String sql = "INSERT INTO pembeli(username_pembeli, nama_pembeli, Alamat_pembeli, password_pembeli) "
+        String sql = "INSERT INTO tb_pembeli(username_pembeli, nama_pembeli, Alamat_pembeli, password_pembeli) "
                 + "VALUES('"+object.getUsernamePembeli()+"', "
                 + "'"+object.getNamaPembeli()+"', "
-                + ""+object.getAlamatPembeli()+", "
+                + "'"+object.getAlamatPembeli()+"', "
                 + "'"+object.getPasswordPembeli()+"')";
         
         conMan = new ConnectionManager();
@@ -82,10 +82,10 @@ public class PembeliController implements PembeliInterface {
     @Override
     public Integer update(Pembeli object) {
         int result = 0;
-        String sql = "UPDATE pembeli SET nama_pembeli='"+object.getNamaPembeli()+"',"
+        String sql = "UPDATE tb_pembeli SET nama_pembeli='"+object.getNamaPembeli()+"',"
                 + " alamat_pembeli='"+object.getAlamatPembeli()+"',"
-                + " Password="+object.getPasswordPembeli()+"'"
-                + " WHERE username_pembeli="+object.getUsernamePembeli()+"";
+                + " Password_pembeli='"+object.getPasswordPembeli()+"'"
+                + " WHERE username_pembeli='"+object.getUsernamePembeli()+"'";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -104,7 +104,7 @@ public class PembeliController implements PembeliInterface {
     
     public Pembeli findByUsername(String usernamePembeli) {
         Pembeli pembeli = null;
-        String sql = "SELECT * FROM pembeli WHERE username_pembeli="+usernamePembeli+"";
+        String sql = "SELECT * FROM tb_pembeli WHERE username_pembeli="+usernamePembeli+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -131,7 +131,7 @@ public class PembeliController implements PembeliInterface {
     @Override
     public Integer delete(String usernamePembeli) {
         int result = 0;
-        String sql = "DELETE FROM pembeli WHERE id_pembeli="+usernamePembeli+"";
+        String sql = "DELETE FROM tb_pembeli WHERE username_pembeli="+usernamePembeli+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
