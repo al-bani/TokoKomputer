@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Utilities;
 
 import java.sql.Connection;
@@ -12,10 +9,10 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author alzildan
+ * @author 
  */
 public class ConnectionManager {
-    private String DB_URL = "jdbc:mysql://localhost:3306/db_tokokomputer";
+     private String DB_URL = "jdbc:mysql://localhost:3306/db_tokokomputer";
     private String username;
     private String password;
     private Connection connection;
@@ -61,3 +58,4 @@ public class ConnectionManager {
         return connection;
     }
 }
+
