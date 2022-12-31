@@ -29,7 +29,7 @@ public class CetakController implements CetakInterface {
     @Override
     public List<Cetak> findAll() {
         List<Cetak> listCetak = new ArrayList<>();
-        String sql = "SELECT * FROM cetak";
+        String sql = "SELECT * FROM tb_cetak";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -60,11 +60,10 @@ public class CetakController implements CetakInterface {
     @Override
     public Integer create(Cetak object) {
         int result = 0;
-        String sql = "INSERT INTO cetak(ID,jumlah_produk, total_pembelian, jumlah_pembeli) "
-                + "VALUES('"+object.getId()+"', "
-                + "'"+object.getJumlahProduk()+"', "
-                + "'"+object.getTotalPembelian()+"', "
-                + ""+object.getJumlahPembeli()+"') ";
+        String sql = "INSERT INTO tb_cetak(jumlah_produk, total_pembelian, jumlah_pembeli) "
+                + "VALUES("+ object.getJumlahProduk()+", "
+                + object.getTotalPembelian()+", "
+                + object.getJumlahPembeli()+") ";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -83,9 +82,9 @@ public class CetakController implements CetakInterface {
     @Override
     public Integer update(Cetak object) {
         int result = 0;
-        String sql = "UPDATE cetak SET Jumlah_produk='"+object.getJumlahProduk()+"',"
-                + " total_pembelian='"+object.getTotalPembelian()+"',"
-                + " jumlah_pembelian="+object.getJumlahPembeli()+"'"
+        String sql = "UPDATE cetak SET Jumlah_produk='"+object.getJumlahProduk()+","
+                + " total_pembelian="+object.getTotalPembelian()+","
+                + " jumlah_pembelian="+object.getJumlahPembeli()
                 + " WHERE ID="+object.getId()+"";
         
         conMan = new ConnectionManager();
@@ -105,7 +104,7 @@ public class CetakController implements CetakInterface {
     @Override
     public Cetak findById(int id) {
         Cetak cetak = null;
-        String sql = "SELECT * FROM cetak WHERE ID="+id+"";
+        String sql = "SELECT * FROM tb_cetak WHERE ID="+id+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -132,7 +131,7 @@ public class CetakController implements CetakInterface {
     @Override
     public Integer delete(int id) {
         int result = 0;
-        String sql = "DELETE FROM cetak WHERE id="+id+"";
+        String sql = "DELETE FROM tb_cetak WHERE id="+id+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
