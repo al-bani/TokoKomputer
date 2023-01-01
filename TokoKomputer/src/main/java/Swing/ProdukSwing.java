@@ -238,9 +238,10 @@ public class ProdukSwing extends javax.swing.JFrame {
         combobox_kategori_update = new javax.swing.JComboBox<>();
         jLabel30 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        layer_up_by_id = new javax.swing.JPanel();
+        btn_update_produk = new javax.swing.JButton();
         txt_kode_produk_update = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        btn_update_produk = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         showProduk = new javax.swing.JPanel();
@@ -265,7 +266,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         txt_show_pembayaran = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         txt_show_deskripsi = new javax.swing.JTextArea();
-        btn_edit_show = new javax.swing.JButton();
+        btn_show_edit = new javax.swing.JButton();
         btn_kembali_show = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -435,7 +436,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         jLabel33.setText("Lihat Detail Produk dengan Memilih data");
         read_delete.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
-        btn_lihat_produk.setText("Lihat Produk");
+        btn_lihat_produk.setText("Lihat dan Edit Produk");
         btn_lihat_produk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_lihat_produk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -775,17 +776,6 @@ public class ProdukSwing extends javax.swing.JFrame {
 
         update.add(layer_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 78, -1, 474));
 
-        txt_kode_produk_update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_kode_produk_updateActionPerformed(evt);
-            }
-        });
-        update.add(txt_kode_produk_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 240, -1));
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setText("Cari Kode Produk");
-        update.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
         btn_update_produk.setText("Cari Produk");
         btn_update_produk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_update_produk.addActionListener(new java.awt.event.ActionListener() {
@@ -793,13 +783,55 @@ public class ProdukSwing extends javax.swing.JFrame {
                 btn_update_produkActionPerformed(evt);
             }
         });
-        update.add(btn_update_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, -1));
+
+        txt_kode_produk_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_kode_produk_updateActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel19.setText("Cari Kode Produk");
 
         jLabel31.setText("Form Update akan ditampilkan");
-        update.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 30, -1, -1));
 
         jLabel32.setText("Jika Produk ditemukan");
-        update.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 50, -1, -1));
+
+        javax.swing.GroupLayout layer_up_by_idLayout = new javax.swing.GroupLayout(layer_up_by_id);
+        layer_up_by_id.setLayout(layer_up_by_idLayout);
+        layer_up_by_idLayout.setHorizontalGroup(
+            layer_up_by_idLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layer_up_by_idLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layer_up_by_idLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layer_up_by_idLayout.createSequentialGroup()
+                        .addComponent(txt_kode_produk_update, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_update_produk)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
+                        .addComponent(jLabel32))
+                    .addGroup(layer_up_by_idLayout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel31)))
+                .addGap(16, 16, 16))
+        );
+        layer_up_by_idLayout.setVerticalGroup(
+            layer_up_by_idLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layer_up_by_idLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layer_up_by_idLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layer_up_by_idLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_kode_produk_update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_update_produk)
+                    .addComponent(jLabel32))
+                .addGap(0, 6, Short.MAX_VALUE))
+        );
+
+        update.add(layer_up_by_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 750, 60));
 
         tabbed_pane.addTab("update", update);
 
@@ -900,14 +932,14 @@ public class ProdukSwing extends javax.swing.JFrame {
 
         showProduk.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 690, 130));
 
-        btn_edit_show.setText("Edit");
-        btn_edit_show.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_edit_show.addActionListener(new java.awt.event.ActionListener() {
+        btn_show_edit.setText("Edit");
+        btn_show_edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_show_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_edit_showActionPerformed(evt);
+                btn_show_editActionPerformed(evt);
             }
         });
-        showProduk.add(btn_edit_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, -1, -1));
+        showProduk.add(btn_show_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, -1, -1));
 
         btn_kembali_show.setText("Kembali");
         btn_kembali_show.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1338,6 +1370,8 @@ public class ProdukSwing extends javax.swing.JFrame {
             txt_show_pembayaran.setText(prod.getPembayaran());
             txt_show_deskripsi.setText(prod.getDeskripsi());
             txt_show_kategori.setText(prod.getKategori());
+            
+ 
 
             tabbed_pane.setSelectedIndex(3);
        
@@ -1351,10 +1385,27 @@ public class ProdukSwing extends javax.swing.JFrame {
         tabbed_pane.setSelectedIndex(0);
     }//GEN-LAST:event_btn_kembali_showActionPerformed
 
-    private void btn_edit_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_showActionPerformed
-        layer_update.setVisible(false);
+    private void btn_show_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_show_editActionPerformed
+        layer_update.setVisible(true);
+        layer_up_by_id.setVisible(false);
         tabbed_pane.setSelectedIndex(2);
-    }//GEN-LAST:event_btn_edit_showActionPerformed
+        int row = table_produk.getSelectedRow();
+        
+        String Kode_produk = table_produk.getValueAt(row, 0).toString();
+            Produk prod = new Produk();
+            produkInterface = new ProdukController();
+            prod = produkInterface.findById(Kode_produk);
+
+            String a = Double.toString(prod.getBerat());
+            txt_nama_produk_update.setText(prod.getNama());
+            txt_harga_produk_update.setText(Double.toString(prod.getHarga()));
+            txt_stok_update.setText(Integer.toString(prod.getStok()));
+            txt_kode_produk_update.setText(prod.getKode());
+            txt_berat_produk_update.setText(Double.toString(prod.getBerat()));
+            txt_deskripsi_produk_update.setText(prod.getDeskripsi());
+            
+ 
+    }//GEN-LAST:event_btn_show_editActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1396,13 +1447,13 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_cari;
     private javax.swing.JButton btn_create;
-    private javax.swing.JButton btn_edit_show;
     private javax.swing.JButton btn_hapus;
     private javax.swing.JButton btn_image;
     private javax.swing.JButton btn_image_update;
     private javax.swing.JButton btn_kembali_show;
     private javax.swing.JButton btn_lihat_produk;
     private javax.swing.JButton btn_read;
+    private javax.swing.JButton btn_show_edit;
     private javax.swing.JButton btn_update;
     private javax.swing.JButton btn_update_produk;
     private javax.swing.JButton btn_upload;
@@ -1469,6 +1520,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JPanel layer_up_by_id;
     private javax.swing.JPanel layer_update;
     private javax.swing.JLabel lbl_image;
     private javax.swing.JLabel lbl_image_update;
