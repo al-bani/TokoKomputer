@@ -54,7 +54,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         produkInterface = new ProdukController();
         List<Produk> listProduk;
         listProduk = produkInterface.findAll();
-        Object[][] objectProduk = new Object[listProduk.size()][9];
+        Object[][] objectProduk = new Object[listProduk.size()][11];
         
         int i = 0;
         for (Produk produk : listProduk) {
@@ -68,13 +68,15 @@ public class ProdukSwing extends javax.swing.JFrame {
             objectProduk[i][7] = produk.getKategori();
             objectProduk[i][8] = produk.getBerat()+" g";
             objectProduk[i][9] = produk.getTanggalExpire();
+            objectProduk[i][10] = produk.getJenisOlahan();
+            
             i++;
         } 
         
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
             objectProduk,
             new String [] {
-                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk","tanggal expire"
+                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk","tanggal expire","jenis Olahan"
             }
         ));     
     }
@@ -83,7 +85,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         produkInterface = new ProdukController();
         List<Produk> listProduk;
         listProduk = produkInterface.findAll(query);
-        Object[][] objectProduk = new Object[listProduk.size()][9];
+        Object[][] objectProduk = new Object[listProduk.size()][11];
         
         int i = 0;
         for (Produk produk : listProduk) {
@@ -97,13 +99,14 @@ public class ProdukSwing extends javax.swing.JFrame {
             objectProduk[i][7] = produk.getKategori();
             objectProduk[i][8] = produk.getBerat()+" g";
             objectProduk[i][9] = produk.getTanggalExpire();
+            objectProduk[i][10] = produk.getJenisOlahan();
             i++;
         } 
         
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
             objectProduk,
             new String [] {
-                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk"
+                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk","tanggal expire","jenis Olahan"
             }
         ));     
     }
@@ -118,6 +121,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         txt_stok.setText("");
         txt_image_path.setText("");
         chooser_tanggal_expire.setCalendar(null);
+        btn_jenis.clearSelection();
         
     
     }
@@ -131,7 +135,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     }
     
    private void searchProduk(Produk prod){
-        Object[][] objProd = new Object[1][9];
+        Object[][] objProd = new Object[1][11];
         
         objProd[0][0] = prod.getKode();
         objProd[0][1] = prod.getNama();
@@ -143,11 +147,12 @@ public class ProdukSwing extends javax.swing.JFrame {
         objProd[0][7] = prod.getKategori();
         objProd[0][8] = prod.getBerat()+" g";
         objProd[0][9] = prod.getTanggalExpire();
+        objProd[0][10] = prod.getJenisOlahan();
         
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
             objProd,
             new String [] {
-                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk"
+                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk","tanggal expire","jenis Olahan"
             }
         ));   
    }
@@ -164,6 +169,8 @@ public class ProdukSwing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_jenis = new javax.swing.ButtonGroup();
+        btn_jenis_update = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btn_create = new javax.swing.JButton();
@@ -216,6 +223,8 @@ public class ProdukSwing extends javax.swing.JFrame {
         combobox_kategori = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         chooser_tanggal_expire = new com.toedter.calendar.JDateChooser();
+        radio_makanan = new javax.swing.JRadioButton();
+        radio_minuman = new javax.swing.JRadioButton();
         update = new javax.swing.JPanel();
         layer_update = new javax.swing.JPanel();
         txt_stok_update = new javax.swing.JTextField();
@@ -247,6 +256,8 @@ public class ProdukSwing extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         chooser_tanggal_expire_update = new com.toedter.calendar.JDateChooser();
         jLabel35 = new javax.swing.JLabel();
+        radio_makanan_update = new javax.swing.JRadioButton();
+        radio_minuman_update = new javax.swing.JRadioButton();
         txt_kode_produk_update = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         btn_update_produk = new javax.swing.JButton();
@@ -278,6 +289,8 @@ public class ProdukSwing extends javax.swing.JFrame {
         btn_kembali_show = new javax.swing.JButton();
         jLabel45 = new javax.swing.JLabel();
         txt_show_expire = new javax.swing.JTextField();
+        txt_show_jenisOlahan = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -374,13 +387,13 @@ public class ProdukSwing extends javax.swing.JFrame {
 
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk", "tanggal expire"
+                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk", "tanggal expire", "jenis olahan"
             }
         ));
         table_produk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -625,6 +638,29 @@ public class ProdukSwing extends javax.swing.JFrame {
         create.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, -1, -1));
         create.add(chooser_tanggal_expire, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 200, -1));
 
+        btn_jenis.add(radio_makanan);
+        radio_makanan.setText("makanan");
+        radio_makanan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                radio_makananMouseClicked(evt);
+            }
+        });
+        radio_makanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_makananActionPerformed(evt);
+            }
+        });
+        create.add(radio_makanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, -1, -1));
+
+        btn_jenis.add(radio_minuman);
+        radio_minuman.setText("minuman");
+        radio_minuman.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_minumanActionPerformed(evt);
+            }
+        });
+        create.add(radio_minuman, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, -1, -1));
+
         tabbed_pane.addTab("create", create);
 
         update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -789,6 +825,14 @@ public class ProdukSwing extends javax.swing.JFrame {
         jLabel35.setText("Tanggal Expire");
         layer_update.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, -1, -1));
 
+        btn_jenis_update.add(radio_makanan_update);
+        radio_makanan_update.setText("makanan");
+        layer_update.add(radio_makanan_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+
+        btn_jenis_update.add(radio_minuman_update);
+        radio_minuman_update.setText("minuman");
+        layer_update.add(radio_minuman_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, -1, -1));
+
         update.add(layer_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 78, -1, 474));
 
         txt_kode_produk_update.addActionListener(new java.awt.event.ActionListener() {
@@ -938,6 +982,16 @@ public class ProdukSwing extends javax.swing.JFrame {
         showProduk.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, -1, -1));
         showProduk.add(txt_show_expire, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 240, -1));
 
+        txt_show_jenisOlahan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_show_jenisOlahanActionPerformed(evt);
+            }
+        });
+        showProduk.add(txt_show_jenisOlahan, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 500, 130, -1));
+
+        jLabel46.setText("jenis olahan");
+        showProduk.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 500, -1, -1));
+
         tabbed_pane.addTab("show", showProduk);
 
         getContentPane().add(tabbed_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 910, 590));
@@ -1006,7 +1060,7 @@ public class ProdukSwing extends javax.swing.JFrame {
 
     private void btn_uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uploadActionPerformed
             String kodeProduk, namaProduk,deskripsiProduk,
-                   jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman, tanggalExpire;
+                   jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman, tanggalExpire,imageProduk, jenisOlahan;
             int stok;
             double berat, harga;
 
@@ -1029,7 +1083,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                 Date date = chooser_tanggal_expire.getDate();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 tanggalExpire = dateFormat.format(date);
-            
+                jenisOlahan = jenis;
                 try {
                     Produk produk = new Produk();
                     produk.setNama(namaProduk);
@@ -1043,7 +1097,8 @@ public class ProdukSwing extends javax.swing.JFrame {
                     produk.setKategori(kategori);
                     produk.setImage(produkImage);
                     produk.setTanggalExpire(tanggalExpire);
-
+                    produk.setJenisOlahan(jenisOlahan);
+                    
                     produkInterface = new ProdukController();
                     produkInterface.create(produk);
 
@@ -1142,6 +1197,16 @@ public class ProdukSwing extends javax.swing.JFrame {
 
     private void table_produkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_produkMouseClicked
         // TODO add your handling code here:
+        String jenisOlahan;
+        /*
+        jenisOlahan = table_produk.getValueAt(ERROR, NORMAL);
+        if (jenisOlahan.equals("Makanan")) {
+            radio_makanan.setSelected(true);
+        }
+        if (jenisOlahan.equals("Minuman")) {
+            radio_minuman.setSelected(true);
+        }
+        */
     }//GEN-LAST:event_table_produkMouseClicked
 
     private void combobox_sortingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combobox_sortingActionPerformed
@@ -1277,7 +1342,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private void btn_upload_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_upload_updateActionPerformed
         
             String namaProduk,deskripsiProduk,
-                   jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman,tanggalExpire;
+                   jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman,tanggalExpire, jenisOlahan;
             int stok;
             double berat, harga;
 
@@ -1299,6 +1364,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                  Date date = chooser_tanggal_expire_update.getDate();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 tanggalExpire = dateFormat.format(date);
+                jenisOlahan = jenis;
             
                 try {
                     Produk produk = new Produk();
@@ -1313,6 +1379,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                     produk.setImage(produkImage);
                     produk.setKode(txt_kode_produk_update.getText());
                     produk.setTanggalExpire(tanggalExpire);
+                    produk.setJenisOlahan(jenisOlahan);
 
                     produkInterface = new ProdukController();
                     produkInterface.update(produk);
@@ -1367,6 +1434,7 @@ public class ProdukSwing extends javax.swing.JFrame {
             txt_show_deskripsi.setText(prod.getDeskripsi());
             txt_show_kategori.setText(prod.getKategori());
             txt_show_expire.setText(prod.getTanggalExpire() );
+            txt_show_jenisOlahan.setText(prod.getJenisOlahan());
             
 
             tabbed_pane.setSelectedIndex(3);
@@ -1385,6 +1453,25 @@ public class ProdukSwing extends javax.swing.JFrame {
         layer_update.setVisible(false);
         tabbed_pane.setSelectedIndex(2);
     }//GEN-LAST:event_btn_edit_showActionPerformed
+
+    private void radio_makananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_makananActionPerformed
+        // TODO add your handling code here:
+        jenis = "Makanan";
+    }//GEN-LAST:event_radio_makananActionPerformed
+
+    private void radio_minumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_minumanActionPerformed
+        // TODO add your handling code here:
+        jenis = "Minuman";
+        
+    }//GEN-LAST:event_radio_minumanActionPerformed
+
+    private void txt_show_jenisOlahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_show_jenisOlahanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_show_jenisOlahanActionPerformed
+
+    private void radio_makananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radio_makananMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radio_makananMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1430,6 +1517,8 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JButton btn_hapus;
     private javax.swing.JButton btn_image;
     private javax.swing.JButton btn_image_update;
+    private javax.swing.ButtonGroup btn_jenis;
+    private javax.swing.ButtonGroup btn_jenis_update;
     private javax.swing.JButton btn_kembali_show;
     private javax.swing.JButton btn_lihat_produk;
     private javax.swing.JButton btn_read;
@@ -1492,6 +1581,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1506,6 +1596,10 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JPanel layer_update;
     private javax.swing.JLabel lbl_image;
     private javax.swing.JLabel lbl_image_update;
+    private javax.swing.JRadioButton radio_makanan;
+    private javax.swing.JRadioButton radio_makanan_update;
+    private javax.swing.JRadioButton radio_minuman;
+    private javax.swing.JRadioButton radio_minuman_update;
     private javax.swing.JPanel read_delete;
     private javax.swing.JButton refresh;
     private javax.swing.JPanel showProduk;
@@ -1528,6 +1622,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JTextArea txt_show_deskripsi;
     private javax.swing.JTextField txt_show_expire;
     private javax.swing.JTextField txt_show_harga;
+    private javax.swing.JTextField txt_show_jenisOlahan;
     private javax.swing.JTextField txt_show_kategori;
     private javax.swing.JTextField txt_show_kode;
     private javax.swing.JTextField txt_show_nama;
@@ -1540,5 +1635,6 @@ public class ProdukSwing extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private ImageIcon produkIcon = null;
     byte[] produkImage = null;
+    private String jenis;
 
 }

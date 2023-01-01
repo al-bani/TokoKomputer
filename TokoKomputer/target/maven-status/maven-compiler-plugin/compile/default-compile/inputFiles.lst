@@ -1,25 +1,11 @@
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Controller\PembeliController.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Pojo\Pembeli.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Interface\InvoiceInterface.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Swing\LupaPassword.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Pojo\Promo.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Interface\PesananInterface.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Controller\PromoController.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Repository\CRUDRepo.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Interface\PromoInterface.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Interface\PembeliInterface.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Pojo\Produk.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Controller\ProdukController.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Pojo\Penjual.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Swing\Register.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Pojo\Pesanan.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Pojo\Invoice.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Swing\Dashboard.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Controller\PesananController.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Swing\Login.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Interface\PenjualInterface.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Utilities\ConnectionManager.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Interface\ProdukInterface.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Controller\InvoiceController.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Controller\PenjualController.java
-C:\Users\alzildan\Documents\Kuliah\SEMESTER 3\ISB-205 - OOP\Project besar\TokoKomputer\src\main\java\Repository\PenjualRepo.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Pojo\Pembeli.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Interface\ProdukInterface.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Controller\PembeliController.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Controller\ProdukController.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Swing\PembeliSwing.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Swing\ProdukSwing.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Pojo\Produk.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Repository\CRUDRepo.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Repository\RepoPesanan.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Interface\PembeliInterface.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Utilities\ConnectionManager.java
