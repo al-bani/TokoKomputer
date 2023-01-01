@@ -6,19 +6,8 @@ package Repository;
 
 import java.util.List;
 
-/**
- *
-<<<<<<< HEAD:TokoKomputer/src/main/java/Repository/CRUDRepo.java
- * @author User
- */
-public interface  CRUDRepo<T, UsernamePembeli> {
-    List<T> findAll();
-    UsernamePembeli create(T object);
-    UsernamePembeli update(T object);
-    T findByUsername(String usernamePembeli);
-    UsernamePembeli delete(String usernamePembeli);
-}
-=======
+
+/*
  * @author alzildan
  * @param <T> Type
  * @param <ID> Identifier
@@ -31,4 +20,4 @@ public interface RepoPesanan<T, ID> {
     T findById(String id);
     ID delete(String kodeProduk);
 }
->>>>>>> 2cd703de5137d38d93e52a02071d6619d5ee5ca0:TokoKomputer/src/main/java/Repository/RepoPesanan.java
+

@@ -9,7 +9,7 @@ package Pojo;
  * @author User
  */
 public class Produk {
-    private String kode, kategori, nama, deskripsi, pengiriman, pembayaran;
+    private String kode, kategori, nama, deskripsi, pengiriman, pembayaran, tanggalExpire;
     private int stok;
     private double harga;
     private double berat;
@@ -98,4 +98,14 @@ public class Produk {
     public double getBerat() {
         return berat;
     }
+
+    public String getTanggalExpire() {
+        return tanggalExpire;
+    }
+
+    public void setTanggalExpire(String tanggalExpire) {
+        this.tanggalExpire = tanggalExpire;
+    }
+    
+    
 }

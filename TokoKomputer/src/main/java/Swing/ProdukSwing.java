@@ -17,6 +17,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import net.coobird.thumbnailator.Thumbnails;
@@ -65,13 +67,14 @@ public class ProdukSwing extends javax.swing.JFrame {
             objectProduk[i][6] = produk.getPembayaran();
             objectProduk[i][7] = produk.getKategori();
             objectProduk[i][8] = produk.getBerat()+" g";
+            objectProduk[i][9] = produk.getTanggalExpire();
             i++;
         } 
         
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
             objectProduk,
             new String [] {
-                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk"
+                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk","tanggal expire"
             }
         ));     
     }
@@ -93,6 +96,7 @@ public class ProdukSwing extends javax.swing.JFrame {
             objectProduk[i][6] = produk.getPembayaran();
             objectProduk[i][7] = produk.getKategori();
             objectProduk[i][8] = produk.getBerat()+" g";
+            objectProduk[i][9] = produk.getTanggalExpire();
             i++;
         } 
         
@@ -113,6 +117,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         txt_harga_produk.setText("");
         txt_stok.setText("");
         txt_image_path.setText("");
+        chooser_tanggal_expire.setCalendar(null);
         
     
     }
@@ -137,6 +142,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         objProd[0][6] = prod.getPembayaran();
         objProd[0][7] = prod.getKategori();
         objProd[0][8] = prod.getBerat()+" g";
+        objProd[0][9] = prod.getTanggalExpire();
         
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
             objProd,
@@ -209,6 +215,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         combobox_kategori = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
+        chooser_tanggal_expire = new com.toedter.calendar.JDateChooser();
         update = new javax.swing.JPanel();
         layer_update = new javax.swing.JPanel();
         txt_stok_update = new javax.swing.JTextField();
@@ -238,6 +245,8 @@ public class ProdukSwing extends javax.swing.JFrame {
         combobox_kategori_update = new javax.swing.JComboBox<>();
         jLabel30 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        chooser_tanggal_expire_update = new com.toedter.calendar.JDateChooser();
+        jLabel35 = new javax.swing.JLabel();
         txt_kode_produk_update = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         btn_update_produk = new javax.swing.JButton();
@@ -267,6 +276,8 @@ public class ProdukSwing extends javax.swing.JFrame {
         txt_show_deskripsi = new javax.swing.JTextArea();
         btn_edit_show = new javax.swing.JButton();
         btn_kembali_show = new javax.swing.JButton();
+        jLabel45 = new javax.swing.JLabel();
+        txt_show_expire = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -363,13 +374,13 @@ public class ProdukSwing extends javax.swing.JFrame {
 
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk"
+                "kode produk", "nama produk", "harga produk", "Deskripsi Produk", "stok tersedia", "pengiriman", "metode pembayaran", "kategori produk", "berat produk", "tanggal expire"
             }
         ));
         table_produk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -612,6 +623,7 @@ public class ProdukSwing extends javax.swing.JFrame {
 
         jLabel17.setText("Rp");
         create.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, -1, -1));
+        create.add(chooser_tanggal_expire, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 200, -1));
 
         tabbed_pane.addTab("create", create);
 
@@ -772,6 +784,10 @@ public class ProdukSwing extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel18.setText("UPDATE PRODUK");
         layer_update.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        layer_update.add(chooser_tanggal_expire_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 150, -1));
+
+        jLabel35.setText("Tanggal Expire");
+        layer_update.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, -1, -1));
 
         update.add(layer_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 78, -1, 474));
 
@@ -918,6 +934,10 @@ public class ProdukSwing extends javax.swing.JFrame {
         });
         showProduk.add(btn_kembali_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 510, -1, -1));
 
+        jLabel45.setText("Tanggal Expire :");
+        showProduk.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, -1, -1));
+        showProduk.add(txt_show_expire, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 240, -1));
+
         tabbed_pane.addTab("show", showProduk);
 
         getContentPane().add(tabbed_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 910, 590));
@@ -986,13 +1006,13 @@ public class ProdukSwing extends javax.swing.JFrame {
 
     private void btn_uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uploadActionPerformed
             String kodeProduk, namaProduk,deskripsiProduk,
-                   jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman;
+                   jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman, tanggalExpire;
             int stok;
             double berat, harga;
 
             if (txt_stok.getText().isEmpty() || txt_nama_produk.getText().isEmpty() 
                 || txt_berat_produk.getText().isEmpty() || txt_kode_produk.getText().isEmpty() 
-                    || txt_deskripsi_produk.getText().isEmpty() || txt_harga_produk.getText().isEmpty()) {
+                    || txt_deskripsi_produk.getText().isEmpty() || txt_harga_produk.getText().isEmpty() ) {
              JOptionPane.showMessageDialog(null, "harap isi data produk");
             } else {
                 namaProduk = txt_nama_produk.getText();
@@ -1006,6 +1026,9 @@ public class ProdukSwing extends javax.swing.JFrame {
                 pembayaran = combobox_pembayaran.getSelectedItem().toString();
                 pengiriman = jenisPengiriman + " Ekspedisi : " + ekspedisiPengiriman;
                 kategori = combobox_kategori.getSelectedItem().toString();
+                Date date = chooser_tanggal_expire.getDate();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                tanggalExpire = dateFormat.format(date);
             
                 try {
                     Produk produk = new Produk();
@@ -1019,6 +1042,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                     produk.setPengiriman(pengiriman);
                     produk.setKategori(kategori);
                     produk.setImage(produkImage);
+                    produk.setTanggalExpire(tanggalExpire);
 
                     produkInterface = new ProdukController();
                     produkInterface.create(produk);
@@ -1253,7 +1277,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private void btn_upload_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_upload_updateActionPerformed
         
             String namaProduk,deskripsiProduk,
-                   jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman;
+                   jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman,tanggalExpire;
             int stok;
             double berat, harga;
 
@@ -1272,6 +1296,9 @@ public class ProdukSwing extends javax.swing.JFrame {
                 pembayaran = combobox_pembayaran_update.getSelectedItem().toString();
                 pengiriman = jenisPengiriman + " Ekspedisi : " + ekspedisiPengiriman;
                 kategori = combobox_kategori_update.getSelectedItem().toString();
+                 Date date = chooser_tanggal_expire_update.getDate();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                tanggalExpire = dateFormat.format(date);
             
                 try {
                     Produk produk = new Produk();
@@ -1285,6 +1312,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                     produk.setKategori(kategori);
                     produk.setImage(produkImage);
                     produk.setKode(txt_kode_produk_update.getText());
+                    produk.setTanggalExpire(tanggalExpire);
 
                     produkInterface = new ProdukController();
                     produkInterface.update(produk);
@@ -1338,6 +1366,8 @@ public class ProdukSwing extends javax.swing.JFrame {
             txt_show_pembayaran.setText(prod.getPembayaran());
             txt_show_deskripsi.setText(prod.getDeskripsi());
             txt_show_kategori.setText(prod.getKategori());
+            txt_show_expire.setText(prod.getTanggalExpire() );
+            
 
             tabbed_pane.setSelectedIndex(3);
        
@@ -1407,6 +1437,8 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JButton btn_update_produk;
     private javax.swing.JButton btn_upload;
     private javax.swing.JButton btn_upload_update;
+    private com.toedter.calendar.JDateChooser chooser_tanggal_expire;
+    private com.toedter.calendar.JDateChooser chooser_tanggal_expire_update;
     private javax.swing.JComboBox<String> combobox_ekspedisi_pengiriman;
     private javax.swing.JComboBox<String> combobox_ekspedisi_pengiriman_update;
     private javax.swing.JComboBox<String> combobox_jenis_pengiriman;
@@ -1448,6 +1480,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
@@ -1458,6 +1491,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1492,6 +1526,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JTextField txt_nama_produk_update;
     private javax.swing.JTextField txt_show_berat;
     private javax.swing.JTextArea txt_show_deskripsi;
+    private javax.swing.JTextField txt_show_expire;
     private javax.swing.JTextField txt_show_harga;
     private javax.swing.JTextField txt_show_kategori;
     private javax.swing.JTextField txt_show_kode;
