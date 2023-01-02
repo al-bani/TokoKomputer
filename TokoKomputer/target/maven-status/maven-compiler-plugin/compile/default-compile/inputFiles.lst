@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\ITENAS\Semester 3\PBO\Git\TokoKomputer\TokoKomputer\src\main\java\Interface\ProdukInterface.java
 C:\ITENAS\Semester 3\PBO\Git\TokoKomputer\TokoKomputer\src\main\java\Swing\PembeliSwing.java
 C:\ITENAS\Semester 3\PBO\Git\TokoKomputer\TokoKomputer\src\main\java\Pojo\Produk.java
@@ -9,3 +10,16 @@ C:\ITENAS\Semester 3\PBO\Git\TokoKomputer\TokoKomputer\src\main\java\Interface\P
 C:\ITENAS\Semester 3\PBO\Git\TokoKomputer\TokoKomputer\src\main\java\Repository\CRUDRepo.java
 C:\ITENAS\Semester 3\PBO\Git\TokoKomputer\TokoKomputer\src\main\java\Controller\PembeliController.java
 C:\ITENAS\Semester 3\PBO\Git\TokoKomputer\TokoKomputer\src\main\java\Repository\RepoPesanan.java
+=======
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Pojo\Pembeli.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Interface\ProdukInterface.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Controller\PembeliController.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Controller\ProdukController.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Swing\PembeliSwing.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Swing\ProdukSwing.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Pojo\Produk.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Repository\CRUDRepo.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Repository\RepoPesanan.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Interface\PembeliInterface.java
+C:\Users\User\Documents\ITENAS\SEMESTER 3\ISB-205\TUGAS AKHR\TokoKomputer\TokoKomputer\src\main\java\Utilities\ConnectionManager.java
+>>>>>>> 964afb4a78b2cd886365bd89997a40704b2b9df6

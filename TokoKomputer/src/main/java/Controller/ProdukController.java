@@ -66,10 +66,10 @@ public class ProdukController implements ProdukInterface {
         int result = 0;
         String sql = "INSERT INTO tb_produk "
                 + "(kode_produk, nama_produk, harga_produk, deskripsi_produk, "
-                + "stok_produk, pengiriman, metode_pembayaran, berat_produk, kategori_produk, produk_image, tanggal_expire) "
+                + "stok_produk, pengiriman, metode_pembayaran, berat_produk, kategori_produk, produk_image, tanggal_expire, jenis_olahan) "
                 + "VALUES ('"+prod.getKode()+"','"+prod.getNama()+"','"+prod.getHarga()+"','"+prod.getDeskripsi()+"',"
                 + "'"+prod.getStok()+"','"+prod.getPengiriman()+"','"+prod.getPembayaran()+"','"+prod.getBerat()+"',"
-                + "'"+prod.getKategori()+"','"+prod.getImage()+"','"+prod.getTanggalExpire()+"')";
+                + "'"+prod.getKategori()+"','"+prod.getImage()+"','"+prod.getTanggalExpire()+"','"+prod.getTanggalExpire()+"')";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -92,7 +92,7 @@ public class ProdukController implements ProdukInterface {
                 + "nama_produk = '"+obj.getNama()+"', harga_produk = '"+obj.getHarga()+"', "
                 + "deskripsi_produk = '"+obj.getDeskripsi()+"', stok_produk = '"+obj.getStok()+"', pengiriman = '"+obj.getPengiriman()+"', "
                 + "metode_pembayaran = '"+obj.getPembayaran()+"', berat_produk = '"+obj.getBerat()+"', kategori_produk = '"+obj.getKategori()+"', "
-                + "produk_image = '"+obj.getImage()+"'tanggal_expire = '"+obj.getTanggalExpire()+"' WHERE kode_produk = '"+obj.getKode()+"'";
+                + "produk_image = '"+obj.getImage()+"'tanggal_expire = '"+obj.getTanggalExpire()+",'"+obj.getJenisOlahan()+"' WHERE kode_produk = '"+obj.getKode()+"'";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -132,6 +132,7 @@ public class ProdukController implements ProdukInterface {
                 prod.setBerat(rs.getInt("berat_produk"));
                 prod.setKategori("kategori_produk");
                 prod.setTanggalExpire("tanggal_expire");
+                prod.setJenisOlahan("jenis_olahan");
             }
             conMan.disconnect();
         } catch (SQLException ex) {
@@ -184,6 +185,7 @@ public class ProdukController implements ProdukInterface {
                 prod.setBerat(rs.getInt("berat_produk"));
                 prod.setKategori(rs.getString("kategori_produk"));
                 prod.setTanggalExpire(rs.getString("tanggal_expire"));
+                prod.setJenisOlahan("jenis_olahan");
                 
                 listDokter.add(prod);
             }
