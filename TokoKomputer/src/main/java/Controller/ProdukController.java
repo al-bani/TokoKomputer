@@ -49,7 +49,8 @@ public class ProdukController implements ProdukInterface {
                 prod.setStok(rs.getInt("stok_produk"));
                 prod.setBerat(rs.getInt("berat_produk"));
                 prod.setKategori(rs.getString("kategori_produk"));
-                
+                prod.setTanggalExpire(rs.getDate("tanggal_expire").toString());
+                prod.setJenisOlahan(rs.getString("jenis_olahan"));
                 
                 listDokter.add(prod);
             }
@@ -198,6 +199,35 @@ public class ProdukController implements ProdukInterface {
         }
         
         return listDokter; }
+
+    @Override
+    public Integer findId(String kodeProduk) {
+        int result = 0;
+        String query = "SELECT * FROM tb_produk WHERE kode_produk = '"+kodeProduk+"'";
+        
+        conMan = new ConnectionManager();
+        conn = conMan.connect();
+        
+        try {
+            state = conn.createStatement();
+            rs = state.executeQuery(query);
+            
+            while (rs.next()) {
+                if (rs.getString("kode_produk").equals(kodeProduk)) {
+                    result = 1;
+                } else {
+                    result = 0;
+                }
+            }
+           
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdukController.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
+    }
 
  
     

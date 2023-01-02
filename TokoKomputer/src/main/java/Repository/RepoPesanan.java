@@ -17,5 +17,5 @@ public interface RepoPesanan<T, ID> {
    ID update(T object);
    T findById(String id);
    ID delete(String kodeProduk);
-   
+   ID findId(String kodeProduk);
 }

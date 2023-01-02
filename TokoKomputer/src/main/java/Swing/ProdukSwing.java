@@ -21,13 +21,15 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+import javax.swing.JTable;
 import net.coobird.thumbnailator.Thumbnails;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
 /**
  *
  * @author alzildan
@@ -197,7 +199,8 @@ public class ProdukSwing extends javax.swing.JFrame {
         btn_hapus = new javax.swing.JButton();
         refresh = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
-        btn_lihat_produk = new javax.swing.JButton();
+        btn_print = new javax.swing.JButton();
+        btn_lihat_produk1 = new javax.swing.JButton();
         create = new javax.swing.JPanel();
         txt_stok = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -489,14 +492,23 @@ public class ProdukSwing extends javax.swing.JFrame {
         jLabel33.setText("Lihat Detail Produk dengan Memilih data");
         read_delete.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
-        btn_lihat_produk.setText("Lihat Produk");
-        btn_lihat_produk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_lihat_produk.addActionListener(new java.awt.event.ActionListener() {
+        btn_print.setText("Print");
+        btn_print.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_lihat_produkActionPerformed(evt);
+                btn_printActionPerformed(evt);
             }
         });
-        read_delete.add(btn_lihat_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+        read_delete.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+
+        btn_lihat_produk1.setText("Lihat Produk");
+        btn_lihat_produk1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_lihat_produk1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_lihat_produk1ActionPerformed(evt);
+            }
+        });
+        read_delete.add(btn_lihat_produk1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         tabbed_pane.addTab("read", read_delete);
 
@@ -1137,7 +1149,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         File file = fileChooser.getSelectedFile();
         String namaFileImage = file.getAbsolutePath();
         txt_image_path.setText(namaFileImage);
-
+        
         try {
             File image = new File(namaFileImage);  
             BufferedImage thumbnail = Thumbnails.of(image).size(170, 170).asBufferedImage();
@@ -1166,6 +1178,7 @@ public class ProdukSwing extends javax.swing.JFrame {
             int stok;
             double berat, harga;
             Date date = chooser_tanggal_expire.getDate();
+            
 
             if (txt_stok.getText().isEmpty() || txt_nama_produk.getText().isEmpty() 
                 || txt_berat_produk.getText().isEmpty() || txt_kode_produk.getText().isEmpty() 
@@ -1183,34 +1196,42 @@ public class ProdukSwing extends javax.swing.JFrame {
                 pembayaran = combobox_pembayaran.getSelectedItem().toString();
                 pengiriman = jenisPengiriman + " Ekspedisi : " + ekspedisiPengiriman;
                 kategori = combobox_kategori.getSelectedItem().toString();
-       
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                tanggalExpire = dateFormat.format(date);
-                jenisOlahan = jenis;
-                try {
-                    Produk produk = new Produk();
-                    produk.setNama(namaProduk);
-                    produk.setKode(kodeProduk);
-                    produk.setDeskripsi(deskripsiProduk);
-                    produk.setHarga(harga);
-                    produk.setBerat(berat);
-                    produk.setPembayaran(pembayaran);
-                    produk.setStok(stok);
-                    produk.setPengiriman(pengiriman);
-                    produk.setKategori(kategori);
-                    produk.setImage(produkImage);
-                    produk.setTanggalExpire(tanggalExpire);
-                    produk.setJenisOlahan(jenisOlahan);
-                    
-                    produkInterface = new ProdukController();
-                    produkInterface.create(produk);
+                   
+                int status = produkInterface.findId(kodeProduk);
+                
+                if (status == 1) {
+                    JOptionPane.showMessageDialog(null, "kode produk sudah terpakai");
+                } else{
+               
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    tanggalExpire = dateFormat.format(date);
+                    jenisOlahan = jenis;
+                    try {
+                        Produk produk = new Produk();
+                        produk.setNama(namaProduk);
+                        produk.setKode(kodeProduk);
+                        produk.setDeskripsi(deskripsiProduk);
+                        produk.setHarga(harga);
+                        produk.setBerat(berat);
+                        produk.setPembayaran(pembayaran);
+                        produk.setStok(stok);
+                        produk.setPengiriman(pengiriman);
+                        produk.setKategori(kategori);
+                        produk.setImage(produkImage);
+                        produk.setTanggalExpire(tanggalExpire);
+                        produk.setJenisOlahan(jenisOlahan);
 
-                    JOptionPane.showMessageDialog(null, "Produk telah di upload");
-                    loadData();
-                    emptyFields();
-                } catch (Exception e) {
-                     System.out.println(e.toString());
+                        produkInterface = new ProdukController();
+                        produkInterface.create(produk);
+
+                        JOptionPane.showMessageDialog(null, "Produk telah di upload");
+                        loadData();
+                        emptyFields();
+                    } catch (Exception e) {
+                         System.out.println(e.toString());
+                    }
                 }
+  
             }
            
          
@@ -1465,45 +1486,16 @@ public class ProdukSwing extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_update_produkActionPerformed
 
-    private void btn_lihat_produkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lihat_produkActionPerformed
-        int row = table_produk.getSelectedRow();
-       
-        if (row == -1) {
-            JOptionPane.showMessageDialog(null, "pilih data di tabel dahulu !");
-            return;
+    private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
+        MessageFormat header = new MessageFormat("List Dokter Reporting");
+        MessageFormat footer = new MessageFormat("Page {0, number, integer}");
+        try {
+            table_produk.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+        } catch (PrinterException e) {
+            System.out.println("Error: " + e);
         }
-            String Kode_produk = table_produk.getValueAt(row, 0).toString();
-            Produk prod = new Produk();
-            produkInterface = new ProdukController();
-            prod = produkInterface.findById(Kode_produk);
-
-            String a = Double.toString(prod.getBerat());
-            txt_show_nama.setText(prod.getNama());
-            txt_show_harga.setText(Double.toString(prod.getHarga()));
-            txt_show_stok.setText(Integer.toString(prod.getStok()));
-            txt_show_kode.setText(prod.getKode());
-            txt_show_pengiriman.setText(prod.getPengiriman());
-            txt_show_berat.setText(Double.toString(prod.getBerat()));
-            txt_show_pembayaran.setText(prod.getPembayaran());
-            txt_show_deskripsi.setText(prod.getDeskripsi());
-            txt_show_kategori.setText(prod.getKategori());
-            txt_show_expire.setText(prod.getTanggalExpire());
-            txt_show_jenisOlahan.setText(prod.getJenisOlahan());
-            
-            try {
-                byte[] img = prod.getImage();
-                ImageIcon image = new ImageIcon(img);
-                Image im = image.getImage();
-                Image myImg = im.getScaledInstance(img_lbl.getWidth(), img_lbl.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon newImage = new ImageIcon(myImg);
-                img_lbl.setIcon(newImage);
-            } catch (Exception e) {
-                System.out.println(e.toString());
-            }
-
-            tabbed_pane.setSelectedIndex(3);
        
-    }//GEN-LAST:event_btn_lihat_produkActionPerformed
+    }//GEN-LAST:event_btn_printActionPerformed
 
     private void txt_show_stokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_show_stokActionPerformed
         // TODO add your handling code here:
@@ -1543,24 +1535,26 @@ public class ProdukSwing extends javax.swing.JFrame {
 
     private void radio_makananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_makananActionPerformed
         // TODO add your handling code here:
-        jenis = "Makanan";
-        
+       jenisUpdate = "Makanan";
+         
         combobox_kategori.setEnabled(true);
-        
-        combobox_kategori.removeAllItems();
-            combobox_kategori.addItem("Gojek : Rp 10K/km");
-            combobox_kategori.addItem("Grab : Rp 11K/km");
+            combobox_kategori.removeAllItems();
+            combobox_kategori.addItem("Makanan Pedas");
+            combobox_kategori.addItem("Makanan sehat");
+            combobox_kategori.addItem("Makanan Berlemak");
+            combobox_kategori.addItem("Makanan tanpa MSG");
     }//GEN-LAST:event_radio_makananActionPerformed
 
     private void radio_minumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_minumanActionPerformed
         // TODO add your handling code here:
-        jenis = "Minuman";
+        jenisUpdate = "Minuman";
         
         combobox_kategori.setEnabled(true);
         
         combobox_kategori.removeAllItems();
-            combobox_kategori.addItem("Gojek : Rp 10K/km");
-            combobox_kategori.addItem("Grab : Rp 11K/km");
+            combobox_kategori.addItem("Minuman dingin");
+            combobox_kategori.addItem("Minuman panas");
+            combobox_kategori.addItem("Minuman biasa");
         
     }//GEN-LAST:event_radio_minumanActionPerformed
 
@@ -1577,8 +1571,10 @@ public class ProdukSwing extends javax.swing.JFrame {
          
         combobox_kategori_update.setEnabled(true);
             combobox_kategori_update.removeAllItems();
-            combobox_kategori_update.addItem("Gojek : Rp 10K/km");
-            combobox_kategori_update.addItem("Grab : Rp 11K/km");
+            combobox_kategori_update.addItem("Makanan Pedas");
+            combobox_kategori_update.addItem("Makanan sehat");
+            combobox_kategori_update.addItem("Makanan Berlemak");
+            combobox_kategori_update.addItem("Makanan tanpa MSG");
         
     }//GEN-LAST:event_radio_makanan_updateActionPerformed
 
@@ -1588,8 +1584,9 @@ public class ProdukSwing extends javax.swing.JFrame {
         combobox_kategori_update.setEnabled(true);
         
         combobox_kategori_update.removeAllItems();
-            combobox_kategori_update.addItem("Gojek : Rp 10K/km");
-            combobox_kategori_update.addItem("Grab : Rp 11K/km");
+            combobox_kategori_update.addItem("Minuman dingin");
+            combobox_kategori_update.addItem("Minuman panas");
+            combobox_kategori_update.addItem("Minuman biasa");
             
     }//GEN-LAST:event_radio_minuman_updateActionPerformed
 
@@ -1667,6 +1664,45 @@ public class ProdukSwing extends javax.swing.JFrame {
   
     }//GEN-LAST:event_btn_createMouseEntered
 
+    private void btn_lihat_produk1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lihat_produk1ActionPerformed
+          int row = table_produk.getSelectedRow();
+       
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "pilih data di tabel dahulu !");
+            return;
+        }
+            String Kode_produk = table_produk.getValueAt(row, 0).toString();
+            Produk prod = new Produk();
+            produkInterface = new ProdukController();
+            prod = produkInterface.findById(Kode_produk);
+
+            String a = Double.toString(prod.getBerat());
+            txt_show_nama.setText(prod.getNama());
+            txt_show_harga.setText(Double.toString(prod.getHarga()));
+            txt_show_stok.setText(Integer.toString(prod.getStok()));
+            txt_show_kode.setText(prod.getKode());
+            txt_show_pengiriman.setText(prod.getPengiriman());
+            txt_show_berat.setText(Double.toString(prod.getBerat()));
+            txt_show_pembayaran.setText(prod.getPembayaran());
+            txt_show_deskripsi.setText(prod.getDeskripsi());
+            txt_show_kategori.setText(prod.getKategori());
+            txt_show_expire.setText(prod.getTanggalExpire());
+            txt_show_jenisOlahan.setText(prod.getJenisOlahan());
+            
+            try {
+                byte[] img = prod.getImage();
+                ImageIcon image = new ImageIcon(img);
+                Image im = image.getImage();
+                Image myImg = im.getScaledInstance(img_lbl.getWidth(), img_lbl.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon newImage = new ImageIcon(myImg);
+                img_lbl.setIcon(newImage);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+
+            tabbed_pane.setSelectedIndex(3);
+    }//GEN-LAST:event_btn_lihat_produk1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1715,7 +1751,8 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btn_jenis_update;
     private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_kembali_show;
-    private javax.swing.JButton btn_lihat_produk;
+    private javax.swing.JButton btn_lihat_produk1;
+    private javax.swing.JButton btn_print;
     private javax.swing.JButton btn_read;
     private javax.swing.JButton btn_update;
     private javax.swing.JButton btn_update_produk;
