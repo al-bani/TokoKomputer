@@ -50,6 +50,7 @@ public class ProdukController implements ProdukInterface {
                 prod.setBerat(rs.getInt("berat_produk"));
                 prod.setKategori(rs.getString("kategori_produk"));
                 
+                
                 listDokter.add(prod);
             }
             conMan.disconnect();
@@ -134,6 +135,7 @@ public class ProdukController implements ProdukInterface {
                 prod.setKategori(rs.getString("kategori_produk"));
                 prod.setTanggalExpire(rs.getDate("tanggal_expire").toString());
                 prod.setJenisOlahan(rs.getString("jenis_olahan"));
+                prod.setImage(rs.getBytes("produk_image"));
             }
             conMan.disconnect();
         } catch (SQLException ex) {
