@@ -6,18 +6,16 @@ package Repository;
 
 import java.util.List;
 
-
-/*
+/**
+ *
  * @author alzildan
- * @param <T> Type
- * @param <ID> Identifier
  */
 public interface RepoPesanan<T, ID> {
-    List<T> findAll(String query);
-    List<T> findAll();
-    ID create(T object);
-    ID update(T object);
-    T findById(String id);
-    ID delete(String kodeProduk);
+   List<T> findAll(String query);
+   List<T> findAll();
+   ID create(T object);
+   ID update(T object);
+   T findById(String id);
+   ID delete(String kodeProduk);
+   
 }
-
