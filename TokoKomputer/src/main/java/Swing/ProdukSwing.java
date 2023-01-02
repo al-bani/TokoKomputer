@@ -43,6 +43,8 @@ public class ProdukSwing extends javax.swing.JFrame {
         loadData();
         txt_image_path_update.setEditable(false);
         txt_image_path.setEditable(false);
+        combobox_kategori_update.setEnabled(false);
+        combobox_kategori.setEnabled(false);
     }
     
     public void close() {
@@ -225,6 +227,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         chooser_tanggal_expire = new com.toedter.calendar.JDateChooser();
         radio_makanan = new javax.swing.JRadioButton();
         radio_minuman = new javax.swing.JRadioButton();
+        jLabel47 = new javax.swing.JLabel();
         update = new javax.swing.JPanel();
         layer_update = new javax.swing.JPanel();
         txt_stok_update = new javax.swing.JTextField();
@@ -247,7 +250,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         combobox_pembayaran_update = new javax.swing.JComboBox<>();
         jLabel28 = new javax.swing.JLabel();
         combobox_ekspedisi_pengiriman_update = new javax.swing.JComboBox<>();
-        btn_upload_update = new javax.swing.JButton();
+        btn_kembali = new javax.swing.JButton();
         image_pane_update = new javax.swing.JDesktopPane();
         lbl_image_update = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -258,11 +261,13 @@ public class ProdukSwing extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         radio_makanan_update = new javax.swing.JRadioButton();
         radio_minuman_update = new javax.swing.JRadioButton();
-        txt_kode_produk_update = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        btn_update_produk = new javax.swing.JButton();
+        btn_upload_update1 = new javax.swing.JButton();
+        layer_up_by_id = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
+        btn_update_produk = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        txt_kode_produk_update = new javax.swing.JTextField();
         showProduk = new javax.swing.JPanel();
         img_pane = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
@@ -478,16 +483,16 @@ public class ProdukSwing extends javax.swing.JFrame {
                 txt_stokKeyTyped(evt);
             }
         });
-        create.add(txt_stok, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 270, -1));
+        create.add(txt_stok, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 270, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Create New Product");
-        create.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 16, -1, -1));
+        create.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Kode Produk");
-        create.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 247, -1, -1));
-        create.add(txt_nama_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 211, 375, -1));
+        create.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        create.add(txt_nama_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 375, -1));
 
         txt_berat_produk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -499,48 +504,48 @@ public class ProdukSwing extends javax.swing.JFrame {
                 txt_berat_produkKeyTyped(evt);
             }
         });
-        create.add(txt_berat_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 290, -1));
+        create.add(txt_berat_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 290, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Harga Produk");
-        create.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, -1, -1));
+        create.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Deskripsi Produk");
-        create.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 313, -1, -1));
+        create.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Stok Produk");
-        create.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
+        jLabel6.setText("Tanggal Expired");
+        create.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Nama Produk");
-        create.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 185, -1, -1));
+        create.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Pengiriman");
-        create.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
+        create.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Berat Produk");
-        create.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
+        create.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Metode Pembayaran");
-        create.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, -1, -1));
+        create.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, -1, -1));
 
         txt_kode_produk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_kode_produkActionPerformed(evt);
             }
         });
-        create.add(txt_kode_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 273, 375, -1));
+        create.add(txt_kode_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 375, -1));
 
         txt_deskripsi_produk.setColumns(20);
         txt_deskripsi_produk.setRows(5);
         jScrollPane1.setViewportView(txt_deskripsi_produk);
 
-        create.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 341, 375, 110));
+        create.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 375, 110));
 
         txt_harga_produk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -553,7 +558,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                 txt_harga_produkKeyTyped(evt);
             }
         });
-        create.add(txt_harga_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 310, -1));
+        create.add(txt_harga_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 310, -1));
 
         combobox_jenis_pengiriman.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instan", "Hemat", "Regular", "Kargo" }));
         combobox_jenis_pengiriman.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -562,14 +567,14 @@ public class ProdukSwing extends javax.swing.JFrame {
                 combobox_jenis_pengirimanActionPerformed(evt);
             }
         });
-        create.add(combobox_jenis_pengiriman, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 201, -1));
+        create.add(combobox_jenis_pengiriman, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 201, -1));
 
         txt_image_path.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_image_pathActionPerformed(evt);
             }
         });
-        create.add(txt_image_path, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 116, 246, -1));
+        create.add(txt_image_path, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 246, -1));
 
         btn_image.setText("choose image");
         btn_image.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -578,21 +583,21 @@ public class ProdukSwing extends javax.swing.JFrame {
                 btn_imageActionPerformed(evt);
             }
         });
-        create.add(btn_image, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 145, 110, -1));
+        create.add(btn_image, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 110, -1));
 
         jLabel11.setText("Upload Image");
-        create.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 94, -1, -1));
+        create.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
 
         combobox_pembayaran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transfer bank", "QRIS", "Cryptocurency", "COD" }));
         combobox_pembayaran.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        create.add(combobox_pembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 200, -1));
+        create.add(combobox_pembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 200, -1));
 
         jLabel12.setText("gram");
-        create.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, -1, -1));
+        create.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 160, -1, -1));
 
         combobox_ekspedisi_pengiriman.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gojek : Rp 10K/km", "Grab : Rp 11K/km" }));
         combobox_ekspedisi_pengiriman.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        create.add(combobox_ekspedisi_pengiriman, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 200, -1));
+        create.add(combobox_ekspedisi_pengiriman, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 200, -1));
 
         btn_upload.setText("Upload Produk");
         btn_upload.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -601,7 +606,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                 btn_uploadActionPerformed(evt);
             }
         });
-        create.add(btn_upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 480, 110, 30));
+        create.add(btn_upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 480, 110, 30));
 
         lbl_image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
@@ -624,19 +629,19 @@ public class ProdukSwing extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        create.add(image_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 120, 110));
+        create.add(image_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 120, 110));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Jenis");
-        create.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
+        create.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
 
-        combobox_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makanan Pokok", "Snack", "Soda", "Sirup", "Roti" }));
+        combobox_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pilih jenis" }));
         combobox_kategori.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        create.add(combobox_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 240, -1));
+        create.add(combobox_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 240, -1));
 
         jLabel17.setText("Rp");
-        create.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, -1, -1));
-        create.add(chooser_tanggal_expire, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 200, -1));
+        create.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, -1, -1));
+        create.add(chooser_tanggal_expire, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 200, -1));
 
         btn_jenis.add(radio_makanan);
         radio_makanan.setText("makanan");
@@ -650,7 +655,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                 radio_makananActionPerformed(evt);
             }
         });
-        create.add(radio_makanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, -1, -1));
+        create.add(radio_makanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
 
         btn_jenis.add(radio_minuman);
         radio_minuman.setText("minuman");
@@ -659,7 +664,11 @@ public class ProdukSwing extends javax.swing.JFrame {
                 radio_minumanActionPerformed(evt);
             }
         });
-        create.add(radio_minuman, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, -1, -1));
+        create.add(radio_minuman, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 470, -1, -1));
+
+        jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel47.setText("Stok Produk");
+        create.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, -1, -1));
 
         tabbed_pane.addTab("create", create);
 
@@ -673,8 +682,8 @@ public class ProdukSwing extends javax.swing.JFrame {
                 txt_stok_updateKeyTyped(evt);
             }
         });
-        layer_update.add(txt_stok_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 270, -1));
-        layer_update.add(txt_nama_produk_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 375, -1));
+        layer_update.add(txt_stok_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 270, -1));
+        layer_update.add(txt_nama_produk_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 375, -1));
 
         txt_berat_produk_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -686,41 +695,41 @@ public class ProdukSwing extends javax.swing.JFrame {
                 txt_berat_produk_updateKeyTyped(evt);
             }
         });
-        layer_update.add(txt_berat_produk_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 290, -1));
+        layer_update.add(txt_berat_produk_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 290, -1));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel20.setText("Harga Produk");
-        layer_update.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
+        layer_update.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel21.setText("Deskripsi Produk");
-        layer_update.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        layer_update.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel22.setText("Stok Produk");
-        layer_update.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
+        layer_update.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel23.setText("Nama Produk");
-        layer_update.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        layer_update.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel24.setText("Pengiriman");
-        layer_update.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, -1, -1));
+        layer_update.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel25.setText("Berat Produk");
-        layer_update.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
+        layer_update.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel26.setText("Metode Pembayaran");
-        layer_update.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, -1, -1));
+        layer_update.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, -1, -1));
 
         txt_deskripsi_produk_update.setColumns(20);
         txt_deskripsi_produk_update.setRows(5);
         jScrollPane3.setViewportView(txt_deskripsi_produk_update);
 
-        layer_update.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 375, 110));
+        layer_update.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 375, 110));
 
         txt_harga_produk_update.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -733,7 +742,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                 txt_harga_produk_updateKeyTyped(evt);
             }
         });
-        layer_update.add(txt_harga_produk_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 310, -1));
+        layer_update.add(txt_harga_produk_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 310, -1));
 
         combobox_jenis_pengiriman_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instan", "Hemat", "Regular", "Kargo" }));
         combobox_jenis_pengiriman_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -742,14 +751,14 @@ public class ProdukSwing extends javax.swing.JFrame {
                 combobox_jenis_pengiriman_updateActionPerformed(evt);
             }
         });
-        layer_update.add(combobox_jenis_pengiriman_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 201, -1));
+        layer_update.add(combobox_jenis_pengiriman_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 201, -1));
 
         txt_image_path_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_image_path_updateActionPerformed(evt);
             }
         });
-        layer_update.add(txt_image_path_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 246, -1));
+        layer_update.add(txt_image_path_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 246, -1));
 
         btn_image_update.setText("choose image");
         btn_image_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -758,30 +767,30 @@ public class ProdukSwing extends javax.swing.JFrame {
                 btn_image_updateActionPerformed(evt);
             }
         });
-        layer_update.add(btn_image_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 110, -1));
+        layer_update.add(btn_image_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 110, -1));
 
         jLabel27.setText("Upload Image");
-        layer_update.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
+        layer_update.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
 
         combobox_pembayaran_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transfer bank", "QRIS", "Cryptocurency", "COD" }));
         combobox_pembayaran_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        layer_update.add(combobox_pembayaran_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 200, -1));
+        layer_update.add(combobox_pembayaran_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 200, -1));
 
         jLabel28.setText("gram");
-        layer_update.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, -1, -1));
+        layer_update.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, -1, -1));
 
         combobox_ekspedisi_pengiriman_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gojek : Rp 10K/km", "Grab : Rp 11K/km" }));
         combobox_ekspedisi_pengiriman_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        layer_update.add(combobox_ekspedisi_pengiriman_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 200, -1));
+        layer_update.add(combobox_ekspedisi_pengiriman_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 200, -1));
 
-        btn_upload_update.setText("Update Produk");
-        btn_upload_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_upload_update.addActionListener(new java.awt.event.ActionListener() {
+        btn_kembali.setText("Kembali");
+        btn_kembali.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_upload_updateActionPerformed(evt);
+                btn_kembaliActionPerformed(evt);
             }
         });
-        layer_update.add(btn_upload_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 430, 110, 30));
+        layer_update.add(btn_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 110, 30));
 
         lbl_image_update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
@@ -800,51 +809,63 @@ public class ProdukSwing extends javax.swing.JFrame {
             image_pane_updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(image_pane_updateLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_image_update, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_image_update, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        layer_update.add(image_pane_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 120, 110));
+        layer_update.add(image_pane_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 120, 110));
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel29.setText("Jenis");
-        layer_update.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
+        layer_update.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
 
-        combobox_kategori_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Makanan Pokok", "Snack", "Soda", "Sirup", "Roti" }));
+        combobox_kategori_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pilih jenis" }));
         combobox_kategori_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        layer_update.add(combobox_kategori_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 240, -1));
+        layer_update.add(combobox_kategori_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 240, -1));
 
         jLabel30.setText("Rp");
-        layer_update.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
+        layer_update.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel18.setText("UPDATE PRODUK");
-        layer_update.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
-        layer_update.add(chooser_tanggal_expire_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 150, -1));
+        layer_update.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        layer_update.add(chooser_tanggal_expire_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 150, -1));
 
         jLabel35.setText("Tanggal Expire");
-        layer_update.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, -1, -1));
+        layer_update.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 390, -1, -1));
 
         btn_jenis_update.add(radio_makanan_update);
         radio_makanan_update.setText("makanan");
-        layer_update.add(radio_makanan_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+        radio_makanan_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_makanan_updateActionPerformed(evt);
+            }
+        });
+        layer_update.add(radio_makanan_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
         btn_jenis_update.add(radio_minuman_update);
         radio_minuman_update.setText("minuman");
-        layer_update.add(radio_minuman_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, -1, -1));
-
-        update.add(layer_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 78, -1, 474));
-
-        txt_kode_produk_update.addActionListener(new java.awt.event.ActionListener() {
+        radio_minuman_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_kode_produk_updateActionPerformed(evt);
+                radio_minuman_updateActionPerformed(evt);
             }
         });
-        update.add(txt_kode_produk_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 240, -1));
+        layer_update.add(radio_minuman_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, -1));
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setText("Cari Kode Produk");
-        update.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
+        btn_upload_update1.setText("Update Produk");
+        btn_upload_update1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_upload_update1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_upload_update1ActionPerformed(evt);
+            }
+        });
+        layer_update.add(btn_upload_update1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, 110, 30));
+
+        update.add(layer_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 490));
+
+        jLabel31.setText("Form Update akan ditampilkan");
+
+        jLabel32.setText("Jika Produk ditemukan");
 
         btn_update_produk.setText("Cari Produk");
         btn_update_produk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -853,13 +874,51 @@ public class ProdukSwing extends javax.swing.JFrame {
                 btn_update_produkActionPerformed(evt);
             }
         });
-        update.add(btn_update_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, -1));
 
-        jLabel31.setText("Form Update akan ditampilkan");
-        update.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 30, -1, -1));
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel19.setText("Cari Kode Produk");
 
-        jLabel32.setText("Jika Produk ditemukan");
-        update.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 50, -1, -1));
+        txt_kode_produk_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_kode_produk_updateActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layer_up_by_idLayout = new javax.swing.GroupLayout(layer_up_by_id);
+        layer_up_by_id.setLayout(layer_up_by_idLayout);
+        layer_up_by_idLayout.setHorizontalGroup(
+            layer_up_by_idLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layer_up_by_idLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layer_up_by_idLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layer_up_by_idLayout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel31))
+                    .addGroup(layer_up_by_idLayout.createSequentialGroup()
+                        .addComponent(txt_kode_produk_update, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_update_produk)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE)
+                        .addComponent(jLabel32)))
+                .addContainerGap())
+        );
+        layer_up_by_idLayout.setVerticalGroup(
+            layer_up_by_idLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layer_up_by_idLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layer_up_by_idLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel19))
+                .addGap(8, 8, 8)
+                .addGroup(layer_up_by_idLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(btn_update_produk)
+                    .addComponent(txt_kode_produk_update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        update.add(layer_up_by_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 810, 60));
 
         tabbed_pane.addTab("update", update);
 
@@ -980,8 +1039,11 @@ public class ProdukSwing extends javax.swing.JFrame {
 
         jLabel45.setText("Tanggal Expire :");
         showProduk.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, -1, -1));
+
+        txt_show_expire.setEditable(false);
         showProduk.add(txt_show_expire, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 240, -1));
 
+        txt_show_jenisOlahan.setEditable(false);
         txt_show_jenisOlahan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_show_jenisOlahanActionPerformed(evt);
@@ -1001,11 +1063,13 @@ public class ProdukSwing extends javax.swing.JFrame {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
        tabbed_pane.setSelectedIndex(2);
+       layer_up_by_id.setVisible(true);
        layer_update.setVisible(false);
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
         tabbed_pane.setSelectedIndex(1);
+        
     }//GEN-LAST:event_btn_createActionPerformed
 
     private void btn_readActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_readActionPerformed
@@ -1063,10 +1127,11 @@ public class ProdukSwing extends javax.swing.JFrame {
                    jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman, tanggalExpire,imageProduk, jenisOlahan;
             int stok;
             double berat, harga;
+            Date date = chooser_tanggal_expire.getDate();
 
             if (txt_stok.getText().isEmpty() || txt_nama_produk.getText().isEmpty() 
                 || txt_berat_produk.getText().isEmpty() || txt_kode_produk.getText().isEmpty() 
-                    || txt_deskripsi_produk.getText().isEmpty() || txt_harga_produk.getText().isEmpty() ) {
+                    || txt_deskripsi_produk.getText().isEmpty() || txt_harga_produk.getText().isEmpty() || date == null || combobox_kategori.getSelectedItem().toString().isEmpty()) {
              JOptionPane.showMessageDialog(null, "harap isi data produk");
             } else {
                 namaProduk = txt_nama_produk.getText();
@@ -1080,7 +1145,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                 pembayaran = combobox_pembayaran.getSelectedItem().toString();
                 pengiriman = jenisPengiriman + " Ekspedisi : " + ekspedisiPengiriman;
                 kategori = combobox_kategori.getSelectedItem().toString();
-                Date date = chooser_tanggal_expire.getDate();
+       
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 tanggalExpire = dateFormat.format(date);
                 jenisOlahan = jenis;
@@ -1339,61 +1404,12 @@ public class ProdukSwing extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_image_updateActionPerformed
 
-    private void btn_upload_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_upload_updateActionPerformed
+    private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
         
-            String namaProduk,deskripsiProduk,
-                   jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman,tanggalExpire, jenisOlahan;
-            int stok;
-            double berat, harga;
-
-            if (txt_stok_update.getText().isEmpty() || txt_nama_produk_update.getText().isEmpty() 
-                || txt_berat_produk_update.getText().isEmpty() || txt_kode_produk_update.getText().isEmpty() 
-                    || txt_deskripsi_produk_update.getText().isEmpty() || txt_harga_produk_update.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null, "harap isi data produk");
-            } else {
-                namaProduk = txt_nama_produk_update.getText();
-                stok = Integer.parseInt(txt_stok_update.getText());
-                berat = Double.parseDouble(txt_berat_produk_update.getText());
-                deskripsiProduk = txt_deskripsi_produk_update.getText();
-                harga = Double.parseDouble(txt_harga_produk_update.getText());
-                jenisPengiriman = combobox_jenis_pengiriman_update.getSelectedItem().toString();
-                ekspedisiPengiriman = combobox_ekspedisi_pengiriman_update.getSelectedItem().toString();
-                pembayaran = combobox_pembayaran_update.getSelectedItem().toString();
-                pengiriman = jenisPengiriman + " Ekspedisi : " + ekspedisiPengiriman;
-                kategori = combobox_kategori_update.getSelectedItem().toString();
-                 Date date = chooser_tanggal_expire_update.getDate();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                tanggalExpire = dateFormat.format(date);
-                jenisOlahan = jenis;
-            
-                try {
-                    Produk produk = new Produk();
-                    produk.setNama(namaProduk);
-                    produk.setDeskripsi(deskripsiProduk);
-                    produk.setHarga(harga);
-                    produk.setBerat(berat);
-                    produk.setPembayaran(pembayaran);
-                    produk.setStok(stok);
-                    produk.setPengiriman(pengiriman);
-                    produk.setKategori(kategori);
-                    produk.setImage(produkImage);
-                    produk.setKode(txt_kode_produk_update.getText());
-                    produk.setTanggalExpire(tanggalExpire);
-                    produk.setJenisOlahan(jenisOlahan);
-
-                    produkInterface = new ProdukController();
-                    produkInterface.update(produk);
-
-                    JOptionPane.showMessageDialog(null, "Produk telah di update");
-                    loadData();
-                    layer_update.setVisible(false);
-                } catch (Exception e) {
-                     System.out.println(e.toString());
-                     
-                }
-            }
+        tabbed_pane.setSelectedIndex(1);
+        layer_up_by_id.setVisible(true);
      
-    }//GEN-LAST:event_btn_upload_updateActionPerformed
+    }//GEN-LAST:event_btn_kembaliActionPerformed
 
     private void btn_update_produkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_update_produkActionPerformed
         String kodeProduk = txt_kode_produk_update.getText();
@@ -1433,7 +1449,7 @@ public class ProdukSwing extends javax.swing.JFrame {
             txt_show_pembayaran.setText(prod.getPembayaran());
             txt_show_deskripsi.setText(prod.getDeskripsi());
             txt_show_kategori.setText(prod.getKategori());
-            txt_show_expire.setText(prod.getTanggalExpire() );
+            txt_show_expire.setText(prod.getTanggalExpire());
             txt_show_jenisOlahan.setText(prod.getJenisOlahan());
             
 
@@ -1450,18 +1466,53 @@ public class ProdukSwing extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_kembali_showActionPerformed
 
     private void btn_edit_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_edit_showActionPerformed
-        layer_update.setVisible(false);
+        layer_update.setVisible(true);
+        layer_up_by_id.setVisible(false);
+        
+                int row = table_produk.getSelectedRow();
+       
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "pilih data di tabel dahulu !");
+            return;
+        }
+            String Kode_produk = table_produk.getValueAt(row, 0).toString();
+            Produk prod = new Produk();
+            produkInterface = new ProdukController();
+            prod = produkInterface.findById(Kode_produk);
+
+            String a = Double.toString(prod.getBerat());
+            txt_nama_produk_update.setText(prod.getNama());
+            txt_harga_produk_update.setText(Double.toString(prod.getHarga()));
+            txt_stok_update.setText(Integer.toString(prod.getStok()));
+            txt_kode_produk_update.setText(prod.getKode());
+            txt_berat_produk_update.setText(Double.toString(prod.getBerat()));
+            txt_deskripsi_produk_update.setText(prod.getDeskripsi());
+            
         tabbed_pane.setSelectedIndex(2);
+        
+        
     }//GEN-LAST:event_btn_edit_showActionPerformed
 
     private void radio_makananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_makananActionPerformed
         // TODO add your handling code here:
         jenis = "Makanan";
+        
+        combobox_kategori.setEnabled(true);
+        
+        combobox_kategori.removeAllItems();
+            combobox_kategori.addItem("Gojek : Rp 10K/km");
+            combobox_kategori.addItem("Grab : Rp 11K/km");
     }//GEN-LAST:event_radio_makananActionPerformed
 
     private void radio_minumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_minumanActionPerformed
         // TODO add your handling code here:
         jenis = "Minuman";
+        
+        combobox_kategori.setEnabled(true);
+        
+        combobox_kategori.removeAllItems();
+            combobox_kategori.addItem("Gojek : Rp 10K/km");
+            combobox_kategori.addItem("Grab : Rp 11K/km");
         
     }//GEN-LAST:event_radio_minumanActionPerformed
 
@@ -1472,6 +1523,85 @@ public class ProdukSwing extends javax.swing.JFrame {
     private void radio_makananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radio_makananMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_radio_makananMouseClicked
+
+    private void radio_makanan_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_makanan_updateActionPerformed
+        jenisUpdate = "Makanan";
+         
+        combobox_kategori_update.setEnabled(true);
+            combobox_kategori_update.removeAllItems();
+            combobox_kategori_update.addItem("Gojek : Rp 10K/km");
+            combobox_kategori_update.addItem("Grab : Rp 11K/km");
+        
+    }//GEN-LAST:event_radio_makanan_updateActionPerformed
+
+    private void radio_minuman_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_minuman_updateActionPerformed
+        jenisUpdate = "Minuman";
+        
+        combobox_kategori_update.setEnabled(true);
+        
+        combobox_kategori_update.removeAllItems();
+            combobox_kategori_update.addItem("Gojek : Rp 10K/km");
+            combobox_kategori_update.addItem("Grab : Rp 11K/km");
+            
+    }//GEN-LAST:event_radio_minuman_updateActionPerformed
+
+    private void btn_upload_update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_upload_update1ActionPerformed
+        String namaProduk,deskripsiProduk,
+                   jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman,tanggalExpire, jenisOlahan;
+            int stok;
+            double berat, harga;
+            Date date = chooser_tanggal_expire_update.getDate();
+
+            if (txt_stok_update.getText().isEmpty() || txt_nama_produk_update.getText().isEmpty() 
+                || txt_berat_produk_update.getText().isEmpty() || txt_kode_produk_update.getText().isEmpty() 
+                    || txt_deskripsi_produk_update.getText().isEmpty() || date == null || combobox_kategori.getSelectedItem().toString().isEmpty()) {
+             JOptionPane.showMessageDialog(null, "harap isi data produk");
+            } else {
+                namaProduk = txt_nama_produk_update.getText();
+                stok = Integer.parseInt(txt_stok_update.getText());
+                berat = Double.parseDouble(txt_berat_produk_update.getText());
+                deskripsiProduk = txt_deskripsi_produk_update.getText();
+                harga = Double.parseDouble(txt_harga_produk_update.getText());
+                jenisPengiriman = combobox_jenis_pengiriman_update.getSelectedItem().toString();
+                ekspedisiPengiriman = combobox_ekspedisi_pengiriman_update.getSelectedItem().toString();
+                pembayaran = combobox_pembayaran_update.getSelectedItem().toString();
+                pengiriman = jenisPengiriman + " Ekspedisi : " + ekspedisiPengiriman;
+                kategori = combobox_kategori_update.getSelectedItem().toString();
+                 
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                tanggalExpire = dateFormat.format(date);
+                jenisOlahan = jenis;
+            
+                try {
+                    Produk produk = new Produk();
+                    produk.setNama(namaProduk);
+                    produk.setDeskripsi(deskripsiProduk);
+                    produk.setHarga(harga);
+                    produk.setBerat(berat);
+                    produk.setPembayaran(pembayaran);
+                    produk.setStok(stok);
+                    produk.setPengiriman(pengiriman);
+                    produk.setKategori(kategori);
+                    produk.setImage(produkImage);
+                    produk.setKode(txt_kode_produk_update.getText());
+                    produk.setTanggalExpire(tanggalExpire);
+                    produk.setJenisOlahan(jenisOlahan);
+
+                    produkInterface = new ProdukController();
+                    produkInterface.update(produk);
+
+                    JOptionPane.showMessageDialog(null, "Produk telah di update");
+                    loadData();
+                    layer_update.setVisible(false);
+                } catch (Exception e) {
+                     System.out.println(e.toString());
+                     
+                }
+                
+                layer_up_by_id.setVisible(true);
+            }
+            
+    }//GEN-LAST:event_btn_upload_update1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1519,13 +1649,14 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JButton btn_image_update;
     private javax.swing.ButtonGroup btn_jenis;
     private javax.swing.ButtonGroup btn_jenis_update;
+    private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_kembali_show;
     private javax.swing.JButton btn_lihat_produk;
     private javax.swing.JButton btn_read;
     private javax.swing.JButton btn_update;
     private javax.swing.JButton btn_update_produk;
     private javax.swing.JButton btn_upload;
-    private javax.swing.JButton btn_upload_update;
+    private javax.swing.JButton btn_upload_update1;
     private com.toedter.calendar.JDateChooser chooser_tanggal_expire;
     private com.toedter.calendar.JDateChooser chooser_tanggal_expire_update;
     private javax.swing.JComboBox<String> combobox_ekspedisi_pengiriman;
@@ -1582,6 +1713,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1593,6 +1725,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JPanel layer_up_by_id;
     private javax.swing.JPanel layer_update;
     private javax.swing.JLabel lbl_image;
     private javax.swing.JLabel lbl_image_update;
@@ -1636,5 +1769,6 @@ public class ProdukSwing extends javax.swing.JFrame {
     private ImageIcon produkIcon = null;
     byte[] produkImage = null;
     private String jenis;
+    private String jenisUpdate;
 
 }
