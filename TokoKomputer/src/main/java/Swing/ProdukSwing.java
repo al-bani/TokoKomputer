@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import Pojo.Produk;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -30,7 +31,8 @@ import javax.swing.ImageIcon;
 
 public class ProdukSwing extends javax.swing.JFrame {
     ProdukInterface produkInterface;
-    
+    Color colorRollover = new Color(31,31,31);
+    Color colorNormal = new Color(51,51,51);
     /**
      * Creates new form Product
      */
@@ -293,9 +295,20 @@ public class ProdukSwing extends javax.swing.JFrame {
         btn_create.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_create.setForeground(new java.awt.Color(255, 255, 255));
         btn_create.setText("Buat Produk");
-        btn_create.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_create.setBorder(null);
         btn_create.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_create.setRequestFocusEnabled(false);
+        btn_create.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_createMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_createMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_createMouseExited(evt);
+            }
+        });
         btn_create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_createActionPerformed(evt);
@@ -306,7 +319,16 @@ public class ProdukSwing extends javax.swing.JFrame {
         btn_read.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_read.setForeground(new java.awt.Color(255, 255, 255));
         btn_read.setText("Lihat dan hapus Produk");
+        btn_read.setBorder(null);
         btn_read.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_read.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_readMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_readMouseExited(evt);
+            }
+        });
         btn_read.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_readActionPerformed(evt);
@@ -317,7 +339,16 @@ public class ProdukSwing extends javax.swing.JFrame {
         btn_update.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_update.setForeground(new java.awt.Color(255, 255, 255));
         btn_update.setText("Perbarui Produk");
+        btn_update.setBorder(null);
         btn_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_updateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_updateMouseExited(evt);
+            }
+        });
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_updateActionPerformed(evt);
@@ -328,6 +359,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         btn_back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_back.setForeground(new java.awt.Color(255, 255, 255));
         btn_back.setText("kembali");
+        btn_back.setBorder(null);
         btn_back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -958,15 +990,30 @@ public class ProdukSwing extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-       tabbed_pane.setSelectedIndex(2);
+       btn_create.setBackground(colorNormal);
+        btn_read.setBackground(colorNormal);
+        
+        btn_update.setBackground(colorRollover);
+        
+        tabbed_pane.setSelectedIndex(2);
        layer_update.setVisible(false);
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
+        btn_update.setBackground(colorNormal);
+         btn_read.setBackground(colorNormal);
+         
+        btn_create.setBackground(colorRollover);
+        
         tabbed_pane.setSelectedIndex(1);
     }//GEN-LAST:event_btn_createActionPerformed
 
     private void btn_readActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_readActionPerformed
+        
+        btn_update.setBackground(colorNormal);
+        btn_create.setBackground(colorNormal);
+        
+        btn_read.setBackground(colorRollover);
         tabbed_pane.setSelectedIndex(0);
     }//GEN-LAST:event_btn_readActionPerformed
 
@@ -1021,12 +1068,18 @@ public class ProdukSwing extends javax.swing.JFrame {
                    jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman;
             int stok;
             double berat, harga;
+            
+        
 
             if (txt_stok.getText().isEmpty() || txt_nama_produk.getText().isEmpty() 
                 || txt_berat_produk.getText().isEmpty() || txt_kode_produk.getText().isEmpty() 
                     || txt_deskripsi_produk.getText().isEmpty() || txt_harga_produk.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "harap isi data produk");
             } else {
+                
+                if (rootPaneCheckingEnabled) {
+                    
+                }
                 namaProduk = txt_nama_produk.getText();
                 berat = Double.parseDouble(txt_berat_produk.getText());
                 kodeProduk = txt_kode_produk.getText();
@@ -1406,6 +1459,34 @@ public class ProdukSwing extends javax.swing.JFrame {
             
  
     }//GEN-LAST:event_btn_show_editActionPerformed
+
+    private void btn_createMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_createMouseEntered
+        btn_create.setBackground(colorRollover);
+    }//GEN-LAST:event_btn_createMouseEntered
+
+    private void btn_createMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_createMouseExited
+        btn_create.setBackground(colorNormal);
+    }//GEN-LAST:event_btn_createMouseExited
+
+    private void btn_readMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_readMouseEntered
+        btn_read.setBackground(colorRollover);
+    }//GEN-LAST:event_btn_readMouseEntered
+
+    private void btn_readMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_readMouseExited
+        btn_read.setBackground(colorNormal);
+    }//GEN-LAST:event_btn_readMouseExited
+
+    private void btn_updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_updateMouseEntered
+       btn_update.setBackground(colorRollover);
+    }//GEN-LAST:event_btn_updateMouseEntered
+
+    private void btn_updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_updateMouseExited
+        btn_update.setBackground(colorNormal);
+    }//GEN-LAST:event_btn_updateMouseExited
+
+    private void btn_createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_createMouseClicked
+        btn_create.setBackground(colorRollover);
+    }//GEN-LAST:event_btn_createMouseClicked
 
     /**
      * @param args the command line arguments

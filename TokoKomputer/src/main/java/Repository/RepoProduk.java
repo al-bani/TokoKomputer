@@ -12,7 +12,7 @@ import java.util.List;
  * @param <T> Type
  * @param <ID> Identifier
  */
-public interface RepoPesanan<T, ID> {
+public interface RepoProduk<T, ID> {
     List<T> findAll(String query);
     List<T> findAll();
     ID create(T object);
