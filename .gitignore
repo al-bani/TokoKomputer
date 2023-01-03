@@ -1,5 +1,5 @@
 # Compiled class file
-.class
+*.class
 
 # Folder maven target
 target
