@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 # Compiled class file
 *.class
 
 # Folder maven target
 target
+=======
+/TokoKomputer/target/
+>>>>>>> 509bf7d2883fbfd390628b1d67c569283143192d
