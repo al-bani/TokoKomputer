@@ -564,7 +564,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         });
         create.add(txt_harga_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 310, -1));
 
-        combobox_jenis_pengiriman.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instan", "Hemat", "Regular", "Kargo" }));
+        combobox_jenis_pengiriman.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instan", "Hemat", "Reguler", "Kargo" }));
         combobox_jenis_pengiriman.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         combobox_jenis_pengiriman.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -720,7 +720,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         });
         layer_update.add(txt_harga_produk_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 310, -1));
 
-        combobox_jenis_pengiriman_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instan", "Hemat", "Regular", "Kargo" }));
+        combobox_jenis_pengiriman_update.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Instan", "Hemat", "Reguler", "Kargo" }));
         combobox_jenis_pengiriman_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         combobox_jenis_pengiriman_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -863,7 +863,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        update.add(layer_up_by_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 750, 60));
+        update.add(layer_up_by_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
         tabbed_pane.addTab("update", update);
 
@@ -990,13 +990,14 @@ public class ProdukSwing extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-       btn_create.setBackground(colorNormal);
+        btn_create.setBackground(colorNormal);
         btn_read.setBackground(colorNormal);
         
         btn_update.setBackground(colorRollover);
         
         tabbed_pane.setSelectedIndex(2);
-       layer_update.setVisible(false);
+        layer_update.setVisible(false);
+        layer_up_by_id.setVisible(true);
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
@@ -1068,51 +1069,52 @@ public class ProdukSwing extends javax.swing.JFrame {
                    jenisPengiriman, ekspedisiPengiriman, pembayaran, kategori, pengiriman;
             int stok;
             double berat, harga;
-            
-        
 
             if (txt_stok.getText().isEmpty() || txt_nama_produk.getText().isEmpty() 
                 || txt_berat_produk.getText().isEmpty() || txt_kode_produk.getText().isEmpty() 
                     || txt_deskripsi_produk.getText().isEmpty() || txt_harga_produk.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null, "harap isi data produk");
             } else {
-                
-                if (rootPaneCheckingEnabled) {
-                    
-                }
-                namaProduk = txt_nama_produk.getText();
-                berat = Double.parseDouble(txt_berat_produk.getText());
-                kodeProduk = txt_kode_produk.getText();
-                deskripsiProduk = txt_deskripsi_produk.getText();
-                harga = Double.parseDouble(txt_harga_produk.getText());
-                stok = Integer.parseInt(txt_stok.getText());
-                jenisPengiriman = combobox_jenis_pengiriman.getSelectedItem().toString();
-                ekspedisiPengiriman = combobox_ekspedisi_pengiriman.getSelectedItem().toString();
-                pembayaran = combobox_pembayaran.getSelectedItem().toString();
-                pengiriman = jenisPengiriman + " Ekspedisi : " + ekspedisiPengiriman;
-                kategori = combobox_kategori.getSelectedItem().toString();
-            
-                try {
-                    Produk produk = new Produk();
-                    produk.setNama(namaProduk);
-                    produk.setKode(kodeProduk);
-                    produk.setDeskripsi(deskripsiProduk);
-                    produk.setHarga(harga);
-                    produk.setBerat(berat);
-                    produk.setPembayaran(pembayaran);
-                    produk.setStok(stok);
-                    produk.setPengiriman(pengiriman);
-                    produk.setKategori(kategori);
-                    produk.setImage(produkImage);
+                produkInterface = new ProdukController();
+                int cekKode = produkInterface.searchKode(txt_kode_produk.getText());
 
-                    produkInterface = new ProdukController();
-                    produkInterface.create(produk);
+                if (cekKode == 1) {
+                    JOptionPane.showMessageDialog(null, "Maaf Kode Produk sudah digunakan");
+                } else {
+                    namaProduk = txt_nama_produk.getText();
+                    berat = Double.parseDouble(txt_berat_produk.getText());
+                    kodeProduk = txt_kode_produk.getText();
+                    deskripsiProduk = txt_deskripsi_produk.getText();
+                    harga = Double.parseDouble(txt_harga_produk.getText());
+                    stok = Integer.parseInt(txt_stok.getText());
+                    jenisPengiriman = combobox_jenis_pengiriman.getSelectedItem().toString();
+                    ekspedisiPengiriman = combobox_ekspedisi_pengiriman.getSelectedItem().toString();
+                    pembayaran = combobox_pembayaran.getSelectedItem().toString();
+                    pengiriman = jenisPengiriman + " Ekspedisi : " + ekspedisiPengiriman;
+                    kategori = combobox_kategori.getSelectedItem().toString();
 
-                    JOptionPane.showMessageDialog(null, "Produk telah di upload");
-                    loadData();
-                    emptyFields();
-                } catch (Exception e) {
-                     System.out.println(e.toString());
+                    try {
+                        Produk produk = new Produk();
+                        produk.setNama(namaProduk);
+                        produk.setKode(kodeProduk);
+                        produk.setDeskripsi(deskripsiProduk);
+                        produk.setHarga(harga);
+                        produk.setBerat(berat);
+                        produk.setPembayaran(pembayaran);
+                        produk.setStok(stok);
+                        produk.setPengiriman(pengiriman);
+                        produk.setKategori(kategori);
+                        produk.setImage(produkImage);
+
+                        produkInterface = new ProdukController();
+                        produkInterface.create(produk);
+
+                        JOptionPane.showMessageDialog(null, "Produk telah di upload");
+                        loadData();
+                        emptyFields();
+                    } catch (Exception e) {
+                         System.out.println(e.toString());
+                    }
                 }
             }
            
@@ -1377,6 +1379,7 @@ public class ProdukSwing extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Produk telah di update");
                     loadData();
                     layer_update.setVisible(false);
+                    tabbed_pane.setSelectedIndex(0);
                 } catch (Exception e) {
                      System.out.println(e.toString());
                      

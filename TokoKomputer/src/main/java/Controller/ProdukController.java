@@ -193,6 +193,35 @@ public class ProdukController implements ProdukInterface {
         
         return listDokter; }
 
+    @Override
+    public Integer searchKode(String kode) {
+        int result = 0;
+        String query = "SELECT * FROM tb_produk "
+                + "WHERE kode_produk = '"+kode+"'";
+        
+        conMan = new ConnectionManager();
+        conn = conMan.connect();
+        
+        try {
+            state = conn.createStatement();
+            rs = state.executeQuery(query);
+            
+            while (rs.next()) {
+                if (rs.getString("kode_produk").equals(kode)) {
+                    result = 1;
+                } else {
+                    result = 0;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PenjualController.class.getName())
+                    .log(Level.SEVERE, null, ex);
+            
+        }
+
+        return result;
+    }
+
  
     
 }

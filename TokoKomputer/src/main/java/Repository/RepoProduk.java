@@ -19,4 +19,5 @@ public interface RepoProduk<T, ID> {
     ID update(T object);
     T findById(String id);
     ID delete(String kodeProduk);
+    ID searchKode(String kode);
 }
