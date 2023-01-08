@@ -147,9 +147,19 @@ public class Dashboard extends javax.swing.JFrame {
 
         btn_pembeli.setText("Akun Pembeli");
         btn_pembeli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_pembeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pembeliActionPerformed(evt);
+            }
+        });
 
         btn_pesanan.setText("Pesanan");
         btn_pesanan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_pesanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pesananActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -177,9 +187,19 @@ public class Dashboard extends javax.swing.JFrame {
 
         btn_promo.setText("Atur Promo");
         btn_promo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_promo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_promoActionPerformed(evt);
+            }
+        });
 
         btn_invoice.setText("Invoice");
         btn_invoice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_invoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_invoiceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -332,6 +352,30 @@ public class Dashboard extends javax.swing.JFrame {
       prodSwing.setVisible(true);
       close();
     }//GEN-LAST:event_btn_produkActionPerformed
+
+    private void btn_pembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pembeliActionPerformed
+        PembeliSwing pemSwing;
+        pemSwing = new PembeliSwing();
+        pemSwing.setVisible(true);
+    }//GEN-LAST:event_btn_pembeliActionPerformed
+
+    private void btn_pesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesananActionPerformed
+        PesananSwing pesSwing;
+        pesSwing = new PesananSwing();
+        pesSwing.setVisible(true);
+    }//GEN-LAST:event_btn_pesananActionPerformed
+
+    private void btn_promoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_promoActionPerformed
+        PromoSwing proSwing;
+        proSwing = new PromoSwing();
+        proSwing.setVisible(true);
+    }//GEN-LAST:event_btn_promoActionPerformed
+
+    private void btn_invoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_invoiceActionPerformed
+        CetakSwing cetSwing;
+        cetSwing = new CetakSwing();
+        cetSwing.setVisible(true);
+    }//GEN-LAST:event_btn_invoiceActionPerformed
 
     /**
      * @param args the command line arguments
