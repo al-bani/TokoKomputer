@@ -31,6 +31,8 @@ public class PesananSwing extends javax.swing.JFrame {
        initComponents();
        this.setLocationRelativeTo(null);
         loadData();
+        getKodeProduk();
+        getUsernamePembeli();
     }
 
     public void close() {
@@ -51,6 +53,8 @@ public class PesananSwing extends javax.swing.JFrame {
             objectPesanan[counter][2] = pesanan.getKode_Produk();
             objectPesanan[counter][3] = pesanan.getJumlah_pesanan();
             
+            cb_kode_produk.addItem(pesanan.getKode_Produk());
+            cb_username_pembeli.addItem(pesanan.getUsername_pembeli());
             counter++;
         }
         tabel_pesanan.setModel(new javax.swing.table.DefaultTableModel(
@@ -59,8 +63,32 @@ public class PesananSwing extends javax.swing.JFrame {
                 "ID Pesanan", "Username Pembeli", "Kode Produk", "Jumlah Pesanan"
             }
         ));
+        
     }
    
+    private void getKodeProduk(){
+        pesananInterface = new PesananController();
+        List<Pesanan> listPesanan = new ArrayList<>();
+        listPesanan = pesananInterface.findKodeProd();
+        cb_kode_produk.removeAllItems();
+        
+        for (Pesanan pesanan : listPesanan) {
+            cb_kode_produk.addItem(pesanan.getKode_Produk());
+        }
+        
+    }
+    
+     private void getUsernamePembeli(){
+        pesananInterface = new PesananController();
+        List<Pesanan> listPesanan = new ArrayList<>();
+        listPesanan = pesananInterface.findUserPem();
+        cb_username_pembeli.removeAllItems();
+        
+        for (Pesanan pesanan : listPesanan) {
+            cb_username_pembeli.addItem(pesanan.getUsername_pembeli());
+        }
+    }
+      
     private void loadData(Pesanan pesanan) {
         Object[][] objectPesanan= new Object[1][8];
         
@@ -86,14 +114,12 @@ public class PesananSwing extends javax.swing.JFrame {
         return pesanan;
     }
     
-    
-    private void emptyField() {
+    public void emptyField (){
         txt_id_pesanan.setText("");
         txt_jumlah_pesanan.setText("");
-        txt_kode_produk.setText("");
-        txt_search_id.setText("");
-        txt_username_pembeli.setText("");
     }
+    
+  
     
     
     /**
@@ -113,13 +139,17 @@ public class PesananSwing extends javax.swing.JFrame {
         btn_Delete = new javax.swing.JButton();
         btn_clear = new javax.swing.JButton();
         txt_id_pesanan = new javax.swing.JTextField();
-        txt_username_pembeli = new javax.swing.JTextField();
-        txt_kode_produk = new javax.swing.JTextField();
         txt_jumlah_pesanan = new javax.swing.JTextField();
         btn_search_id = new javax.swing.JButton();
         btn_refresh = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        cb_username_pembeli = new javax.swing.JComboBox<>();
+        cb_kode_produk = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabel_pesanan.setModel(new javax.swing.table.DefaultTableModel(
@@ -148,7 +178,7 @@ public class PesananSwing extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabel_pesanan);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 420, 190));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 600, 270));
 
         txt_search_id.setText("Search");
         txt_search_id.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +186,7 @@ public class PesananSwing extends javax.swing.JFrame {
                 txt_search_idActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_search_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 330, 30));
+        getContentPane().add(txt_search_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 330, 30));
 
         btn_create.setText("Create");
         btn_create.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +194,7 @@ public class PesananSwing extends javax.swing.JFrame {
                 btn_createActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, 30));
+        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, 30));
 
         btn_update.setText("Update");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +202,7 @@ public class PesananSwing extends javax.swing.JFrame {
                 btn_updateActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, 30));
+        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, 30));
 
         btn_Delete.setText("Delete");
         btn_Delete.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +210,7 @@ public class PesananSwing extends javax.swing.JFrame {
                 btn_DeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, 30));
+        getContentPane().add(btn_Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, -1, 30));
 
         btn_clear.setText("Clear");
         btn_clear.addActionListener(new java.awt.event.ActionListener() {
@@ -188,24 +218,13 @@ public class PesananSwing extends javax.swing.JFrame {
                 btn_clearActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, 30));
+        getContentPane().add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, 30));
 
         txt_id_pesanan.setText("ID_Pesanan");
-        getContentPane().add(txt_id_pesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 230, 30));
-
-        txt_username_pembeli.setText("Username_pembeli");
-        txt_username_pembeli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_username_pembeliActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txt_username_pembeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 230, 30));
-
-        txt_kode_produk.setText("kode_produk");
-        getContentPane().add(txt_kode_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 132, 230, 30));
+        getContentPane().add(txt_id_pesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 260, 30));
 
         txt_jumlah_pesanan.setText("Jumlah Pesanan");
-        getContentPane().add(txt_jumlah_pesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 230, 30));
+        getContentPane().add(txt_jumlah_pesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 260, 30));
 
         btn_search_id.setText("Search");
         btn_search_id.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +232,7 @@ public class PesananSwing extends javax.swing.JFrame {
                 btn_search_idActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_search_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, -1, 30));
+        getContentPane().add(btn_search_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, -1, 30));
 
         btn_refresh.setText("Refresh");
         btn_refresh.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +240,25 @@ public class PesananSwing extends javax.swing.JFrame {
                 btn_refreshActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, 30));
+        getContentPane().add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, -1, 30));
+
+        jLabel1.setText("Jumlah Pesanan");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        cb_username_pembeli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cb_username_pembeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 270, 30));
+
+        cb_kode_produk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cb_kode_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 270, 30));
+
+        jLabel2.setText("Username Pembeli");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
+
+        jLabel3.setText("ID Pesanan");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel4.setText("Kode Produk");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -229,65 +266,6 @@ public class PesananSwing extends javax.swing.JFrame {
     private void txt_search_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_search_idActionPerformed
 
     }//GEN-LAST:event_txt_search_idActionPerformed
-
-    private void txt_username_pembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_username_pembeliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_username_pembeliActionPerformed
-
-    private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
-        int id_pesanan;
-        String username_pembeli, kode_produk;
-        int jumlah_pesanan;
-        
-        pesananInterface = new PesananController();
-        id_pesanan= Integer.parseInt(txt_id_pesanan.getText());
-        username_pembeli = txt_username_pembeli.getText();
-        kode_produk = txt_kode_produk.getText();
-        jumlah_pesanan = Integer.parseInt(txt_jumlah_pesanan.getText());
-       
-        
-        Pesanan pesanan = new Pesanan();
-        pesanan.setId_pesanan(id_pesanan);
-        pesanan.setUsername_pembeli(username_pembeli);
-        pesanan.setKode_Produk(kode_produk);
-        pesanan.setJumlah_pesanan(jumlah_pesanan);
-      
-        
-        pesananInterface.create(pesanan);
-        JOptionPane.showMessageDialog(null, "Data pesanan created successfully");
-        loadData();
-        emptyField();
-
-    }//GEN-LAST:event_btn_createActionPerformed
-
-    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-        emptyField();
-    }//GEN-LAST:event_btn_clearActionPerformed
-
-    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-        int id_pesanan;
-        String username_pembeli, kode_produk;
-        int jumlah_pesanan;
-        pesananInterface = new PesananController();
-        
-        id_pesanan = Integer.parseInt(txt_id_pesanan.getText());
-        username_pembeli = txt_username_pembeli.getText();
-        kode_produk = txt_kode_produk.getText();
-        jumlah_pesanan = Integer.parseInt(txt_jumlah_pesanan.getText());
-       
-        
-        Pesanan pesanan = new Pesanan();
-        pesanan.setId_pesanan(id_pesanan);
-        pesanan.setUsername_pembeli(username_pembeli);
-        pesanan.setKode_Produk(kode_produk);
-        pesanan.setJumlah_pesanan(jumlah_pesanan);
-      
-        
-        pesananInterface.update(pesanan);
-        JOptionPane.showMessageDialog(null, "Data pesanan Updated successfully");
-        loadData();
-        emptyField();
-    }//GEN-LAST:event_btn_updateActionPerformed
 
     private void tabel_pesananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_pesananMouseClicked
         String id_pesanan, username_pembeli, kode_produk;
@@ -299,10 +277,7 @@ public class PesananSwing extends javax.swing.JFrame {
         kode_produk = tabel_pesanan.getValueAt(row, 2).toString();
         jumlah_pesanan = Integer.parseInt(tabel_pesanan.getValueAt(row, 3).toString());
         
-        txt_id_pesanan.setText(id_pesanan);
-        txt_username_pembeli.setText(username_pembeli);
-        txt_kode_produk.setText(kode_produk);
-        txt_jumlah_pesanan.setText(jumlah_pesanan+"");
+
         
     }//GEN-LAST:event_tabel_pesananMouseClicked
 
@@ -323,22 +298,73 @@ public class PesananSwing extends javax.swing.JFrame {
 
     private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
         int id_pesanan;
+        int row = tabel_pesanan.getSelectedRow();
         pesananInterface = new PesananController();
         int dialogButton = JOptionPane.YES_NO_OPTION;
         
-        id_pesanan = Integer.parseInt(txt_id_pesanan.getText());
+        id_pesanan = Integer.parseInt(tabel_pesanan.getValueAt(row, 0).toString());
         
         int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure to delete it?", "Warning", dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
             pesananInterface.delete(id_pesanan);
             loadData();
-            emptyField();
+       
         }
     }//GEN-LAST:event_btn_DeleteActionPerformed
 
     private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
         loadData();
     }//GEN-LAST:event_btn_refreshActionPerformed
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+
+    }//GEN-LAST:event_btn_clearActionPerformed
+
+    private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
+        int id_pesanan;
+        String username_pembeli, kode_produk;
+        int jumlah_pesanan;
+
+        pesananInterface = new PesananController();
+        id_pesanan= Integer.parseInt(txt_id_pesanan.getText());
+        username_pembeli = cb_username_pembeli.getSelectedItem().toString();
+        kode_produk = cb_kode_produk.getSelectedItem().toString();
+        jumlah_pesanan = Integer.parseInt(txt_jumlah_pesanan.getText());
+
+        Pesanan pesanan = new Pesanan();
+        pesanan.setId_pesanan(id_pesanan);
+        pesanan.setUsername_pembeli(username_pembeli);
+        pesanan.setKode_Produk(kode_produk);
+        pesanan.setJumlah_pesanan(jumlah_pesanan);
+
+        pesananInterface.create(pesanan);
+        JOptionPane.showMessageDialog(null, "Data pesanan created successfully");
+        loadData();
+        emptyField();
+    }//GEN-LAST:event_btn_createActionPerformed
+
+    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
+        int id_pesanan;
+        String username_pembeli, kode_produk;
+        int jumlah_pesanan;
+        pesananInterface = new PesananController();
+
+        id_pesanan = Integer.parseInt(txt_id_pesanan.getText());
+        username_pembeli = cb_username_pembeli.getSelectedItem().toString();
+        kode_produk = cb_kode_produk.getSelectedItem().toString();
+        jumlah_pesanan = Integer.parseInt(txt_jumlah_pesanan.getText());
+
+        Pesanan pesanan = new Pesanan();
+        pesanan.setId_pesanan(id_pesanan);
+        pesanan.setUsername_pembeli(username_pembeli);
+        pesanan.setKode_Produk(kode_produk);
+        pesanan.setJumlah_pesanan(jumlah_pesanan);
+
+        pesananInterface.update(pesanan);
+        JOptionPane.showMessageDialog(null, "Data pesanan Updated successfully");
+        loadData();
+        emptyField();
+    }//GEN-LAST:event_btn_updateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,7 +377,7 @@ public class PesananSwing extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -389,12 +415,16 @@ public class PesananSwing extends javax.swing.JFrame {
     private javax.swing.JButton btn_refresh;
     private javax.swing.JButton btn_search_id;
     private javax.swing.JButton btn_update;
+    private javax.swing.JComboBox<String> cb_kode_produk;
+    private javax.swing.JComboBox<String> cb_username_pembeli;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabel_pesanan;
     private javax.swing.JTextField txt_id_pesanan;
     private javax.swing.JTextField txt_jumlah_pesanan;
-    private javax.swing.JTextField txt_kode_produk;
     private javax.swing.JTextField txt_search_id;
-    private javax.swing.JTextField txt_username_pembeli;
     // End of variables declaration//GEN-END:variables
 }

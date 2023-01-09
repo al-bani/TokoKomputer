@@ -1,6 +1,8 @@
 
 package Pojo;
 
+import java.util.List;
+
 /**
  *
  * @author pesanan
@@ -12,8 +14,10 @@ public class Pesanan {
     private String kode_Produk;
     private int jumlah_pesanan;
 
+
     public Pesanan() {
     }
+    
 
     public int getId_pesanan() {
         return id_pesanan;

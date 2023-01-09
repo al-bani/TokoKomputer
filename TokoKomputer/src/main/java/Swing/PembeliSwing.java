@@ -52,7 +52,7 @@ public class PembeliSwing extends javax.swing.JFrame {
         int counter = 0;
         
         for (Pembeli pembeli : listPembeli) {
-            objectPembeli[counter][0] = pembeli.getId();
+            objectPembeli[counter][0] = pembeli.getUsernamePembeli();
             objectPembeli[counter][1] = pembeli.getNamaPembeli();
             objectPembeli[counter][2] = pembeli.getAlamatPembeli();
             objectPembeli[counter][3] = pembeli.getPasswordPembeli();
@@ -71,7 +71,7 @@ public class PembeliSwing extends javax.swing.JFrame {
         int counter = 0;
         
         
-            objectPembeli[counter][0] = pembeli.getId();
+            objectPembeli[counter][0] = pembeli.getUsernamePembeli();
             objectPembeli[counter][1] = pembeli.getNamaPembeli();
             objectPembeli[counter][2] = pembeli.getAlamatPembeli();
             objectPembeli[counter][3] = pembeli.getPasswordPembeli();
@@ -112,7 +112,6 @@ public class PembeliSwing extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_alamat = new javax.swing.JTextArea();
-        btn_save = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
         print = new javax.swing.JButton();
@@ -162,13 +161,6 @@ public class PembeliSwing extends javax.swing.JFrame {
         txt_alamat.setRows(5);
         jScrollPane1.setViewportView(txt_alamat);
 
-        btn_save.setText("SAVE");
-        btn_save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_saveActionPerformed(evt);
-            }
-        });
-
         btn_delete.setText("DELETE");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,15 +207,13 @@ public class PembeliSwing extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addGroup(panel_inputLayout.createSequentialGroup()
-                                .addComponent(btn_save)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_delete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_update))
-                            .addGroup(panel_inputLayout.createSequentialGroup()
                                 .addComponent(btn_clear)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(print)))
+                                .addComponent(print))
+                            .addGroup(panel_inputLayout.createSequentialGroup()
+                                .addComponent(btn_delete)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_update)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -248,14 +238,13 @@ public class PembeliSwing extends javax.swing.JFrame {
                 .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_save)
                     .addComponent(btn_delete)
                     .addComponent(btn_update))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_clear)
                     .addComponent(print))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
         tabel_pembeli.setModel(new javax.swing.table.DefaultTableModel(
@@ -277,6 +266,11 @@ public class PembeliSwing extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabel_pembeli);
 
         txt_search.setText("Search by Username");
+        txt_search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_searchMouseClicked(evt);
+            }
+        });
         txt_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_searchActionPerformed(evt);
@@ -347,28 +341,6 @@ public class PembeliSwing extends javax.swing.JFrame {
     private void txt_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_searchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_searchActionPerformed
-
-    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-        // TODO add your handling code here:
-        String usernamePembeli, namaPembeli, alamatPembeli, passwordPembeli;
-        pembeliInterface = new PembeliController();
-        
-        usernamePembeli= txt_username.getText();
-        namaPembeli= txt_nama.getText();
-        alamatPembeli = txt_alamat.getText();
-        passwordPembeli= txt_password.getText();
-        
-        Pembeli pembeli = new Pembeli();
-        pembeli.setUsernamePembeli(usernamePembeli);
-        pembeli.setNamaPembeli(namaPembeli);
-        pembeli.setAlamatPembeli(alamatPembeli);
-        pembeli.setPasswordPembeli(passwordPembeli);
-        
-        pembeliInterface.create(pembeli);
-        JOptionPane.showMessageDialog(null, "Data pembeli created successfully");
-        loadData();
-        emptyField(); 
-    }//GEN-LAST:event_btn_saveActionPerformed
 
     private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
         // TODO add your handling code here:
@@ -469,6 +441,11 @@ public class PembeliSwing extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tabel_pembeliMouseClicked
 
+    private void txt_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_searchMouseClicked
+        // TODO add your handling code here:
+        txt_search.setText("");
+    }//GEN-LAST:event_txt_searchMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -480,7 +457,7 @@ public class PembeliSwing extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -515,7 +492,6 @@ public class PembeliSwing extends javax.swing.JFrame {
     private javax.swing.JButton btc_refresh;
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_delete;
-    private javax.swing.JButton btn_save;
     private javax.swing.JButton btn_search;
     private javax.swing.JButton btn_update;
     private javax.swing.JLabel jLabel1;

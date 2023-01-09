@@ -125,7 +125,7 @@ public class PromoSwing extends javax.swing.JFrame {
         btn_clear = new javax.swing.JButton();
         btn_refresh = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tabel_promo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

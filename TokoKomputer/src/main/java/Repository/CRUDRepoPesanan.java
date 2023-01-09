@@ -16,4 +16,6 @@ public interface CRUDRepoPesanan<T, ID> {
     ID update(T object);
     T findById(int id);
     ID delete(int id);
+    List<T> findKodeProd();
+    List<T> findUserPem();
 }

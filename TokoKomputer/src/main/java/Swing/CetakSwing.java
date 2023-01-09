@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -29,10 +31,10 @@ public class CetakSwing extends javax.swing.JFrame {
      */
     
     CetakInterface cetakInterface;
+    
     public CetakSwing() {
         initComponents();
         this.setLocationRelativeTo(null);
-        loadData();
     }
     
     public void close() {
@@ -40,63 +42,19 @@ public class CetakSwing extends javax.swing.JFrame {
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(we);
     }
     
-    private void emptyField() {
-        txt_id.setText("");
-        txt_jumlahPembeli.setText("");
-        txt_jumlahProduk.setText("");
-        txt_totalPembelian.setText("");
+    public void emptyFields(){
+        txt_invoice.setText("");
+        txt_print.setText("");
+        cb_keuntungan.setSelected(false);
+            cb_tot_pem.setSelected(false);
+            cb_tot_prod.setSelected(false);
+            cb_tot_pes.setSelected(false);
+            cb_jum_pes.setSelected(false);
+            cb_keuntungan.setSelected(false);
+            cb_total_harga_pesanan.setSelected(false);
+            cb_check_all.setSelected(false);
     }
     
-    private void loadData() {
-        cetakInterface = new CetakController();
-        List<Cetak> listCetak = new ArrayList<>();
-        listCetak = cetakInterface.findAll();
-        Object[][] objectCetak = new Object[listCetak.size()][8];
-        
-        int counter = 0;
-        
-        for (Cetak cetak : listCetak) {
-            objectCetak[counter][0] = cetak.getId();
-            objectCetak[counter][1] = cetak.getJumlahProduk();
-            objectCetak[counter][2] = cetak.getTotalPembelian();
-            objectCetak[counter][3] = cetak.getJumlahPembeli();
-            counter++;
-        }
-        tabel_cetak.setModel(new javax.swing.table.DefaultTableModel(
-            objectCetak,
-            new String [] {
-                "ID", "jumlah_produk", "total_pembelian", "Jumlah_pembeli"
-            }
-        ));
-    }
-    private void loadData(Cetak cetak) {
-        Object[][] objectCetak = new Object[1][8];
-        
-        int counter = 0;
-        
-        
-            objectCetak[counter][0] = cetak.getId();
-            objectCetak[counter][1] = cetak.getJumlahProduk();
-            objectCetak[counter][2] = cetak.getTotalPembelian();
-            objectCetak[counter][3] = cetak.getJumlahPembeli();
-            
-            counter++;
-        
-        tabel_cetak.setModel(new javax.swing.table.DefaultTableModel(
-            objectCetak,
-            new String [] {
-                "ID", "jumlah_produk", "total_pembelian", "Jumlah_pembeli"
-            }
-        ));
-    }
-    private Cetak findCetak(int id) {
-        Cetak cetak = new Cetak();
-        cetakInterface = new CetakController();
-        cetak = cetakInterface.findById(id);
-    
-        return cetak;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,358 +64,292 @@ public class CetakSwing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton4 = new javax.swing.JButton();
         panel_background = new javax.swing.JPanel();
-        txt_id = new javax.swing.JTextField();
-        txt_jumlahProduk = new javax.swing.JTextField();
-        txt_jumlahPembeli = new javax.swing.JTextField();
-        txt_totalPembelian = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabel_cetak = new javax.swing.JTable();
-        btn_save = new javax.swing.JButton();
-        btn_delete = new javax.swing.JButton();
-        btn_clear = new javax.swing.JButton();
-        btn_update = new javax.swing.JButton();
+        txt_print = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        txt_invoice = new javax.swing.JTextField();
+        btn_add_record = new javax.swing.JButton();
+        cb_tot_pem = new javax.swing.JCheckBox();
+        cb_tot_prod = new javax.swing.JCheckBox();
+        cb_tot_pes = new javax.swing.JCheckBox();
+        cb_jum_pes = new javax.swing.JCheckBox();
+        cb_keuntungan = new javax.swing.JCheckBox();
         btn_print = new javax.swing.JButton();
-        txt_search = new javax.swing.JTextField();
-        btn_search = new javax.swing.JButton();
-        btn_refresh = new javax.swing.JButton();
+        btn_clear = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cb_check_all = new javax.swing.JCheckBox();
+        btn_kembali = new javax.swing.JButton();
+        cb_total_harga_pesanan = new javax.swing.JCheckBox();
+        txt_tanggal = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jButton4.setText("jButton1");
 
-        panel_background.setBackground(new java.awt.Color(153, 255, 255));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        txt_id.setEditable(false);
-        txt_id.addActionListener(new java.awt.event.ActionListener() {
+        panel_background.setBackground(new java.awt.Color(238, 238, 238));
+
+        txt_print.setEditable(false);
+        txt_print.setColumns(20);
+        txt_print.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
+        txt_print.setRows(5);
+        txt_print.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setViewportView(txt_print);
+
+        jLabel1.setText("Nomor Invoice");
+
+        btn_add_record.setText("Add Record");
+        btn_add_record.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_add_record.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_idActionPerformed(evt);
+                btn_add_recordActionPerformed(evt);
             }
         });
 
-        txt_jumlahProduk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_jumlahProdukActionPerformed(evt);
-            }
-        });
+        cb_tot_pem.setText("Total Pembeli");
+        cb_tot_pem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        txt_totalPembelian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_totalPembelianActionPerformed(evt);
-            }
-        });
+        cb_tot_prod.setText("Total Produk");
+        cb_tot_prod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel1.setText("ID");
+        cb_tot_pes.setText("Total Pesanan");
+        cb_tot_pes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel2.setText("Jumlah Produk");
+        cb_jum_pes.setText("Jumlah Pesanan");
+        cb_jum_pes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel3.setText("Total Pembelian");
+        cb_keuntungan.setText("Keuntungan");
+        cb_keuntungan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel4.setText("Jumlah Pembeli");
-
-        tabel_cetak.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Jumlah Produk", "Total Pembelian", "Jumlah Pembeli"
-            }
-        ));
-        tabel_cetak.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabel_cetakMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tabel_cetak);
-
-        btn_save.setText("SAVE");
-        btn_save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_saveActionPerformed(evt);
-            }
-        });
-
-        btn_delete.setText("DELETE");
-        btn_delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_deleteActionPerformed(evt);
-            }
-        });
-
-        btn_clear.setText("CLEAR");
-        btn_clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_clearActionPerformed(evt);
-            }
-        });
-
-        btn_update.setText("UPDATE");
-        btn_update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_updateActionPerformed(evt);
-            }
-        });
-
-        btn_print.setText("PRINT");
+        btn_print.setText("Print");
+        btn_print.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_printActionPerformed(evt);
             }
         });
 
-        txt_search.setText("Search by ID");
-        txt_search.addActionListener(new java.awt.event.ActionListener() {
+        btn_clear.setText("Clear");
+        btn_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_searchActionPerformed(evt);
+                btn_clearActionPerformed(evt);
             }
         });
 
-        btn_search.setText("SEARCH");
-        btn_search.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setText("CETAK INVOICE");
+
+        cb_check_all.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cb_check_all.setText("Check All");
+        cb_check_all.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cb_check_all.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_searchActionPerformed(evt);
+                cb_check_allActionPerformed(evt);
             }
         });
 
-        btn_refresh.setText("REFRESH");
-        btn_refresh.addActionListener(new java.awt.event.ActionListener() {
+        btn_kembali.setText("Kembali");
+        btn_kembali.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_refreshActionPerformed(evt);
+                btn_kembaliActionPerformed(evt);
             }
         });
+
+        cb_total_harga_pesanan.setText("Total Harga Pesanan");
+
+        jLabel3.setText("Tanggal Invoice");
 
         javax.swing.GroupLayout panel_backgroundLayout = new javax.swing.GroupLayout(panel_background);
         panel_background.setLayout(panel_backgroundLayout);
         panel_backgroundLayout.setHorizontalGroup(
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_backgroundLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
                 .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_backgroundLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panel_backgroundLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btn_print, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panel_backgroundLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_jumlahProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_totalPembelian, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_jumlahPembeli, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
+                            .addComponent(btn_add_record, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addGroup(panel_backgroundLayout.createSequentialGroup()
-                                .addComponent(btn_save)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_delete))
-                            .addGroup(panel_backgroundLayout.createSequentialGroup()
-                                .addComponent(btn_update)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_clear))))
-                    .addGroup(panel_backgroundLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(btn_print)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panel_backgroundLayout.createSequentialGroup()
-                        .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_search)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_refresh)))
-                .addGap(14, 14, 14))
+                            .addComponent(jLabel1)
+                            .addComponent(txt_invoice, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cb_tot_pem)
+                            .addComponent(cb_tot_prod)
+                            .addComponent(cb_tot_pes)
+                            .addComponent(cb_jum_pes)
+                            .addComponent(cb_keuntungan)
+                            .addComponent(cb_total_harga_pesanan)
+                            .addComponent(cb_check_all)))
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         panel_backgroundLayout.setVerticalGroup(
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_backgroundLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_search)
-                    .addComponent(btn_refresh))
-                .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(panel_backgroundLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
                         .addComponent(jLabel2)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_jumlahProduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel3)
-                        .addGap(1, 1, 1)
-                        .addComponent(txt_totalPembelian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_jumlahPembeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_save)
-                            .addComponent(btn_delete))
+                        .addComponent(txt_invoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_update)
-                            .addComponent(btn_clear))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_print)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(txt_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cb_tot_pem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_tot_prod)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_tot_pes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_jum_pes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_total_harga_pesanan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_keuntungan)
+                        .addGap(11, 11, 11)
+                        .addComponent(cb_check_all)
+                        .addGap(41, 41, 41)
+                        .addComponent(btn_add_record, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_print, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panel_background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(panel_background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_jumlahProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_jumlahProdukActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_jumlahProdukActionPerformed
-
-    private void txt_totalPembelianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_totalPembelianActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_totalPembelianActionPerformed
-
-    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-        // TODO add your handling code here:
-        int jumlahProduk, jumlahPembeli;
-        float totalPembelian;
+    private void btn_add_recordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_recordActionPerformed
+        String totalPembeli = "", totalProduk = "", totalPesanan = "", jumlahPesanan = "", keuntungan = "", totalHarga = "";
         cetakInterface = new CetakController();
         
-        jumlahProduk= Integer.parseInt(txt_jumlahProduk.getText());
-        totalPembelian= Float.parseFloat(txt_totalPembelian.getText());
-        jumlahPembeli= Integer.parseInt(txt_jumlahPembeli.getText());
+        if (cb_tot_pem.isSelected()) {
+            int totalPembeliINT = cetakInterface.hitungTotalPem();
+            totalPembeli = Integer.toString(totalPembeliINT);
+        }
         
+        if (cb_tot_prod.isSelected()) {
+            int totalProdukINT = cetakInterface.hitungTotalProd();
+            totalProduk = Integer.toString(totalProdukINT);
+        }
         
-        Cetak cetak = new Cetak();
-        cetak.setJumlahProduk(jumlahProduk);
-        cetak.setTotalPembelian(totalPembelian);
-        cetak.setJumlahPembeli(jumlahPembeli);
+        if (cb_tot_pes.isSelected()) {
+            int totalPesananINT = cetakInterface.hitungTotalPes();
+            totalPesanan = Integer.toString(totalPesananINT);
+        }
         
-        cetakInterface.create(cetak);
-        JOptionPane.showMessageDialog(null, "Data cetak created successfully");
-        loadData();
-        emptyField();
-    }//GEN-LAST:event_btn_saveActionPerformed
+        if (cb_jum_pes.isSelected()) {
+            int totalJumlahPesanan = cetakInterface.hitungJumPes();
+            jumlahPesanan = Integer.toString(totalJumlahPesanan);
+        }
+        
+        if (cb_keuntungan.isSelected()) {
+            double totalKeuntungan = cetakInterface.hitungKeuntungan();
+            keuntungan = Double.toString(totalKeuntungan);
+        }
+        
+        if (cb_total_harga_pesanan.isSelected()) {
+            double totalHargaDouble = cetakInterface.hitungTotalHarga();
+            totalHarga = Double.toString(totalHargaDouble);
+        }
+        
+        if (txt_invoice.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "anda belum mengisi Invoice");
+        } else {
+            txt_print.setText("");
+            txt_print.append("\t\t INVOICE TOKO KOMPUTER\n\n\n"
+                    
+                    + "Nomor Invoice :\t\t" + txt_invoice.getText() + "\nTanggal : " + txt_tanggal.getText() + "\n"
+                    + "======================================================\n\n"
+                            + "Total Pembeli :\t\t" + totalPembeli + "\n"
+                            + "Total Produk :\t\t" + totalProduk + "\n"
+                            + "total Pesanan :\t\t" + totalPesanan + "\n"
+                            + "Jumlah Pesanan :\t\t" + jumlahPesanan + "\n"
+                            + "Total Harga Pesanan :\tRp." + totalHarga + "\n"
+                            + "Total Keuntungan :\tRp." + keuntungan + "\n");
+        }
+    }//GEN-LAST:event_btn_add_recordActionPerformed
+
+    private void cb_check_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_check_allActionPerformed
+       cb_keuntungan.setSelected(true);
+       cb_tot_pem.setSelected(true);
+       cb_tot_prod.setSelected(true);
+       cb_tot_pes.setSelected(true);
+       cb_jum_pes.setSelected(true);
+       cb_keuntungan.setSelected(true);
+       cb_total_harga_pesanan.setSelected(true);
+       
+        if (!cb_check_all.isSelected()) {
+            cb_keuntungan.setSelected(false);
+            cb_tot_pem.setSelected(false);
+            cb_tot_prod.setSelected(false);
+            cb_tot_pes.setSelected(false);
+            cb_jum_pes.setSelected(false);
+            cb_keuntungan.setSelected(false);
+            cb_total_harga_pesanan.setSelected(false);
+        }
+    }//GEN-LAST:event_cb_check_allActionPerformed
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        emptyFields();
+    }//GEN-LAST:event_btn_clearActionPerformed
 
     private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
-        // TODO add your handling code here:
-        MessageFormat header = new MessageFormat("List Cetak Reporting");
-        MessageFormat footer = new MessageFormat("Page {0, number, integer}");
-        try {
-            tabel_cetak.print(JTable.PrintMode.FIT_WIDTH, header, footer);
-        } catch (PrinterException e) {
-            System.out.println("Error: " + e);
+        if (txt_print.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "anda belum menambahkan Record");
+        } else {
+            try {
+                txt_print.print();
+            } catch (PrinterException pe) {
+                Logger.getLogger(CetakSwing.class.getName()).log(Level.SEVERE, null, pe);
+            }
         }
     }//GEN-LAST:event_btn_printActionPerformed
 
-    private void txt_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_searchActionPerformed
+    private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_searchActionPerformed
-
-    private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
-        // TODO add your handling code here:
-        loadData();
-    }//GEN-LAST:event_btn_refreshActionPerformed
-
-    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        // TODO add your handling code here:
-        int id;
-        cetakInterface = new CetakController();
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        
-        id = Integer.parseInt(txt_id.getText());
-        
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure to delete it?", "Warning", dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            cetakInterface.delete(id);
-            loadData();
-            emptyField();
-        }
-    }//GEN-LAST:event_btn_deleteActionPerformed
-
-    private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-        // TODO add your handling code here:
-        int jumlahProduk, jumlahPembeli;
-        float totalPembelian;
-        cetakInterface = new CetakController();
-        
-        jumlahProduk= Integer.parseInt(txt_jumlahProduk.getText());
-        totalPembelian= Float.parseFloat(txt_totalPembelian.getText());
-        jumlahPembeli= Integer.parseInt(txt_jumlahPembeli.getText());
-        
-        
-        Cetak cetak = new Cetak();
-        cetak.setJumlahProduk(jumlahProduk);
-        cetak.setTotalPembelian(totalPembelian);
-        cetak.setJumlahPembeli(jumlahPembeli);
-        
-        cetakInterface.update(cetak);
-        JOptionPane.showMessageDialog(null, "Data cetak created successfully");
-        loadData();
-        emptyField();
-    }//GEN-LAST:event_btn_updateActionPerformed
-
-    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-        // TODO add your handling code here:
-        emptyField();
-    }//GEN-LAST:event_btn_clearActionPerformed
-
-    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
-        // TODO add your handling code here:
-        int id;
-        Cetak searchedCetak = new Cetak();
-        
-        id = Integer.parseInt(txt_search.getText());
-        searchedCetak = findCetak(id);
-        if (searchedCetak != null) {
-            loadData(searchedCetak);
-        } else {
-            JOptionPane.showMessageDialog(null, "Data tidak ditemukan!");
-        }
-    }//GEN-LAST:event_btn_searchActionPerformed
-
-    private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_idActionPerformed
-
-    private void tabel_cetakMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_cetakMouseClicked
-        // TODO add your handling code here:
-        int id, jumlahProduk, jumlahPembeli;
-        float totaPembelian;
-        
-        int row = tabel_cetak.getSelectedRow();
-        id = Integer.parseInt(tabel_cetak.getValueAt(row, 0).toString());
-        jumlahProduk = Integer.parseInt(tabel_cetak.getValueAt(row, 1).toString());
-        totaPembelian = Float.parseFloat(tabel_cetak.getValueAt(row, 2).toString());
-        jumlahPembeli = Integer.parseInt(tabel_cetak.getValueAt(row, 3).toString());
-        
-        txt_id.setText(id+"");
-        txt_jumlahProduk.setText(jumlahProduk+"");
-        txt_totalPembelian.setText(totaPembelian+"");
-        txt_jumlahPembeli.setText(jumlahPembeli+"");
-        
-    }//GEN-LAST:event_tabel_cetakMouseClicked
+    }//GEN-LAST:event_btn_kembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -470,7 +362,7 @@ public class CetakSwing extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -502,24 +394,25 @@ public class CetakSwing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_add_record;
     private javax.swing.JButton btn_clear;
-    private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_print;
-    private javax.swing.JButton btn_refresh;
-    private javax.swing.JButton btn_save;
-    private javax.swing.JButton btn_search;
-    private javax.swing.JButton btn_update;
+    private javax.swing.JCheckBox cb_check_all;
+    private javax.swing.JCheckBox cb_jum_pes;
+    private javax.swing.JCheckBox cb_keuntungan;
+    private javax.swing.JCheckBox cb_tot_pem;
+    private javax.swing.JCheckBox cb_tot_pes;
+    private javax.swing.JCheckBox cb_tot_prod;
+    private javax.swing.JCheckBox cb_total_harga_pesanan;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel_background;
-    private javax.swing.JTable tabel_cetak;
-    private javax.swing.JTextField txt_id;
-    private javax.swing.JTextField txt_jumlahPembeli;
-    private javax.swing.JTextField txt_jumlahProduk;
-    private javax.swing.JTextField txt_search;
-    private javax.swing.JTextField txt_totalPembelian;
+    private javax.swing.JTextField txt_invoice;
+    private javax.swing.JTextArea txt_print;
+    private javax.swing.JTextField txt_tanggal;
     // End of variables declaration//GEN-END:variables
 }

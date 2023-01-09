@@ -43,7 +43,7 @@ public class PesananController implements PesananInterface{
                 pesanan.setUsername_pembeli(rs.getString("username_Pembeli"));
                 pesanan.setKode_Produk(rs.getString("kode_Produk"));
                 pesanan.setJumlah_pesanan(rs.getInt("jumlah_Pesanan"));
-                
+               
                 
                 listPesanan.add(pesanan);
             }
@@ -145,6 +145,60 @@ public class PesananController implements PesananInterface{
         }
         
         return result;
+    }
+
+    @Override
+    public List<Pesanan> findKodeProd() {
+        List<Pesanan> listPesanan = new ArrayList<>();
+        String sql = "SELECT kode_produk FROM tb_produk";
+        
+        conMan = new ConnectionManager();
+        conn = conMan.connect();
+        
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+            
+            while (rs.next()) {                
+                Pesanan pesanan = new Pesanan();
+                pesanan.setKode_Produk(rs.getString("kode_Produk"));
+                
+                listPesanan.add(pesanan);
+            }
+            conMan.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(PesananController.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        
+        return listPesanan;
+    }
+
+    @Override
+    public List<Pesanan> findUserPem() {
+      List<Pesanan> listPesanan = new ArrayList<>();
+        String sql = "SELECT username_pembeli FROM tb_pembeli";
+        
+        conMan = new ConnectionManager();
+        conn = conMan.connect();
+        
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+            
+            while (rs.next()) {                
+                Pesanan pesanan = new Pesanan();
+                pesanan.setUsername_pembeli(rs.getString("username_pembeli"));
+                
+                listPesanan.add(pesanan);
+            }
+            conMan.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(PesananController.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        
+        return listPesanan;
     }
     
     

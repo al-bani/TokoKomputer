@@ -5,12 +5,12 @@
 package Interface;
 
 import Pojo.Cetak;
-import Repository.CRUDRepo;
+import Repository.RepoCetak;
 
 /**
  *
  * @author User
  */
-public interface CetakInterface extends CRUDRepo<Cetak, Integer>{
+public interface CetakInterface extends RepoCetak<Double, Integer>{
     
 }

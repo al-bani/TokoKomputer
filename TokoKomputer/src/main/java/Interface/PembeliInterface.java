@@ -11,6 +11,6 @@ import Repository.RepoPembeli;
  *
  * @author User
  */
-public interface PembeliInterface extends RepoPembeli<Pembeli, Object> {
+public interface PembeliInterface extends RepoPembeli<Pembeli, Integer> {
     
 }
