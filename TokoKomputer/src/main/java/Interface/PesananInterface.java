@@ -8,7 +8,7 @@ import Repository.CRUDRepoPesanan;
  *
  * @author Ramzi
  */
-public interface PesananInterface extends CRUDRepoPesanan<Pesanan, Object>{
+public interface PesananInterface extends CRUDRepoPesanan<Pesanan, Object, Integer>{
 
     
 }

@@ -19,7 +19,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-
 /**
  *
  * @author User
@@ -82,8 +81,8 @@ public class CetakSwing extends javax.swing.JFrame {
         cb_check_all = new javax.swing.JCheckBox();
         btn_kembali = new javax.swing.JButton();
         cb_total_harga_pesanan = new javax.swing.JCheckBox();
-        txt_tanggal = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        date_chooser = new com.toedter.calendar.JDateChooser();
 
         jButton4.setText("jButton1");
 
@@ -181,28 +180,30 @@ public class CetakSwing extends javax.swing.JFrame {
                             .addComponent(btn_print, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panel_backgroundLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_add_record, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_add_record, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1)
-                            .addComponent(txt_invoice, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_invoice)
                             .addComponent(cb_tot_pem)
                             .addComponent(cb_tot_prod)
                             .addComponent(cb_tot_pes)
                             .addComponent(cb_jum_pes)
                             .addComponent(cb_keuntungan)
                             .addComponent(cb_total_harga_pesanan)
-                            .addComponent(cb_check_all)))
-                    .addComponent(jLabel2))
+                            .addComponent(cb_check_all)
+                            .addComponent(date_chooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(panel_backgroundLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel2)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         panel_backgroundLayout.setVerticalGroup(
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(panel_backgroundLayout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -213,7 +214,7 @@ public class CetakSwing extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txt_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(date_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cb_tot_pem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -244,17 +245,11 @@ public class CetakSwing extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panel_background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panel_background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -297,10 +292,14 @@ public class CetakSwing extends javax.swing.JFrame {
         if (txt_invoice.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "anda belum mengisi Invoice");
         } else {
+            Date date = date_chooser.getDate();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            String tanggal = dateFormat.format(date);
+                    
             txt_print.setText("");
             txt_print.append("\t\t INVOICE TOKO KOMPUTER\n\n\n"
                     
-                    + "Nomor Invoice :\t\t" + txt_invoice.getText() + "\nTanggal : " + txt_tanggal.getText() + "\n"
+                    + "Nomor Invoice :\t\t" + txt_invoice.getText() + "\nTanggal : " + tanggal + "\n"
                     + "======================================================\n\n"
                             + "Total Pembeli :\t\t" + totalPembeli + "\n"
                             + "Total Produk :\t\t" + totalProduk + "\n"
@@ -405,6 +404,7 @@ public class CetakSwing extends javax.swing.JFrame {
     private javax.swing.JCheckBox cb_tot_pes;
     private javax.swing.JCheckBox cb_tot_prod;
     private javax.swing.JCheckBox cb_total_harga_pesanan;
+    private com.toedter.calendar.JDateChooser date_chooser;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -413,6 +413,5 @@ public class CetakSwing extends javax.swing.JFrame {
     private javax.swing.JPanel panel_background;
     private javax.swing.JTextField txt_invoice;
     private javax.swing.JTextArea txt_print;
-    private javax.swing.JTextField txt_tanggal;
     // End of variables declaration//GEN-END:variables
 }

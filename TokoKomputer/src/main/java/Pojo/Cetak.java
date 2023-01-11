@@ -16,6 +16,7 @@ public class Cetak {
 
     public Cetak() {
     }
+    
 
     public Integer getId() {
         return id;

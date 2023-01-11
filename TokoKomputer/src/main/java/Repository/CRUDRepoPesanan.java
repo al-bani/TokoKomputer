@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Ramzi
  */
-public interface CRUDRepoPesanan<T, ID> {
+public interface CRUDRepoPesanan<T, ID, I> {
     List<T> findAll();
     ID create(T object);
     ID update(T object);
@@ -18,4 +18,5 @@ public interface CRUDRepoPesanan<T, ID> {
     ID delete(int id);
     List<T> findKodeProd();
     List<T> findUserPem();
+    I userPayment(String kodeProd);
 }

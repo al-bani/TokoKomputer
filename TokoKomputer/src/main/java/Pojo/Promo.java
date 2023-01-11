@@ -10,10 +10,20 @@ public class Promo {
      private String namaPromo;
     private int kodePromo;
     private int potonganPromo;
-    private String lamaPromo;
+    private String lamaPromo,kategoriPromo;
 
     public Promo() {
     }
+
+    public String getKategoriPromo() {
+        return kategoriPromo;
+    }
+
+    public void setKategoriPromo(String kategoriPromo) {
+        this.kategoriPromo = kategoriPromo;
+    }
+    
+    
 
     public String getNamaPromo() {
         return namaPromo;

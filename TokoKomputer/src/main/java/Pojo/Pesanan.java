@@ -13,10 +13,19 @@ public class Pesanan {
     private String username_pembeli;
     private String kode_Produk;
     private int jumlah_pesanan;
-
+    private String metodePembayaran;
 
     public Pesanan() {
     }
+
+    public String getMetodePembayaran() {
+        return metodePembayaran;
+    }
+
+    public void setMetodePembayaran(String metodePembayaran) {
+        this.metodePembayaran = metodePembayaran;
+    }
+    
     
 
     public int getId_pesanan() {

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Base64;
 
 /**
  *
@@ -27,12 +28,17 @@ public class PenjualController implements PenjualInterface{
     Statement state;
     ResultSet rs;
     Dashboard dashboard;
+    
 
     @Override
     public Integer Login(String username, String password) {
         int result = 0;
+        
+        byte[] PasswordEncrypt = PasswordEncryptor(password);
+        String EncryptedPassword = new String(PasswordEncrypt);
+        
         String query = "SELECT * FROM tb_penjual  "
-                + "WHERE username = '"+username+"' AND password = '"+password+"'";
+                + "WHERE username = '"+username+"' AND password = '"+EncryptedPassword+"'";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         
@@ -43,7 +49,7 @@ public class PenjualController implements PenjualInterface{
             rs = state.executeQuery(query);
            
             while (rs.next()) {
-                if (username.equals(rs.getString("username")) && password.equals(rs.getString("password"))) {
+                if (username.equals(rs.getString("username")) && EncryptedPassword.equals(rs.getString("password"))) {
                     result = 1;
                 } else {
                     result = 0;
@@ -60,9 +66,13 @@ public class PenjualController implements PenjualInterface{
     @Override
     public Integer Register(String username, String password, String namaDepan, String namaBelakang, String alamat, String email) {
         int result = 0;
+        
+        byte[] PasswordEncrypt = PasswordEncryptor(password);
+        String EncryptedPassword = new String(PasswordEncrypt);
+        
         String query = "INSERT INTO tb_penjual "
                 + "(username, email, password, nama_depan, nama_belakang, alamat) "
-                + "VALUES ('"+username+"','"+email+"','"+password+"','"+namaDepan+"','"+namaBelakang+"','"+alamat+"')";
+                + "VALUES ('"+username+"','"+email+"','"+EncryptedPassword+"','"+namaDepan+"','"+namaBelakang+"','"+alamat+"')";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -84,8 +94,12 @@ public class PenjualController implements PenjualInterface{
     @Override
     public Integer updatePassword(String username, String Password) {
         int result = 0;
+        
+        byte[] PasswordEncrypt = PasswordEncryptor(Password);
+        String EncryptedPassword = new String(PasswordEncrypt);
+        
         String query = "UPDATE tb_penjual "
-                + "SET password = '"+Password+"' WHERE username = '"+username+"'";
+                + "SET password = '"+EncryptedPassword+"' WHERE username = '"+username+"'";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -135,7 +149,22 @@ public class PenjualController implements PenjualInterface{
 
         return result;
     }
-
+    
+    private static byte[] PasswordEncryptor(String password){
+        
+        byte[] EncryptedPassword = Base64.getEncoder().encode(password.getBytes());
+        
+        return EncryptedPassword;
+    }
+    
+    private static String passowrdDecryptor(byte[] encryptedPassword){
+        byte[] decrypt = Base64.getDecoder().decode(encryptedPassword);
+        String DecryptedPassword = new String(decrypt);
+        
+        return DecryptedPassword;
+    }
+    
+    
 
  
 }

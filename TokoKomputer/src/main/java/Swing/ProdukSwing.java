@@ -10,20 +10,29 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import Pojo.Produk;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import net.coobird.thumbnailator.Thumbnails;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+
 /**
  *
  * @author alzildan
@@ -248,7 +257,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         showProduk = new javax.swing.JPanel();
         img_pane = new javax.swing.JPanel();
-        jLabel34 = new javax.swing.JLabel();
+        img_lbl = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
@@ -551,6 +560,11 @@ public class ProdukSwing extends javax.swing.JFrame {
 
         create.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 341, 375, 110));
 
+        txt_harga_produk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_harga_produkActionPerformed(evt);
+            }
+        });
         txt_harga_produk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_harga_produkKeyPressed(evt);
@@ -871,7 +885,7 @@ public class ProdukSwing extends javax.swing.JFrame {
 
         img_pane.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel34.setBackground(new java.awt.Color(153, 153, 153));
+        img_lbl.setBackground(new java.awt.Color(153, 153, 153));
 
         javax.swing.GroupLayout img_paneLayout = new javax.swing.GroupLayout(img_pane);
         img_pane.setLayout(img_paneLayout);
@@ -879,14 +893,14 @@ public class ProdukSwing extends javax.swing.JFrame {
             img_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(img_paneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .addComponent(img_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                 .addContainerGap())
         );
         img_paneLayout.setVerticalGroup(
             img_paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(img_paneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                .addComponent(img_lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -955,7 +969,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         showProduk.add(txt_show_berat, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 240, -1));
 
         txt_show_pembayaran.setEditable(false);
-        showProduk.add(txt_show_pembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, 240, -1));
+        showProduk.add(txt_show_pembayaran, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, 130, -1));
 
         txt_show_deskripsi.setEditable(false);
         txt_show_deskripsi.setColumns(20);
@@ -1036,7 +1050,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_imageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imageActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
+                                                                                                                                                                                                                                                                                                                                                                                                                                    JFileChooser fileChooser = new JFileChooser();
         fileChooser.showOpenDialog(null);
         File file = fileChooser.getSelectedFile();
         String namaFileImage = file.getAbsolutePath();
@@ -1491,6 +1505,10 @@ public class ProdukSwing extends javax.swing.JFrame {
         btn_create.setBackground(colorRollover);
     }//GEN-LAST:event_btn_createMouseClicked
 
+    private void txt_harga_produkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_harga_produkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_harga_produkActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1554,6 +1572,7 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JPanel create;
     private javax.swing.JDesktopPane image_pane;
     private javax.swing.JDesktopPane image_pane_update;
+    private javax.swing.JLabel img_lbl;
     private javax.swing.JPanel img_pane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1582,7 +1601,6 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;

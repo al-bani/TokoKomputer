@@ -200,6 +200,35 @@ public class PesananController implements PesananInterface{
         
         return listPesanan;
     }
-    
-    
+
+    @Override
+    public Integer userPayment(String kodeProd) {
+         int result = 0;
+        String query = "SELECT prod.metode_pembayaran FROM tb_produk prod "
+                + "JOIN tb_pesanan pes ON prod.kode_produk = pes.kode_produk "
+                + "WHERE pes.kode_produk = '"+kodeProd+"'";
+        
+        conMan = new ConnectionManager();
+        conn = conMan.connect();
+        
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            
+            while (rs.next()) {         
+                if ("QRIS".equals(rs.getString("metode_pembayaran"))) {
+                    result = 1;
+                }
+            }
+             conMan.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(PesananController.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
+    }
+
+
+
 }

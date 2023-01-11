@@ -43,7 +43,7 @@ public class PromoController implements PromoInterface{
                 promo.setNamaPromo(rs.getString("nama_Promo"));
                 promo.setPotonganPromo(rs.getInt("potongan_Promo"));
                 promo.setLamaPromo(rs.getString("periode_Promo"));
-                
+                promo.setKategoriPromo(rs.getString("kategori_promo"));
                 
                 listPromo.add(promo);
             }
@@ -59,11 +59,12 @@ public class PromoController implements PromoInterface{
     @Override
     public Object create(Promo object) {
     int result = 0;
-        String sql = "INSERT INTO tb_promo(kode_promo, nama_promo, periode_Promo, potongan_promo)"
+        String sql = "INSERT INTO tb_promo(kode_promo, nama_promo, periode_Promo, potongan_promo, kategori_promo)"
                 + "VALUES("+object.getKodePromo()+", "
                 + "'"+object.getNamaPromo()+"', "
                 + "'"+object.getLamaPromo()+"', "
-                + ""+object.getPotonganPromo()+")";
+                + ""+object.getPotonganPromo()+", "
+                + "'"+object.getKategoriPromo()+"')";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -84,7 +85,8 @@ public class PromoController implements PromoInterface{
     int result = 0;
         String sql = "UPDATE tb_promo SET nama_promo='"+object.getNamaPromo()+"', "
                 + "potongan_promo = "+object.getPotonganPromo()+", "
-                + "periode_promo = '"+object.getLamaPromo()+" '"
+                + "periode_promo = '"+object.getLamaPromo()+" ', "
+                + "kategori_promo = '"+object.getKategoriPromo()+"'"
                 + "WHERE kode_promo = "+object.getKodePromo()+"";
         
         conMan = new ConnectionManager();
@@ -119,6 +121,7 @@ public class PromoController implements PromoInterface{
                 promo.setNamaPromo(rs.getString("nama_Promo"));
                 promo.setPotonganPromo(rs.getInt("potongan_Promo"));
                 promo.setLamaPromo(rs.getString("periode_Promo"));
+                 promo.setKategoriPromo(rs.getString("kategori_promo"));
             }
             conMan.disconnect();
         } catch (SQLException ex) {

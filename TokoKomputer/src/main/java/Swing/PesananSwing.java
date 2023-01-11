@@ -4,14 +4,26 @@ package Swing;
 import Pojo.Pesanan;
 import Interface.PesananInterface;
 import Controller.PesananController;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.print.PrinterException;
+import java.io.File;
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -33,6 +45,7 @@ public class PesananSwing extends javax.swing.JFrame {
         loadData();
         getKodeProduk();
         getUsernamePembeli();
+        btn_qris.setEnabled(false);
     }
 
     public void close() {
@@ -57,6 +70,7 @@ public class PesananSwing extends javax.swing.JFrame {
             cb_username_pembeli.addItem(pesanan.getUsername_pembeli());
             counter++;
         }
+        
         tabel_pesanan.setModel(new javax.swing.table.DefaultTableModel(
             objectPesanan,
             new String [] {
@@ -148,6 +162,7 @@ public class PesananSwing extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btn_qris = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -202,7 +217,7 @@ public class PesananSwing extends javax.swing.JFrame {
                 btn_updateActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, 30));
+        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, 30));
 
         btn_Delete.setText("Delete");
         btn_Delete.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +233,7 @@ public class PesananSwing extends javax.swing.JFrame {
                 btn_clearActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, 30));
+        getContentPane().add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, 30));
 
         txt_id_pesanan.setText("ID_Pesanan");
         getContentPane().add(txt_id_pesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 260, 30));
@@ -260,6 +275,14 @@ public class PesananSwing extends javax.swing.JFrame {
         jLabel4.setText("Kode Produk");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
+        btn_qris.setText("Lihat QRIS");
+        btn_qris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_qrisActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_qris, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, 30));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -270,6 +293,7 @@ public class PesananSwing extends javax.swing.JFrame {
     private void tabel_pesananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_pesananMouseClicked
         String id_pesanan, username_pembeli, kode_produk;
         int jumlah_pesanan;
+        pesananInterface = new PesananController();
         
         int row = tabel_pesanan.getSelectedRow();
         id_pesanan = tabel_pesanan.getValueAt(row, 0).toString();
@@ -277,7 +301,13 @@ public class PesananSwing extends javax.swing.JFrame {
         kode_produk = tabel_pesanan.getValueAt(row, 2).toString();
         jumlah_pesanan = Integer.parseInt(tabel_pesanan.getValueAt(row, 3).toString());
         
-
+        int activatedQris = pesananInterface.userPayment(kode_produk);
+        
+        if (activatedQris == 1) {
+            btn_qris.setEnabled(true);
+        } else {
+            btn_qris.setEnabled(false);
+        }
         
     }//GEN-LAST:event_tabel_pesananMouseClicked
 
@@ -366,6 +396,49 @@ public class PesananSwing extends javax.swing.JFrame {
         emptyField();
     }//GEN-LAST:event_btn_updateActionPerformed
 
+    private void btn_qrisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_qrisActionPerformed
+        try {
+            String id_pesanan, username_pembeli, kode_produk;
+            int jumlah_pesanan;
+            pesananInterface = new PesananController();
+
+            int row = tabel_pesanan.getSelectedRow();
+            id_pesanan = tabel_pesanan.getValueAt(row, 0).toString();
+            username_pembeli = tabel_pesanan.getValueAt(row, 1).toString();
+            kode_produk = tabel_pesanan.getValueAt(row, 2).toString();
+            jumlah_pesanan = Integer.parseInt(tabel_pesanan.getValueAt(row, 3).toString());
+            
+            String QrCodeData= "{\n"
+                    + "    'id_pesanan':"+id_pesanan+",\n"
+                    + "    'username_pembeli':"+username_pembeli+",\n"
+                    + "    'kode_produk':"+kode_produk+",\n"
+                    + "    'jumlah_pesanan':"+jumlah_pesanan+",\n"
+                    + "}";
+            
+            String filePath= "C:\\Users\\alzildan\\Documents\\Kuliah\\SEMESTER 3\\ISB-205 P - OOP\\tugas akhir\\Qr.png";
+            String charset= "UTF-8";
+            Map <EncodeHintType,ErrorCorrectionLevel> hintMap= new HashMap <EncodeHintType,ErrorCorrectionLevel> ();
+            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            BitMatrix  matrix= new MultiFormatWriter().encode(
+            new String (QrCodeData.getBytes(charset),charset),
+            BarcodeFormat.QR_CODE,200,200,hintMap);
+
+            MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath.lastIndexOf('.')+1),new File(filePath));
+
+            ImageIcon icon = new ImageIcon(filePath);
+            JFrame frame = new JFrame();
+            JLabel label = new JLabel(icon);
+            frame.add(label);
+            frame.setDefaultCloseOperation
+                (JFrame.DISPOSE_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }//GEN-LAST:event_btn_qrisActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -412,6 +485,7 @@ public class PesananSwing extends javax.swing.JFrame {
     private javax.swing.JButton btn_Delete;
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_create;
+    private javax.swing.JButton btn_qris;
     private javax.swing.JButton btn_refresh;
     private javax.swing.JButton btn_search_id;
     private javax.swing.JButton btn_update;
