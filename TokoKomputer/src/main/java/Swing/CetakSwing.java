@@ -83,12 +83,13 @@ public class CetakSwing extends javax.swing.JFrame {
         cb_total_harga_pesanan = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
         date_chooser = new com.toedter.calendar.JDateChooser();
+        jLabel4 = new javax.swing.JLabel();
 
         jButton4.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        panel_background.setBackground(new java.awt.Color(238, 238, 238));
+        panel_background.setBackground(new java.awt.Color(0, 0, 255));
 
         txt_print.setEditable(false);
         txt_print.setColumns(20);
@@ -97,8 +98,10 @@ public class CetakSwing extends javax.swing.JFrame {
         txt_print.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(txt_print);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nomor Invoice");
 
+        btn_add_record.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\addblack.png")); // NOI18N
         btn_add_record.setText("Add Record");
         btn_add_record.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_add_record.addActionListener(new java.awt.event.ActionListener() {
@@ -107,21 +110,32 @@ public class CetakSwing extends javax.swing.JFrame {
             }
         });
 
+        cb_tot_pem.setBackground(new java.awt.Color(0, 0, 255));
+        cb_tot_pem.setForeground(new java.awt.Color(255, 255, 255));
         cb_tot_pem.setText("Total Pembeli");
         cb_tot_pem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        cb_tot_prod.setBackground(new java.awt.Color(0, 0, 255));
+        cb_tot_prod.setForeground(new java.awt.Color(255, 255, 255));
         cb_tot_prod.setText("Total Produk");
         cb_tot_prod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        cb_tot_pes.setBackground(new java.awt.Color(0, 0, 255));
+        cb_tot_pes.setForeground(new java.awt.Color(255, 255, 255));
         cb_tot_pes.setText("Total Pesanan");
         cb_tot_pes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        cb_jum_pes.setBackground(new java.awt.Color(0, 0, 255));
+        cb_jum_pes.setForeground(new java.awt.Color(255, 255, 255));
         cb_jum_pes.setText("Jumlah Pesanan");
         cb_jum_pes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        cb_keuntungan.setBackground(new java.awt.Color(0, 0, 255));
+        cb_keuntungan.setForeground(new java.awt.Color(255, 255, 255));
         cb_keuntungan.setText("Keuntungan");
         cb_keuntungan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btn_print.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\print.png")); // NOI18N
         btn_print.setText("Print");
         btn_print.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_print.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +144,7 @@ public class CetakSwing extends javax.swing.JFrame {
             }
         });
 
+        btn_clear.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\clear.png")); // NOI18N
         btn_clear.setText("Clear");
         btn_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_clear.addActionListener(new java.awt.event.ActionListener() {
@@ -139,9 +154,12 @@ public class CetakSwing extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("CETAK INVOICE");
 
+        cb_check_all.setBackground(new java.awt.Color(0, 0, 255));
         cb_check_all.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cb_check_all.setForeground(new java.awt.Color(255, 255, 255));
         cb_check_all.setText("Check All");
         cb_check_all.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cb_check_all.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +168,8 @@ public class CetakSwing extends javax.swing.JFrame {
             }
         });
 
-        btn_kembali.setText("Kembali");
+        btn_kembali.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\backblack.png")); // NOI18N
+        btn_kembali.setText("   Kembali");
         btn_kembali.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,27 +177,28 @@ public class CetakSwing extends javax.swing.JFrame {
             }
         });
 
+        cb_total_harga_pesanan.setBackground(new java.awt.Color(0, 0, 255));
+        cb_total_harga_pesanan.setForeground(new java.awt.Color(255, 255, 255));
         cb_total_harga_pesanan.setText("Total Harga Pesanan");
         cb_total_harga_pesanan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tanggal Invoice");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\logo font.png")); // NOI18N
 
         javax.swing.GroupLayout panel_backgroundLayout = new javax.swing.GroupLayout(panel_background);
         panel_background.setLayout(panel_backgroundLayout);
         panel_backgroundLayout.setHorizontalGroup(
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
+            .addGroup(panel_backgroundLayout.createSequentialGroup()
                 .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_backgroundLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_print, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel2))
                     .addGroup(panel_backgroundLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(24, 24, 24)
                         .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_add_record, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1)
                             .addComponent(txt_invoice)
@@ -189,19 +209,27 @@ public class CetakSwing extends javax.swing.JFrame {
                             .addComponent(cb_keuntungan)
                             .addComponent(cb_total_harga_pesanan)
                             .addComponent(cb_check_all)
-                            .addComponent(date_chooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(panel_backgroundLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel2)))
-                .addGap(18, 18, 18)
+                            .addComponent(date_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_print, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_add_record, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(247, 247, 247))
         );
         panel_backgroundLayout.setVerticalGroup(
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panel_backgroundLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(24, 24, 24)
@@ -210,7 +238,7 @@ public class CetakSwing extends javax.swing.JFrame {
                         .addComponent(txt_invoice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(date_chooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cb_tot_pem)
@@ -226,7 +254,7 @@ public class CetakSwing extends javax.swing.JFrame {
                         .addComponent(cb_keuntungan)
                         .addGap(11, 11, 11)
                         .addComponent(cb_check_all)
-                        .addGap(41, 41, 41)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_add_record, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_print, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,19 +262,21 @@ public class CetakSwing extends javax.swing.JFrame {
                         .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(jScrollPane1))
+                .addGap(0, 45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel_background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panel_background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -409,6 +439,7 @@ public class CetakSwing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel_background;
     private javax.swing.JTextField txt_invoice;

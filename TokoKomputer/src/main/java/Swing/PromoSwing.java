@@ -49,6 +49,7 @@ public class PromoSwing extends javax.swing.JFrame {
         txt_kode_promo.setText("");
         txt_nama_promo.setText("");
         txt_potongan_promo.setText("");
+        
     }
     
     private void loadData() {
@@ -142,6 +143,7 @@ public class PromoSwing extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabel_promo.setModel(new javax.swing.table.DefaultTableModel(
@@ -168,6 +170,7 @@ public class PromoSwing extends javax.swing.JFrame {
         txt_search.setText("Search");
         jPanel1.add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 333, 162, -1));
 
+        btn_search.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\search.png")); // NOI18N
         btn_search.setText("Search");
         btn_search.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_search.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +178,7 @@ public class PromoSwing extends javax.swing.JFrame {
                 btn_searchActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 333, 75, -1));
+        jPanel1.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 90, 30));
         jPanel1.add(txt_kode_promo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 65, 318, 30));
         jPanel1.add(txt_nama_promo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 139, 318, 30));
 
@@ -186,6 +189,7 @@ public class PromoSwing extends javax.swing.JFrame {
         });
         jPanel1.add(txt_potongan_promo, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 65, 169, 30));
 
+        btn_create.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\addblack.png")); // NOI18N
         btn_create.setText("Create");
         btn_create.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_create.addActionListener(new java.awt.event.ActionListener() {
@@ -195,6 +199,7 @@ public class PromoSwing extends javax.swing.JFrame {
         });
         jPanel1.add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 110, -1));
 
+        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\updateblack.png")); // NOI18N
         btn_update.setText("Update");
         btn_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_update.addActionListener(new java.awt.event.ActionListener() {
@@ -204,6 +209,7 @@ public class PromoSwing extends javax.swing.JFrame {
         });
         jPanel1.add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 279, 110, -1));
 
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\delete.png")); // NOI18N
         btn_delete.setText("Delete");
         btn_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
@@ -213,6 +219,7 @@ public class PromoSwing extends javax.swing.JFrame {
         });
         jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 110, -1));
 
+        btn_clear.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\clear.png")); // NOI18N
         btn_clear.setText("Clear");
         btn_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_clear.addActionListener(new java.awt.event.ActionListener() {
@@ -222,6 +229,7 @@ public class PromoSwing extends javax.swing.JFrame {
         });
         jPanel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 110, -1));
 
+        btn_refresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\refresh.png")); // NOI18N
         btn_refresh.setText("refresh");
         btn_refresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_refresh.addActionListener(new java.awt.event.ActionListener() {
@@ -229,31 +237,39 @@ public class PromoSwing extends javax.swing.JFrame {
                 btn_refreshActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 333, 75, -1));
+        jPanel1.add(btn_refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 90, 30));
 
         cb_kategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Motherboard", "Processor (CPU)", "Heatsink", "RAM", "Hard Disk", "VGA Card (GPU)", "Flashdisk", "Monitor", "Keyboard", "Mouse", "Optical Drive", "SSD", "Power Supply", "LAN Card", "WLAN Card", "Sound Card", "Printer", "Scanner", "Speaker", "Webcam" }));
         cb_kategori.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(cb_kategori, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 222, 28));
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Kode Promo");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 43, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nama Promo");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 115, -1, -1));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Periode Promo");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 191, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Potongan Promo");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 43, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Kategori Produk");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("%");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 69, -1, -1));
 
+        radio_kategori.setBackground(new java.awt.Color(0, 0, 255));
+        radio_kategori.setForeground(new java.awt.Color(255, 255, 255));
         radio_kategori.setText("Tambahkan Promo pada Kategori Tertentu");
         radio_kategori.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         radio_kategori.addActionListener(new java.awt.event.ActionListener() {
@@ -265,10 +281,12 @@ public class PromoSwing extends javax.swing.JFrame {
         jPanel1.add(date_from, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 219, 130, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("->");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 219, -1, -1));
         jPanel1.add(date_to, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 219, 130, -1));
 
+        btn_kembali.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\backblack.png")); // NOI18N
         btn_kembali.setText("Kembali");
         btn_kembali.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_kembali.addActionListener(new java.awt.event.ActionListener() {
@@ -282,10 +300,7 @@ public class PromoSwing extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

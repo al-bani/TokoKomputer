@@ -71,11 +71,16 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("LOGIN");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password");
 
         txt_username.addActionListener(new java.awt.event.ActionListener() {
@@ -90,8 +95,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Belum buat akun?");
 
+        lbl_lupa_password.setForeground(new java.awt.Color(255, 255, 255));
         lbl_lupa_password.setText("Lupa Password?");
         lbl_lupa_password.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_lupa_password.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,6 +115,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        lbl_register.setForeground(new java.awt.Color(255, 255, 255));
         lbl_register.setText("Daftar Disini");
         lbl_register.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_register.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,7 +124,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        cb_show_password.setBackground(new java.awt.Color(0, 0, 255));
         cb_show_password.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        cb_show_password.setForeground(new java.awt.Color(255, 255, 255));
         cb_show_password.setText("Show Password");
         cb_show_password.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cb_show_password.addActionListener(new java.awt.event.ActionListener() {

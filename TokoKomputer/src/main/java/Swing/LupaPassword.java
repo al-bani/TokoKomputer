@@ -80,6 +80,9 @@ public class LupaPassword extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Username");
 
         txt_username.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -88,6 +91,8 @@ public class LupaPassword extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("LUPA PASSWORD");
 
         btn_cari.setText("cari");
@@ -110,31 +115,29 @@ public class LupaPassword extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_cari)))
-                .addContainerGap(34, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(btn_kembali)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(112, 112, 112))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_cari))))
+                    .addComponent(btn_kembali)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabel2)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_kembali)))
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(btn_kembali)
+                .addGap(7, 7, 7)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -143,8 +146,12 @@ public class LupaPassword extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        panel_lupa_password.setBackground(new java.awt.Color(0, 0, 255));
+
+        lbl_password.setForeground(new java.awt.Color(255, 255, 255));
         lbl_password.setText("Password Baru");
 
+        lbl_confirm_password.setForeground(new java.awt.Color(255, 255, 255));
         lbl_confirm_password.setText("Konfirmasi Password");
 
         txt_confirm_password.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +173,9 @@ public class LupaPassword extends javax.swing.JFrame {
             }
         });
 
+        cb_show_password.setBackground(new java.awt.Color(0, 0, 255));
         cb_show_password.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        cb_show_password.setForeground(new java.awt.Color(255, 255, 255));
         cb_show_password.setText("Show Password");
         cb_show_password.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cb_show_password.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +199,7 @@ public class LupaPassword extends javax.swing.JFrame {
                             .addComponent(lbl_confirm_password)
                             .addComponent(lbl_password)
                             .addComponent(txt_password))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_lupa_passwordLayout.setVerticalGroup(
             panel_lupa_passwordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

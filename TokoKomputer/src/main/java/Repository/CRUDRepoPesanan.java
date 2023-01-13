@@ -19,4 +19,5 @@ public interface CRUDRepoPesanan<T, ID, I> {
     List<T> findKodeProd();
     List<T> findUserPem();
     I userPayment(String kodeProd);
+    I getSelisihKodeProd(int kodePes);
 }

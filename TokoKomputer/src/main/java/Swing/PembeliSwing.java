@@ -117,6 +117,7 @@ public class PembeliSwing extends javax.swing.JFrame {
         print = new javax.swing.JButton();
         btn_clear = new javax.swing.JButton();
         btn_kembali = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabel_pembeli = new javax.swing.JTable();
         txt_search = new javax.swing.JTextField();
@@ -125,10 +126,11 @@ public class PembeliSwing extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        panel_background.setBackground(new java.awt.Color(255, 255, 255));
+        panel_background.setBackground(new java.awt.Color(0, 0, 255));
 
-        panel_input.setBackground(new java.awt.Color(251, 251, 251));
+        panel_input.setBackground(new java.awt.Color(0, 0, 255));
 
+        txt_username.setEditable(false);
         txt_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_usernameActionPerformed(evt);
@@ -141,13 +143,17 @@ public class PembeliSwing extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("username");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nama");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Alamat");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -158,6 +164,7 @@ public class PembeliSwing extends javax.swing.JFrame {
         txt_alamat.setRows(5);
         jScrollPane1.setViewportView(txt_alamat);
 
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\delete.png")); // NOI18N
         btn_delete.setText("DELETE");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,6 +172,7 @@ public class PembeliSwing extends javax.swing.JFrame {
             }
         });
 
+        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\updateblack.png")); // NOI18N
         btn_update.setText("UPDATE");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +180,7 @@ public class PembeliSwing extends javax.swing.JFrame {
             }
         });
 
+        print.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\print.png")); // NOI18N
         print.setText("PRINT");
         print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +188,7 @@ public class PembeliSwing extends javax.swing.JFrame {
             }
         });
 
+        btn_clear.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\clear.png")); // NOI18N
         btn_clear.setText("CLEAR");
         btn_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,12 +196,15 @@ public class PembeliSwing extends javax.swing.JFrame {
             }
         });
 
+        btn_kembali.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\backblack.png")); // NOI18N
         btn_kembali.setText("Kembali");
         btn_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_kembaliActionPerformed(evt);
             }
         });
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\final.png")); // NOI18N
 
         javax.swing.GroupLayout panel_inputLayout = new javax.swing.GroupLayout(panel_input);
         panel_input.setLayout(panel_inputLayout);
@@ -221,11 +234,17 @@ public class PembeliSwing extends javax.swing.JFrame {
                             .addComponent(btn_kembali))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inputLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(70, 70, 70))
         );
         panel_inputLayout.setVerticalGroup(
             panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_inputLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inputLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -319,7 +338,7 @@ public class PembeliSwing extends javax.swing.JFrame {
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panel_input, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_search)
@@ -513,6 +532,7 @@ public class PembeliSwing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel panel_background;

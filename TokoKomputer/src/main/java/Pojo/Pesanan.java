@@ -12,11 +12,22 @@ public class Pesanan {
     private int id_pesanan;
     private String username_pembeli;
     private String kode_Produk;
-    private int jumlah_pesanan;
+    private int jumlah_pesanan, selisihJum;
     private String metodePembayaran;
+    
 
     public Pesanan() {
     }
+
+    public int getSelisihJum() {
+        return selisihJum;
+    }
+
+    public void setSelisihJum(int selisihJum) {
+        this.selisihJum = selisihJum;
+    }
+    
+    
 
     public String getMetodePembayaran() {
         return metodePembayaran;

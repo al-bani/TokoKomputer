@@ -229,6 +229,33 @@ public class PesananController implements PesananInterface{
         return result;
     }
 
+    @Override
+    public Integer getSelisihKodeProd(int kodePes) {
+        int selisih = 0;
+        String query = "SELECT jumlah_pesanan FROM tb_pesanan WHERE kodeProd = "+kodePes+"";
+        
+        conMan = new ConnectionManager();
+        conn = conMan.connect();
+        
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            
+            while (rs.next()) {  
+                if (String.valueOf(rs.getInt("jumlah_pesanan")).isEmpty()) {
+                   selisih = 0; 
+                } else {
+                    selisih = rs.getInt("jumlah_pesanan");
+                }
+            }
+        } catch (SQLException ex) {
+             Logger.getLogger(PesananController.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        
+        return selisih;
+    }
+
 
 
 }

@@ -135,7 +135,8 @@ public class Dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Kelola"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 1, true), "Kelola", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 255))); // NOI18N
+        jPanel4.setForeground(new java.awt.Color(0, 51, 255));
 
         btn_produk.setText("Produk");
         btn_produk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -227,9 +228,10 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel3.setBackground(new java.awt.Color(0, 0, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("DASHBOARD PENJUAL");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -249,21 +251,27 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Selamat ");
 
         txt_format.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_format.setForeground(new java.awt.Color(255, 255, 255));
         txt_format.setText("{format}");
 
+        txt_year.setForeground(new java.awt.Color(255, 255, 255));
         txt_year.setText("- 0");
 
+        txt_month.setForeground(new java.awt.Color(255, 255, 255));
         txt_month.setText("0");
 
+        txt_day.setForeground(new java.awt.Color(255, 255, 255));
         txt_day.setText("0 -");
 
         lbl_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_name.setForeground(new java.awt.Color(255, 255, 255));
         lbl_name.setText("{name}");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

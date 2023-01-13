@@ -47,11 +47,14 @@ public class ProdukSwing extends javax.swing.JFrame {
      */
     public ProdukSwing() {
         initComponents();
+        table_produk.enableInputMethods(false);
         tabbed_pane.setSelectedIndex(0);
         this.setLocationRelativeTo(null);
         loadData();
         txt_image_path_update.setEditable(false);
         txt_image_path.setEditable(false);
+        
+        
     }
     
     public void close() {
@@ -169,12 +172,14 @@ public class ProdukSwing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel34 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btn_create = new javax.swing.JButton();
         btn_read = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
         btn_back = new javax.swing.JButton();
+        jLabel35 = new javax.swing.JLabel();
         tabbed_pane = new javax.swing.JTabbedPane();
         read_delete = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -280,10 +285,12 @@ public class ProdukSwing extends javax.swing.JFrame {
         btn_show_edit = new javax.swing.JButton();
         btn_kembali_show = new javax.swing.JButton();
 
+        jLabel34.setText("jLabel34");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -298,12 +305,13 @@ public class ProdukSwing extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 50));
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 255));
 
-        btn_create.setBackground(new java.awt.Color(51, 51, 51));
+        btn_create.setBackground(new java.awt.Color(0, 0, 255));
         btn_create.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_create.setForeground(new java.awt.Color(255, 255, 255));
-        btn_create.setText("Buat Produk");
+        btn_create.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\plus.png")); // NOI18N
+        btn_create.setText("  Buat Produk");
         btn_create.setBorder(null);
         btn_create.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_create.setRequestFocusEnabled(false);
@@ -324,10 +332,11 @@ public class ProdukSwing extends javax.swing.JFrame {
             }
         });
 
-        btn_read.setBackground(new java.awt.Color(51, 51, 51));
+        btn_read.setBackground(new java.awt.Color(0, 0, 255));
         btn_read.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_read.setForeground(new java.awt.Color(255, 255, 255));
-        btn_read.setText("Lihat dan hapus Produk");
+        btn_read.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\see.png")); // NOI18N
+        btn_read.setText("   Lihat dan Hapus");
         btn_read.setBorder(null);
         btn_read.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_read.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -344,10 +353,11 @@ public class ProdukSwing extends javax.swing.JFrame {
             }
         });
 
-        btn_update.setBackground(new java.awt.Color(51, 51, 51));
+        btn_update.setBackground(new java.awt.Color(0, 0, 255));
         btn_update.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_update.setForeground(new java.awt.Color(255, 255, 255));
-        btn_update.setText("Perbarui Produk");
+        btn_update.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\update.png")); // NOI18N
+        btn_update.setText("  Perbarui Produk");
         btn_update.setBorder(null);
         btn_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_update.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -364,10 +374,11 @@ public class ProdukSwing extends javax.swing.JFrame {
             }
         });
 
-        btn_back.setBackground(new java.awt.Color(51, 51, 51));
+        btn_back.setBackground(new java.awt.Color(0, 0, 255));
         btn_back.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_back.setForeground(new java.awt.Color(255, 255, 255));
-        btn_back.setText("kembali");
+        btn_back.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\back.png")); // NOI18N
+        btn_back.setText("   Kembali");
         btn_back.setBorder(null);
         btn_back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -376,19 +387,39 @@ public class ProdukSwing extends javax.swing.JFrame {
             }
         });
 
+        jLabel35.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("file:/C:/Users/alzildan/Downloads/final.png")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btn_create, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_read, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_update, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btn_back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btn_create, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_read, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(btn_update, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(161, 161, 161)
+                .addComponent(jLabel35)
+                .addGap(74, 74, 74)
                 .addComponent(btn_create, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_read, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -396,11 +427,12 @@ public class ProdukSwing extends javax.swing.JFrame {
                 .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 150, 540));
 
+        read_delete.setBackground(new java.awt.Color(191, 234, 245));
         read_delete.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         table_produk.setModel(new javax.swing.table.DefaultTableModel(
@@ -444,6 +476,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         read_delete.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
         read_delete.add(txt_cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 101, 192, -1));
 
+        btn_cari.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\search.png")); // NOI18N
         btn_cari.setText("Cari");
         btn_cari.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cari.addActionListener(new java.awt.event.ActionListener() {
@@ -456,6 +489,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         jLabel16.setText("Hapus Produk dengan memilih data");
         read_delete.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, -1, -1));
 
+        btn_hapus.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\delete.png")); // NOI18N
         btn_hapus.setText("Hapus Produk");
         btn_hapus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_hapus.addActionListener(new java.awt.event.ActionListener() {
@@ -465,6 +499,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         });
         read_delete.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, -1, -1));
 
+        refresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\refresh.png")); // NOI18N
         refresh.setText("Refresh");
         refresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         refresh.addActionListener(new java.awt.event.ActionListener() {
@@ -477,6 +512,7 @@ public class ProdukSwing extends javax.swing.JFrame {
         jLabel33.setText("Lihat Detail Produk dengan Memilih data");
         read_delete.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
+        btn_lihat_produk.setIcon(new javax.swing.ImageIcon("C:\\Users\\alzildan\\Downloads\\seeblack.png")); // NOI18N
         btn_lihat_produk.setText("Lihat dan Edit Produk");
         btn_lihat_produk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_lihat_produk.addActionListener(new java.awt.event.ActionListener() {
@@ -1603,6 +1639,8 @@ public class ProdukSwing extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
