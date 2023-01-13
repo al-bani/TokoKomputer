@@ -64,6 +64,7 @@ public class LupaPassword extends javax.swing.JFrame {
         txt_username = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btn_cari = new javax.swing.JButton();
+        btn_kembali = new javax.swing.JButton();
         panel_lupa_password = new javax.swing.JPanel();
         lbl_password = new javax.swing.JLabel();
         txt_password = new javax.swing.JPasswordField();
@@ -97,6 +98,13 @@ public class LupaPassword extends javax.swing.JFrame {
             }
         });
 
+        btn_kembali.setText("Kembali");
+        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kembaliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -111,15 +119,21 @@ public class LupaPassword extends javax.swing.JFrame {
                         .addComponent(btn_cari)))
                 .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_kembali)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(112, 112, 112))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_kembali)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -221,7 +235,7 @@ public class LupaPassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       LoginDirect();
+     
     }//GEN-LAST:event_formWindowClosed
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
@@ -258,17 +272,17 @@ public class LupaPassword extends javax.swing.JFrame {
         username = txt_username.getText();
 
         if ("".equals(username)) {
-            JOptionPane.showMessageDialog(null, "Anda belum mengisi email");
+            JOptionPane.showMessageDialog(null, "Anda belum mengisi Username");
         } else {
              try {
                 int status = penjualServ.cekUsername(username);
 
                 if (status == 1) {
-                    JOptionPane.showMessageDialog(null, "Email Ditermukan");
+                    JOptionPane.showMessageDialog(null, "Username Ditermukan");
                     panel_lupa_password.setVisible(true);
                     txt_username.setEditable(false);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Email tidak ditemukan");
+                    JOptionPane.showMessageDialog(null, "Username tidak ditemukan");
                     panel_lupa_password.setVisible(false);
                 }
             } catch (Exception e) {
@@ -341,6 +355,10 @@ public class LupaPassword extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_confirm_passwordActionPerformed
 
+    private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
+        LoginDirect();
+    }//GEN-LAST:event_btn_kembaliActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -352,7 +370,7 @@ public class LupaPassword extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -378,6 +396,7 @@ public class LupaPassword extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cari;
+    private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_save;
     private javax.swing.JCheckBox cb_show_password;
     private javax.swing.JLabel jLabel1;

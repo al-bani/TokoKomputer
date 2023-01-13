@@ -1045,7 +1045,9 @@ public class ProdukSwing extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_kode_produkActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
-        
+       Dashboard dashboard;
+        dashboard = new Dashboard();
+        dashboard.setVisible(true);
         close();
     }//GEN-LAST:event_btn_backActionPerformed
 

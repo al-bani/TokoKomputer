@@ -116,17 +116,18 @@ public class PembeliSwing extends javax.swing.JFrame {
         btn_update = new javax.swing.JButton();
         print = new javax.swing.JButton();
         btn_clear = new javax.swing.JButton();
+        btn_kembali = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabel_pembeli = new javax.swing.JTable();
         txt_search = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
         btc_refresh = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panel_background.setBackground(new java.awt.Color(255, 255, 255));
 
-        panel_input.setBackground(new java.awt.Color(102, 102, 102));
+        panel_input.setBackground(new java.awt.Color(251, 251, 251));
 
         txt_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,17 +141,13 @@ public class PembeliSwing extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("username");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nama");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Alamat");
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -189,6 +186,13 @@ public class PembeliSwing extends javax.swing.JFrame {
             }
         });
 
+        btn_kembali.setText("Kembali");
+        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kembaliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_inputLayout = new javax.swing.GroupLayout(panel_input);
         panel_input.setLayout(panel_inputLayout);
         panel_inputLayout.setHorizontalGroup(
@@ -213,7 +217,8 @@ public class PembeliSwing extends javax.swing.JFrame {
                             .addGroup(panel_inputLayout.createSequentialGroup()
                                 .addComponent(btn_delete)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_update)))
+                                .addComponent(btn_update))
+                            .addComponent(btn_kembali))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -244,7 +249,9 @@ public class PembeliSwing extends javax.swing.JFrame {
                 .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_clear)
                     .addComponent(print))
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_kembali)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabel_pembeli.setModel(new javax.swing.table.DefaultTableModel(
@@ -446,6 +453,13 @@ public class PembeliSwing extends javax.swing.JFrame {
         txt_search.setText("");
     }//GEN-LAST:event_txt_searchMouseClicked
 
+    private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
+        Dashboard dashboard;
+        dashboard = new Dashboard();
+        dashboard.setVisible(true);
+        close();
+    }//GEN-LAST:event_btn_kembaliActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -492,6 +506,7 @@ public class PembeliSwing extends javax.swing.JFrame {
     private javax.swing.JButton btc_refresh;
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_search;
     private javax.swing.JButton btn_update;
     private javax.swing.JLabel jLabel1;

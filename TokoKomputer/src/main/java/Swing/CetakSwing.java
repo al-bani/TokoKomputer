@@ -159,6 +159,7 @@ public class CetakSwing extends javax.swing.JFrame {
         });
 
         cb_total_harga_pesanan.setText("Total Harga Pesanan");
+        cb_total_harga_pesanan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel3.setText("Tanggal Invoice");
 
@@ -168,16 +169,12 @@ public class CetakSwing extends javax.swing.JFrame {
             panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
                 .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_backgroundLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panel_backgroundLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_backgroundLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btn_print, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panel_backgroundLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_print, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panel_backgroundLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panel_backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -347,7 +344,10 @@ public class CetakSwing extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_printActionPerformed
 
     private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
-        // TODO add your handling code here:
+        Dashboard dashboard;
+        dashboard = new Dashboard();
+        dashboard.setVisible(true);
+        close();
     }//GEN-LAST:event_btn_kembaliActionPerformed
 
     /**

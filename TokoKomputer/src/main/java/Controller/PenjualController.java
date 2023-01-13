@@ -42,7 +42,7 @@ public class PenjualController implements PenjualInterface{
         conMan = new ConnectionManager();
         conn = conMan.connect();
         
-        ;
+        
         
         try {
             state = conn.createStatement();

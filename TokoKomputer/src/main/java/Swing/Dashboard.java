@@ -337,7 +337,7 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void item_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_logoutActionPerformed
-       int dialogRes = JOptionPane.showConfirmDialog(null, "Are you sure?");
+       int dialogRes = JOptionPane.showConfirmDialog(null, "Are you sure?", "Logout", JOptionPane.YES_NO_OPTION);
         
         if (dialogRes == JOptionPane.YES_OPTION) {
             Login logForm = new Login();
@@ -357,24 +357,28 @@ public class Dashboard extends javax.swing.JFrame {
         PembeliSwing pemSwing;
         pemSwing = new PembeliSwing();
         pemSwing.setVisible(true);
+        close();
     }//GEN-LAST:event_btn_pembeliActionPerformed
 
     private void btn_pesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesananActionPerformed
         PesananSwing pesSwing;
         pesSwing = new PesananSwing();
         pesSwing.setVisible(true);
+        close();
     }//GEN-LAST:event_btn_pesananActionPerformed
 
     private void btn_promoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_promoActionPerformed
         PromoSwing proSwing;
         proSwing = new PromoSwing();
         proSwing.setVisible(true);
+        close();
     }//GEN-LAST:event_btn_promoActionPerformed
 
     private void btn_invoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_invoiceActionPerformed
         CetakSwing cetSwing;
         cetSwing = new CetakSwing();
         cetSwing.setVisible(true);
+         close();
     }//GEN-LAST:event_btn_invoiceActionPerformed
 
     /**
@@ -388,7 +392,7 @@ public class Dashboard extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

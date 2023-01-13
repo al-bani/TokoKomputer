@@ -11,6 +11,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.print.PrinterException;
 import java.io.File;
@@ -38,6 +39,7 @@ public class PesananSwing extends javax.swing.JFrame {
      */
     
     PesananInterface pesananInterface;
+    
     
     public PesananSwing() {
        initComponents();
@@ -163,9 +165,12 @@ public class PesananSwing extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btn_qris = new javax.swing.JButton();
+        btn_kembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         tabel_pesanan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -195,7 +200,13 @@ public class PesananSwing extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 600, 270));
 
-        txt_search_id.setText("Search");
+        txt_search_id.setText("Search by ID");
+        txt_search_id.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_search_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_search_idMouseClicked(evt);
+            }
+        });
         txt_search_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_search_idActionPerformed(evt);
@@ -204,22 +215,25 @@ public class PesananSwing extends javax.swing.JFrame {
         getContentPane().add(txt_search_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 330, 30));
 
         btn_create.setText("Create");
+        btn_create.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_createActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, 30));
+        getContentPane().add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, 30));
 
         btn_update.setText("Update");
+        btn_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_updateActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, 30));
+        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, 30));
 
         btn_Delete.setText("Delete");
+        btn_Delete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_DeleteActionPerformed(evt);
@@ -228,20 +242,30 @@ public class PesananSwing extends javax.swing.JFrame {
         getContentPane().add(btn_Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, -1, 30));
 
         btn_clear.setText("Clear");
+        btn_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_clearActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, -1, 30));
+        getContentPane().add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, 30));
 
-        txt_id_pesanan.setText("ID_Pesanan");
+        txt_id_pesanan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_id_pesananKeyTyped(evt);
+            }
+        });
         getContentPane().add(txt_id_pesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 260, 30));
 
-        txt_jumlah_pesanan.setText("Jumlah Pesanan");
+        txt_jumlah_pesanan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_jumlah_pesananKeyTyped(evt);
+            }
+        });
         getContentPane().add(txt_jumlah_pesanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 260, 30));
 
         btn_search_id.setText("Search");
+        btn_search_id.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_search_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_search_idActionPerformed(evt);
@@ -250,6 +274,7 @@ public class PesananSwing extends javax.swing.JFrame {
         getContentPane().add(btn_search_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, -1, 30));
 
         btn_refresh.setText("Refresh");
+        btn_refresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_refreshActionPerformed(evt);
@@ -261,33 +286,45 @@ public class PesananSwing extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         cb_username_pembeli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_username_pembeli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cb_username_pembeli, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 270, 30));
 
         cb_kode_produk.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_kode_produk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(cb_kode_produk, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 270, 30));
 
         jLabel2.setText("Username Pembeli");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
 
-        jLabel3.setText("ID Pesanan");
+        jLabel3.setText("ID Pesanan (Hanya Angka)");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel4.setText("Kode Produk");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
         btn_qris.setText("Lihat QRIS");
+        btn_qris.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_qris.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_qrisActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_qris, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, -1, 30));
+        getContentPane().add(btn_qris, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, 30));
+
+        btn_kembali.setText("Kembali");
+        btn_kembali.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kembaliActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_search_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_search_idActionPerformed
-
+        txt_search_id.setText("");
     }//GEN-LAST:event_txt_search_idActionPerformed
 
     private void tabel_pesananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_pesananMouseClicked
@@ -354,6 +391,8 @@ public class PesananSwing extends javax.swing.JFrame {
         int id_pesanan;
         String username_pembeli, kode_produk;
         int jumlah_pesanan;
+        
+        
 
         pesananInterface = new PesananController();
         id_pesanan= Integer.parseInt(txt_id_pesanan.getText());
@@ -370,6 +409,8 @@ public class PesananSwing extends javax.swing.JFrame {
         pesananInterface.create(pesanan);
         JOptionPane.showMessageDialog(null, "Data pesanan created successfully");
         loadData();
+        getUsernamePembeli();
+        getKodeProduk();
         emptyField();
     }//GEN-LAST:event_btn_createActionPerformed
 
@@ -378,6 +419,8 @@ public class PesananSwing extends javax.swing.JFrame {
         String username_pembeli, kode_produk;
         int jumlah_pesanan;
         pesananInterface = new PesananController();
+        
+
 
         id_pesanan = Integer.parseInt(txt_id_pesanan.getText());
         username_pembeli = cb_username_pembeli.getSelectedItem().toString();
@@ -393,6 +436,8 @@ public class PesananSwing extends javax.swing.JFrame {
         pesananInterface.update(pesanan);
         JOptionPane.showMessageDialog(null, "Data pesanan Updated successfully");
         loadData();
+                getUsernamePembeli();
+        getKodeProduk();
         emptyField();
     }//GEN-LAST:event_btn_updateActionPerformed
 
@@ -438,6 +483,33 @@ public class PesananSwing extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }//GEN-LAST:event_btn_qrisActionPerformed
+
+    private void txt_id_pesananKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_id_pesananKeyTyped
+        char c = evt.getKeyChar();
+        
+        if (!(Character.isDigit(c)) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_id_pesananKeyTyped
+
+    private void txt_jumlah_pesananKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_jumlah_pesananKeyTyped
+       char c = evt.getKeyChar();
+        
+        if (!(Character.isDigit(c)) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_jumlah_pesananKeyTyped
+
+    private void txt_search_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_idMouseClicked
+       txt_search_id.setText("");
+    }//GEN-LAST:event_txt_search_idMouseClicked
+
+    private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
+        Dashboard dashboard;
+        dashboard = new Dashboard();
+        dashboard.setVisible(true);
+        close();
+    }//GEN-LAST:event_btn_kembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -485,6 +557,7 @@ public class PesananSwing extends javax.swing.JFrame {
     private javax.swing.JButton btn_Delete;
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_create;
+    private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_qris;
     private javax.swing.JButton btn_refresh;
     private javax.swing.JButton btn_search_id;

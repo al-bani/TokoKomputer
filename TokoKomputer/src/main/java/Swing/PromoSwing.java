@@ -103,6 +103,8 @@ public class PromoSwing extends javax.swing.JFrame {
     
     
     
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,6 +138,7 @@ public class PromoSwing extends javax.swing.JFrame {
         date_from = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         date_to = new com.toedter.calendar.JDateChooser();
+        btn_kembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -190,7 +193,7 @@ public class PromoSwing extends javax.swing.JFrame {
                 btn_createActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 279, 110, -1));
+        jPanel1.add(btn_create, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 110, -1));
 
         btn_update.setText("Update");
         btn_update.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -208,7 +211,7 @@ public class PromoSwing extends javax.swing.JFrame {
                 btn_deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 279, 110, -1));
+        jPanel1.add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, 110, -1));
 
         btn_clear.setText("Clear");
         btn_clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -217,7 +220,7 @@ public class PromoSwing extends javax.swing.JFrame {
                 btn_clearActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 279, 110, -1));
+        jPanel1.add(btn_clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 110, -1));
 
         btn_refresh.setText("refresh");
         btn_refresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -266,13 +269,23 @@ public class PromoSwing extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 219, -1, -1));
         jPanel1.add(date_to, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 219, 130, -1));
 
+        btn_kembali.setText("Kembali");
+        btn_kembali.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kembaliActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_kembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 90, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,7 +411,8 @@ public class PromoSwing extends javax.swing.JFrame {
 
     private void btn_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refreshActionPerformed
         loadData();
-        btn_create.setEnabled(false);
+        btn_create.setEnabled(true);
+        btn_update.setEnabled(false);
     }//GEN-LAST:event_btn_refreshActionPerformed
 
     private void radio_kategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_kategoriActionPerformed
@@ -416,6 +430,13 @@ public class PromoSwing extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txt_potongan_promoKeyTyped
+
+    private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
+        Dashboard dashboard;
+        dashboard = new Dashboard();
+        dashboard.setVisible(true);
+        close();
+    }//GEN-LAST:event_btn_kembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -463,6 +484,7 @@ public class PromoSwing extends javax.swing.JFrame {
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_create;
     private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_refresh;
     private javax.swing.JButton btn_search;
     private javax.swing.JButton btn_update;
